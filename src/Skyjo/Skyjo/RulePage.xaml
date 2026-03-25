@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skyjo.RulePage">
+
+    <ContentPage.Resources>
+        <Style x:Key="Titles" TargetType="Label">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="TextColor" Value="DarkViolet"/>
+        </Style>
+        <Style x:Key="Content" TargetType="Label">
+            <Setter Property="Padding" Value="20, 10, 0, 15"/>
+            <Setter Property="TextColor" Value="MediumPurple"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="5">
+            <Label Style="{StaticResource Titles}"
+                   FontSize="25" 
+                   TextDecorations="Underline" 
+                   TextTransform="None"
+                   FontAttributes="Bold">
+                Règles :
+            </Label>
+                <VerticalStackLayout Padding="20,10,0,0">
+                    <Label Style="{StaticResource Titles}">
+                    Le but du jeu :
+                </Label>
+                <Label Style="{StaticResource Content}">
+                        Dans Skyjo, le but est simple : avoir le moins de points possible à la fin de la partie.
+                    </Label>
+                <Label Style="{StaticResource Titles}">
+                    Mise en place :
+                </Label>
+                <Label Style="{StaticResource Content}">
+                    - Mélangez bien toutes les cartes.
+- Distribuez 12 cartes face cachée à chaque joueur, disposées en trois lignes de quatre.
+- Placez la pioche au centre et retournez la première carte pour créer la défausse.
+- Chaque joueur retourne deux cartes de son choix sur son plateau
+- Le premier joueur est celui qui a le plus petit score sur l'addition des deux cartes retournées
+                </Label>
+                <Label Style="{StaticResource Titles}">
+                    Déroulement du jeu :
+                </Label>
+                <Label Style="{StaticResource Content}">
+                    À chaque tour, un joueur choisit entre deux actions :
+     - Prendre la carte visible de la défausse et remplacer l’une de ses cartes.
+     - Piocher une carte face cachée : s’il la garde, il remplace une de ses cartes ; s’il la refuse, il la défausse et retourne une carte cachée.
+Si vous obtenez trois cartes identiques dans une même colonne, vous pouvez retirer toute la colonne de votre jeu.
+                </Label>
+                <Label Style="{StaticResource Titles}">
+                Objectif
+            </Label>
+                <Label Style="{StaticResource Content}">
+                Révélez progressivement toutes vos cartes tout en gardant la plus petite somme possible.
+                </Label>
+                <Label Style="{StaticResource Titles}">
+                    Fin de manche
+                </Label>
+                <Label Style="{StaticResource Content}">
+                    Quand un joueur a toutes ses cartes visibles, les autres jouent encore un dernier tour.
+Ensuite, tout le monde additionne ses points : le joueur au score le plus faible remporte la manche.
+Que faire en cas d’égalité ? 
+Si deux (ou plusieurs) joueurs ont le même total de points à la fin d’une manche, ils sont tous considérés comme vainqueurs de la manche. On inscrit simplement leurs scores respectifs sur la feuille de score, il n’y a pas de départage nécessaire à ce moment-là.
+            </Label>
+                <Label Style="{StaticResource Titles}">
+                Fin de partie
+            </Label>
+                <Label Style="{StaticResource Content}">
+La partie s’arrête lorsqu’un joueur atteint ou dépasse 100 points.
+C’est alors celui qui a le total le plus bas qui gagne.
+            </Label>
+        </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
