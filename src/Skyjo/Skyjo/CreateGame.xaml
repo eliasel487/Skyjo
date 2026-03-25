@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skyjo.CreateGame">
+    <VerticalStackLayout>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        
+            <Label Text="Nouvelle partie"
+                   BackgroundColor="DarkSalmon"
+                   FontSize="70"
+                   FontFamily="Helvetica"
+                   Grid.Row="0"
+                   HorizontalTextAlignment="Center"/>
+        </Grid>
+
+        <FlexLayout Direction="Row" HeightRequest="100">
+            <Rectangle Fill="red" FlexLayout.Grow="1" Margin="2">
+                
+            </Rectangle>
+            <Rectangle Fill="Black" FlexLayout.Grow="1" Margin="2"/>
+        </FlexLayout>
+
+        <Button Text="Démarrer partie"/> <!-- A rendre inutilisable si NBJOUEURS < 2 -->
+
+    </VerticalStackLayout>
+</ContentPage>
