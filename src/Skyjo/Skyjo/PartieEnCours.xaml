@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skyjo.PartieEnCours"
+             Title="PartieEnCours"
+             Background="LightBlue">
+    
+    <Grid
+        ColumnDefinitions="500,500,500,500"
+            RowDefinitions="650,600,600"
+            ColumnSpacing="5"
+            RowSpacing="5">
+        
+
+        <Grid ColumnDefinitions="50,50,50,50"
+            RowDefinitions="70,70,70"
+            ColumnSpacing="5"
+            RowSpacing="5">
+
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="3"
+                />
+        </Grid>
+        <Grid ColumnDefinitions="70,70,70,70"
+            RowDefinitions="100,100,100"
+            ColumnSpacing="5"
+            RowSpacing="5"
+            VerticalOptions="End">
+
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="3"
+        />
+        </Grid>
+    </Grid>
+</ContentPage>

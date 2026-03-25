@@ -1,35 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skyjo.MainPage">
-
+             x:Class="Skyjo.MainPage"
+             BackgroundImageSource="bg.png">
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
             Spacing="25">
             <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
+                Source="skyjo.png"
+                HeightRequest="75"
                 Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+                SemanticProperties.Description="dot net bot in a hovercraft number nine"
+                BackgroundColor="White"
+                Margin="0"/>
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
             <Button
                 x:Name="CounterBtn"
-                Text="Click me" 
+                Padding="0 50"
+                Text="Commencer une partie" 
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
+            <Button
+                Text="Continuer une partie"
+                BackgroundColor="Orange"
+                HorizontalOptions="Fill" />
+            <Label
+                Text="Regles"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            <Label
+                Text="Quitter"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
         </VerticalStackLayout>
     </ScrollView>
 
