@@ -1,6 +1,6 @@
-SKYJO
+**SKYJO**
 
-Contexte : 
+**Contexte : **
 
 Le skyjo est un jeu de cartes parfait pour permettre de réunir la famille et des amis puisqu’il est facile à prendre en main. De plus, les parties sont courtes et sont donc idéales pour pouvoir jouer à tout moment. Alors que le jeux permet de développer des stratégies simple en créant un équilibre entre hasard et réflexion, le jeu offre aussi un côté unique entre chaque partie
 
@@ -11,7 +11,7 @@ Ainsi l’intérêt de coder en numérique va permettre de réunir plus facileme
 Point important, si des tricheurs s'introduisent dans la partie l’application va s’assurer que tout les règles du jeu soit respecté et sans erreur dans le calcul du score et si le joueur veut être sur qu'aucun joueur ne triche il peut jouer tout seul dans le mode solo contre des IA
 
 
-Règles : 
+**Règles :** 
 
 Le but du jeu
 
@@ -56,23 +56,24 @@ La partie s’arrête lorsqu’un joueur atteint ou dépasse 100 points.
 C’est alors celui qui a le total le plus bas qui gagne.
 
 
-Persona :
+**Persona :**
 
-Persona 1 : 
+**Persona 1 : 
 
-Identité : 
+Identité : **
 
-Nom : Thomas Soileau
 
-Âge : 33 ans
+**Nom :** Thomas Soileau
 
-Ville : Lyon 69000
+**Âge :** 33 ans
 
-Profession : technicien
+**Ville :** Lyon 69000
 
-Niveau en informatique : Connaît assez bien le domaine numérique, utilise souvent appareil et logiciel pour son travail
+**Profession :** technicien
 
-Caractéristiques : marié et 2 enfants
+**Niveau en informatique :** Connaît assez bien le domaine numérique, utilise souvent appareil et logiciel pour son travail
+
+**Caractéristiques :** marié et 2 enfants
 
 motivé, travail à 100% pour sa famille
 
@@ -80,7 +81,7 @@ apprécie les moments conviviaux avec sa famille
 
 préfère les activités accessibles sans préparation complexe
 
-Objectifs : 
+**Objectifs :** 
 
 passer du temps avec sa famille
 
@@ -88,7 +89,7 @@ trouver une activité ludique adaptée aux enfants
 
 se détendre après une journée de travail
 
-Scénarios : 
+**Scénarios :** 
 
 ouvre une application de jeu à la recherche d’un jeu rapide et familial
 
@@ -97,7 +98,7 @@ créer une partie locale où chacun joue sur le même appareil.
 la famille joue ensemble, les enfants comprennent rapidement les règles et s’amusent
 
 
-User story 1 : 
+**User story 1 :** 
 
 Thomas, malgré les nombreuses heures au travail, aimerait passer du temps avec sa famille en jouant à un jeu de société. 
 
@@ -107,7 +108,7 @@ Cependant, le temps d’aller le chercher, de rentrer, et d’installer le jeu, 
 
 
 
-User story 2 : 
+**User story 2 :** 
 
 Après une longue journée de travail, Thomas, en rentrant, propose à sa famille de passer du temps ensemble en jouant à un jeu de société.
 
@@ -116,21 +117,21 @@ Pour gagner du temps, il décide de chercher un jeu sur son appareil.
 Ils trouvent rapidement un jeu qui leur plait, Skyjo, et décident de lancer une partie, grâce au démarrage rapide et de l’automatisation des scores, la famille de Thomas peuvent jouer toute la soirée à Skyjo sans se prendre la tête.
 
 
-Persona 2 : 
+**Persona 2 :** 
 
-Identité : 
+**Identité :** 
 
-Nom : Théo Darty
+**Nom :** Théo Darty
 
-Âge : 16 ans
+**Âge :** 16 ans
 
-Ville : Le-Puy-En-Velay 43000
+**Ville :** Le-Puy-En-Velay 43000
 
-Profession : Étudiant
+**Profession :** Étudiant
 
-Niveau en informatique : Débutant, utilise uniquement les fonctions de base (téléphone, applications simples), peu à l’aise avec les outils numériques
+**Niveau en informatique :** Débutant, utilise uniquement les fonctions de base (téléphone, applications simples), peu à l’aise avec les outils numériques
 
-Caractéristiques : 
+**Caractéristiques :** 
 
 Lycéen
 
@@ -142,7 +143,7 @@ Aime les activités faciles à comprendre
 
 Peut-être vite perdu face à des interfaces complexes
 
-Objectifs : 
+**Objectifs :** 
 
 Passer du temps de qualité avec sa famille
 
@@ -152,14 +153,14 @@ Se détendre sans prise de tête après les cours
 
 Ne pas avoir besoin de connaissances techniques
 
-Scénarios : 
+**Scénarios :** 
 
 Souhaite jouer en cachette (donc seul) pour peaufiner sa stratégie afin de battre ses amis et sa famille.
 
 S’occuper lors des trajets quand il rentre chez lui le week-end.
 
 
-User stories :
+**User stories :**
 
 En tant qu’étudiant je souhaiterais une interface simpliste pour ne pas me perdre.
 
@@ -174,21 +175,21 @@ Théo s’installe dans sa chambre afin de pouvoir jouer au Skyjo seul et s’am
 
 
 
-Persona 3 : 
+**Persona 3 :** 
 
-Identité : 
+**Identité :** 
 
-Nom : Xavier Kuburi
+**Nom :** Xavier Kuburi
 
-Âge : 76 ans
+**Âge :** 76 ans
 
-Ville : Saint Maurice lès Châteauneuf 71740 
+**Ville :** Saint Maurice lès Châteauneuf 71740 
 
-Profession : Ancien ingénieur en informatique (retraité)
+**Profession :** Ancien ingénieur en informatique (retraité)
 
-Niveau en informatique : Avancé, très à l’aise avec les outils numériques malgré son âge
+**Niveau en informatique :** Avancé, très à l’aise avec les outils numériques malgré son âge
 
-Caractéristiques : 
+**Caractéristiques :** 
 
 Retraité vivant en campagne
 
@@ -200,7 +201,7 @@ Apprécie le calme et les activités en solo
 
 Exigeant sur la qualité et la logique des applications
 
-Objectifs : 
+**Objectifs :** 
 
 Se divertir intelligemment (jeux de réflexion, stratégie…)
 
@@ -210,7 +211,7 @@ Profiter de moments calmes seul
 
 Occasionnellement jouer avec sa famille
 
-Scénarios : 
+**Scénarios :** 
 
 Ouvre une application de jeu en recherchant un défi intellectuel contre ses proches et/ou un ordinateur.
 
@@ -218,7 +219,7 @@ Jouer à un jeu de cartes sans avoir besoin de le payer pour y jouer.
 
 Favorise les applications open-source.
 
-User Stories :
+**User Stories :**
 
 En tant que retraité, je souhaite m’occuper après mes repas afin de garder une logique constante.
 
