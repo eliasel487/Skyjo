@@ -47,8 +47,7 @@ Nom : Thomas Soileau
 Ville : Lyon 69000
 Profession : technicien
 Niveau en informatique : Connaît assez bien le domaine numérique, utilise souvent appareil et logiciel pour son travail
-Caractéristiques : 
-marié et 2 enfants
+Caractéristiques : marié et 2 enfants
 motivé, travail à 100% pour sa famille
 apprécie les moments conviviaux avec sa famille 
 préfère les activités accessibles sans préparation complexe
