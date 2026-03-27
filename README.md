@@ -1,6 +1,6 @@
 **SKYJO**
 
-**Contexte : **
+**Contexte :** 
 
 Le skyjo est un jeu de cartes parfait pour permettre de réunir la famille et des amis puisqu’il est facile à prendre en main. De plus, les parties sont courtes et sont donc idéales pour pouvoir jouer à tout moment. Alors que le jeux permet de développer des stratégies simple en créant un équilibre entre hasard et réflexion, le jeu offre aussi un côté unique entre chaque partie
 
@@ -58,9 +58,9 @@ C’est alors celui qui a le total le plus bas qui gagne.
 
 **Persona :**
 
-**Persona 1 : 
+**Persona 1 :** 
 
-Identité : **
+**Identité :**
 
 
 **Nom :** Thomas Soileau
