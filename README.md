@@ -10,7 +10,7 @@ Ainsi l’intérêt de coder en numérique va permettre de réunir plus facileme
 Point important, si des tricheurs s'introduisent dans la partie l’application va s’assurer que tout les règles du jeu soit respecté et sans erreur dans le calcul du score et si le joueur veut être sur qu'aucun joueur ne triche il peut jouer tout seul dans le mode solo contre des IA
 
 
-Règles :
+Règles : \n
 Le but du jeu
 Dans Skyjo, le but est simple : avoir le moins de points possible à la fin de la partie.
 Mise en place
