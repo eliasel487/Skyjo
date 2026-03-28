@@ -2,6 +2,8 @@
 
 **Contexte :** 
 
+**PS:le diagramme des cas d'utilisation et les wireframe/story board se trouve dans le dossier image**
+
 Le skyjo est un jeu de cartes parfait pour permettre de réunir la famille et des amis puisqu’il est facile à prendre en main. De plus, les parties sont courtes et sont donc idéales pour pouvoir jouer à tout moment. Alors que le jeux permet de développer des stratégies simple en créant un équilibre entre hasard et réflexion, le jeu offre aussi un côté unique entre chaque partie
 
 Ainsi, compte tenu des nombreux atouts du jeu, tant en termes d’accessibilité que de convivialité, il est pertinent d’envisager son adaptation en version numérique. En effet, la digitalisation permet non seulement de conserver les mécaniques et le plaisir du jeu original, mais également d’enrichir l’expérience utilisateur en levant certaines contraintes liées au format physique, comme la nécessité de réunir les joueurs au même endroit ou de disposer du matériel
