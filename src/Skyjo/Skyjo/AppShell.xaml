@@ -7,23 +7,7 @@
     Title="Skyjo">
 
     <ShellContent
-<<<<<<< HEAD
-        ContentTemplate="{DataTemplate local:CreateGame}"
-        Route="CreateGame" />
-    
-=======
-<<<<<<< HEAD
-        ContentTemplate="{DataTemplate local:ContinueGame}"
-        Route="ContinueGame" />
-=======
-<<<<<<< HEAD
-        ContentTemplate="{DataTemplate local:MainPage}"
-=======
-        Title="Home"
         ContentTemplate="{DataTemplate local:PartieEnCours}"
->>>>>>> 594d858c82876ae3101528689c0e21424b56d367
-        Route="MainPage" />
->>>>>>> c4fd1b5310c7857c224e06eaf00746cd9d63f768
+        Route="PartieEnCours" />
 
->>>>>>> refs/remotes/origin/main
 </Shell>

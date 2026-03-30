@@ -18,7 +18,7 @@
 
             <Button
                 x:Name="CounterBtn"
-                Padding="0 50"
+                Padding="50"
                 Text="Commencer une partie" 
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
