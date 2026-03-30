@@ -7,7 +7,7 @@
     Title="Skyjo">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:PartieEnCours}"
-        Route="PartieEnCours" />
+        ContentTemplate="{DataTemplate local:ContinueGame}"
+        Route="ContinueGame" />
 
 </Shell>

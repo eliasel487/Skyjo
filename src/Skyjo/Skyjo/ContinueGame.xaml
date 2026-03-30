@@ -3,9 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skyjo.ContinueGame">
 
+    <ContentPage.Resources>
+        <Style x:Key="Titles" TargetType="Label">
+            <Setter Property="FontSize" Value="80"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0, 0, 0, 20"/>
+        </Style>
+        <Style x:Key="Game" TargetType="Button">
+            <Setter Property="Padding" Value="0, 10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="BindingContext" Value=""/>
+            <Setter Property="Text" Value="Une nouvelle partie"/>
+        </Style>
+    </ContentPage.Resources>
+
+
     <ScrollView>
-        <VerticalStackLayout>
-            <Label FontSize="70" HorizontalOptions="Center" BackgroundColor="DarkSalmon" Margin="0">Reprendre une partie</Label>
+        <VerticalStackLayout Grid.Column="0">
+            <Label BackgroundColor="DarkSalmon" Style="{StaticResource Titles}">Reprendre une partie</Label>
+            <Grid ColumnDefinitions="*, 80" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+                <Button Style="{StaticResource Game}" Grid.Row="0" Grid.Column="0" BorderWidth="0"/>
+                <Button Style="{StaticResource Game}" Grid.Row="1" Grid.Column="0"></Button>
+                <Button Style="{StaticResource Game}" Grid.Row="2" Grid.Column="0"></Button>
+                <Button Style="{StaticResource Game}" Grid.Row="3" Grid.Column="0"></Button>
+                <Button Style="{StaticResource Game}" Grid.Row="4" Grid.Column="0"></Button>
+                <Rectangle Grid.Column="1"
+                       Grid.RowSpan="5"
+                       BackgroundColor="Grey"
+                       Margin="20"
+                       RadiusX="50"
+                       />
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 
