@@ -1,41 +1,53 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skyjo.MainPage"
-             BackgroundImageSource="bg.png">
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25">
-            <Image
-                Source="skyjo.png"
-                HeightRequest="75"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine"
-                BackgroundColor="White"
-                Margin="0"/>
+﻿<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Skyjo.MainPage"
+    BackgroundColor="#f2f2f2">
 
+    <VerticalStackLayout Padding="20" Spacing="20">
+<!--Cambiar:
+        fondo
+        lo que esta en commentario
+        pegar eso hacia bajo
+        quitter et regles en botones-->
+        <Image
+            Source="skyjo.png"
+            HeightRequest="80"
+            HorizontalOptions="Center"
+            Aspect="AspectFit"/>
+        <!----poner en grid el frame-->
+        <Frame 
+            BackgroundColor="#d9d9d9"
+            CornerRadius="25"
+            Padding="20"
+            Margin="0,30,30,0"
+            
+            VerticalOptions="FillAndExpand">
 
+            <VerticalStackLayout Spacing="25" VerticalOptions="Center">
 
-            <Button
-                x:Name="CounterBtn"
-                Padding="0 50"
-                Text="Commencer une partie" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
-            <Button
-                Text="Continuer une partie"
-                BackgroundColor="Orange"
-                HorizontalOptions="Fill" />
-            <Label
-                Text="Regles"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-            <Label
-                Text="Quitter"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-        </VerticalStackLayout>
-    </ScrollView>
+                <Button
+                    Text="Commencer une partie"
+                    BackgroundColor="#bfbfbf"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    FontAttributes="Bold"/>
+
+                <Button
+                    Text="Poursuivre une partie"
+                    BackgroundColor="#bfbfbf"
+                    TextColor="Black"
+                    CornerRadius="20"
+                    FontAttributes="Bold"/>
+
+                <Grid Margin="0,20,0,0" ColumnDefinitions="*,*">
+                    <Label Text="Quitter" HorizontalOptions="Center"/>
+                    <Label Text="Règles" Grid.Column="1" HorizontalOptions="Center"/>
+                    <!----cambiar los label por botones-->
+                </Grid>
+
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
 
 </ContentPage>

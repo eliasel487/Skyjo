@@ -6,14 +6,14 @@
              Background="LightBlue">
     
     <Grid
-        ColumnDefinitions="500,500,500,500"
-            RowDefinitions="650,600,600"
+        ColumnDefinitions="*"
+            RowDefinitions="*"
             ColumnSpacing="5"
             RowSpacing="5">
         
 
-        <Grid ColumnDefinitions="50,50,50,50"
-            RowDefinitions="70,70,70"
+        <Grid ColumnDefinitions="90,90,90,90"
+            RowDefinitions="130,130,130"
             ColumnSpacing="5"
             RowSpacing="5">
 
@@ -26,7 +26,7 @@
                 Grid.Row="0" Grid.Column="1"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="0" Grid.Column="2"
                 />
             <Image
@@ -34,11 +34,11 @@
                 Grid.Row="0" Grid.Column="3"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="1" Grid.Column="0"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="1" Grid.Column="1"
                 />
             <Image
@@ -46,11 +46,11 @@
                 Grid.Row="1" Grid.Column="2"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="1" Grid.Column="3"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="2" Grid.Column="0"
                 />
             <Image
@@ -66,8 +66,8 @@
                 Grid.Row="2" Grid.Column="3"
                 />
         </Grid>
-        <Grid ColumnDefinitions="70,70,70,70"
-            RowDefinitions="100,100,100"
+        <Grid ColumnDefinitions="130,130,130,130"
+            RowDefinitions="160,160,160"
             ColumnSpacing="5"
             RowSpacing="5"
             VerticalOptions="End">
@@ -85,11 +85,66 @@
                 Grid.Row="0" Grid.Column="2"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="0" Grid.Column="3"
                 />
             <Image
                 Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="0"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="1" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="2"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="1" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="0"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="2" Grid.Column="2"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="3"
+                />
+        </Grid>
+        <Grid ColumnDefinitions="90,90,90,90"
+            RowDefinitions="130,130,130"
+            ColumnSpacing="5"
+            RowSpacing="5"
+            HorizontalOptions="End">
+
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="3"
+                />
+            <Image
+                Source="carte_dos.jpg"
                 Grid.Row="1" Grid.Column="0"
                 />
             <Image
@@ -105,7 +160,63 @@
                 Grid.Row="1" Grid.Column="3"
                 />
             <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="0"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="1"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="2"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="2" Grid.Column="3"
+                />
+        </Grid>
+        <Grid ColumnDefinitions="90,90,90,90"
+            RowDefinitions="130,130,130"
+            ColumnSpacing="5"
+            RowSpacing="5"
+            HorizontalOptions="End"
+            VerticalOptions="End">
+
+            <Image
                 Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="0"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="1"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="0" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="0" Grid.Column="3"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="0"
+                />
+            <Image
+                Source="carte_dos.jpg"
+                Grid.Row="1" Grid.Column="1"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="2"
+                />
+            <Image
+                Source="carte_skyjo_0.jpg"
+                Grid.Row="1" Grid.Column="3"
+                />
+            <Image
+                Source="carte_dos.jpg"
                 Grid.Row="2" Grid.Column="0"
                 />
             <Image
@@ -113,13 +224,41 @@
                 Grid.Row="2" Grid.Column="1"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="2" Grid.Column="2"
                 />
             <Image
-                Source="carte_skyjo_0.jpg"
+                Source="carte_dos.jpg"
                 Grid.Row="2" Grid.Column="3"
+                />
+        </Grid>
+        <Grid ColumnDefinitions="*,*"
+            RowDefinitions="200"
+            ColumnSpacing="5"
+            RowSpacing="5"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Image
+        Source="carte_dos.jpg"
+        Grid.Row="0" Grid.Column="0"
+        />
+            <Image
+        Source="carte_skyjo_2.jpg"
+        Grid.Row="0" Grid.Column="1"
         />
         </Grid>
+        <Grid ColumnDefinitions="400"
+            RowDefinitions="50"
+            ColumnSpacing="5"
+            RowSpacing="5"
+            HorizontalOptions="Center"
+            VerticalOptions="Start">
+
+            <Button Text="Quitter">
+
+            </Button>
+        </Grid>
     </Grid>
+    
 </ContentPage>
