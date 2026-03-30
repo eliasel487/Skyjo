@@ -7,7 +7,12 @@
     Title="Skyjo">
 
     <ShellContent
+<<<<<<< HEAD
         ContentTemplate="{DataTemplate local:ContinueGame}"
         Route="ContinueGame" />
+=======
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+>>>>>>> 2034cde1b56b8b50761bf064c973f898ce318601
 
 </Shell>
