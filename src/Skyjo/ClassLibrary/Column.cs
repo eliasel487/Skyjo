@@ -12,11 +12,11 @@ namespace ClassLibrary
         private Card _cardBottom;
         private bool _valued = true;
 
-        public Column(Deck deck)
+        public Column(Card cardTop, Card cardMiddle, Card cardBottom)
         {
-            _cardTop = deck.PickACard(0);
-            _cardMiddle = deck.PickACard(0);
-            _cardBottom = deck.PickACard(0);
+            _cardTop = cardTop;
+            _cardMiddle = cardMiddle;
+            _cardBottom = cardBottom;
         }
 
         public void Remove()
