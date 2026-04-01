@@ -11,13 +11,12 @@ namespace ClassLibrary
     {
         private List<Column> _columns;
 
-        public Board(Column 1, Column 2, Column 3, Column 4)
+        public Board()
         {
-            _columns.Add(1);
-            _columns.Add(2);
-            _columns.Add(3);
-            _columns.Add(4);
-
+            for(int i = 0; i < 4; i++)
+            {
+                _columns.Add(new Column(Deck));
+            }
         }
         public void ReplaceCard(int y, int x, Card t)
         {
