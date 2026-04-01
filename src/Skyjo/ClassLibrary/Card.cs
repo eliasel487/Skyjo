@@ -5,33 +5,34 @@ namespace ClassLibrary
 {
     public class Card
     {
-        private int number;
-        private bool face = false;
+        private int _number;
+        private bool _face = false;
 
         public Card(int nb)
         {
-            if (nb >= -2 && nb <=12) number = nb;
-            else number = -3;
+            if (nb >= -2 && nb <=12) _number = nb;
+            else _number = -3;
         }
 
         public int GetNumber()
         {
-            return number;
+            return _number;
         }
 
         public bool IsReturned()
         {
-            return face;
+            return _face;
         }
 
         public void ReturnCard()
         {
-            face = true;
+            _face = true;
         }
 
         public override string ToString()
         {
-            return $" - {number}";
+            if (_face) return $" - {_number} (face visible)";
+            return $" - {_number} (face cachée)";
         }
     }
 }

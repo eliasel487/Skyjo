@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skyjo", "Skyjo\Skyjo.csproj", "{72301A5C-5AB7-4D81-9A2A-E9A4A0FC11BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{696FACCC-0076-473E-8DD0-6947119CA4FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSkyjo", "ConsoleSkyjo\ConsoleSkyjo.csproj", "{E159B28D-F40D-4D74-B797-FF607A1515AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{72301A5C-5AB7-4D81-9A2A-E9A4A0FC11BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72301A5C-5AB7-4D81-9A2A-E9A4A0FC11BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72301A5C-5AB7-4D81-9A2A-E9A4A0FC11BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{696FACCC-0076-473E-8DD0-6947119CA4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696FACCC-0076-473E-8DD0-6947119CA4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696FACCC-0076-473E-8DD0-6947119CA4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696FACCC-0076-473E-8DD0-6947119CA4FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E159B28D-F40D-4D74-B797-FF607A1515AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E159B28D-F40D-4D74-B797-FF607A1515AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E159B28D-F40D-4D74-B797-FF607A1515AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E159B28D-F40D-4D74-B797-FF607A1515AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

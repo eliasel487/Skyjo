@@ -15,13 +15,12 @@
             HeightRequest="80"
             HorizontalOptions="Center"
             Aspect="AspectFit"/>
-        <!----poner en grid el frame-->
-        <Frame 
+        <!--poner en grid el frame-->
+        <Frame
             BackgroundColor="#d9d9d9"
             CornerRadius="25"
             Padding="20"
-            Margin="0,30,30,0"
-            
+            Margin="0,30,0,30"
             VerticalOptions="FillAndExpand">
 
             <VerticalStackLayout Spacing="25" VerticalOptions="Center">
@@ -43,7 +42,7 @@
                 <Grid Margin="0,20,0,0" ColumnDefinitions="*,*">
                     <Label Text="Quitter" HorizontalOptions="Center"/>
                     <Label Text="Règles" Grid.Column="1" HorizontalOptions="Center"/>
-                    <!----cambiar los label por botones-->
+                    <!--cambiar los label por botones-->
                 </Grid>
 
             </VerticalStackLayout>
