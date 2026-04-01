@@ -20,7 +20,7 @@ namespace ClassLibrary
             }
         }
 
-        public void DiscradACard(Card card)
+        public void DiscardACard(Card card)
         {
             _discard.Add(card);
         }
