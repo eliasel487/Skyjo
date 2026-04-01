@@ -15,9 +15,10 @@ namespace ClassLibrary
         {
             _columns = new List<Column>();
         }
-        public void ReplaceCard(Column c, int x, Card t)
+        public void ReplaceCard(int y, int x, Card t)
         {
-            List<Card> cards = c.GetCards();
+            
+            List<Card> cards = _columns[y].GetCards();
             if (x >= 0 && x < cards.Count)
             {
                 cards[x] = t;
