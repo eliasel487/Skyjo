@@ -46,6 +46,17 @@ namespace ClassLibrary
                     return _columns[i];
             return null;
         }
+
+        public bool ReturnACard(int y, int x)
+        {
+            List<Card> cards = _columns[y].GetCards();
+            if (x >= 0 && x < cards.Count)
+            {
+                cards[x].ReturnCard();
+                return true;
+            }
+            return false;
+        }
     }
 }
 

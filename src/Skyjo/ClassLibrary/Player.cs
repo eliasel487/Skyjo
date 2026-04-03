@@ -35,7 +35,7 @@ namespace ClassLibrary
         public Card PickACard(Deck d)
         {
             int choose;
-            Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse");
+            Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
             choose = Console.Read();
             return d.PickACard(choose);
         }
@@ -45,12 +45,12 @@ namespace ClassLibrary
             int choose, x, y;
             Card c = PickACard(d);
 
-            Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser");
+            Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
             choose = Console.Read();
 
             if (choose == 0)
             {
-                Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte");
+                Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte : ");
                 x = Console.Read();
                 y = Console.Read();
                 _board.ReplaceCard(y, x, c);
@@ -58,6 +58,16 @@ namespace ClassLibrary
             else
             {
                 d.DiscardACard(c);
+                Console.WriteLine("Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
+                x = Console.Read();
+                y = Console.Read();
+                while(_board.ReturnACard(x, y) == false)
+                {
+                    Console.WriteLine("Coordoner incorect ! Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
+                    x = Console.Read();
+                    y = Console.Read();
+                }
+
             }
 
 
