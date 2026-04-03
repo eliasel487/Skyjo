@@ -5,7 +5,7 @@ namespace ClassLibrary
 {
     public class Card
     {
-        private int Number { get; }
+        public int Number {  get; }
         private bool _face = false;
 
         public Card(int nb)

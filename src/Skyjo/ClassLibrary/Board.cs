@@ -44,7 +44,7 @@ namespace ClassLibrary
             if (i > 0 && i < 5)
                 if (!_columns[i].isRemovable())
                     return _columns[i];
-            throw new ArgumentOutOfRangeException();
+            return null;
         }
     }
 }

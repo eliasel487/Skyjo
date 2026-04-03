@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
     public class Player
     {
-        private string Name { get; }
-        private int GameScore { get; }
-        private int RoundScore { get ; }
+        public string Name { get; }
+        public int GameScore { get; }
+        public int RoundScore { get ; }
         private bool _IA;
         Board _board;
 

@@ -31,9 +31,9 @@ namespace ClassLibrary
         {
             if(_cardTop.IsReturned() == true && _cardMiddle.IsReturned() == true && _cardBottom.IsReturned() == true)
             {
-                if(_cardTop.GetNumber() == -3 || _cardMiddle.GetNumber() == -3 || _cardBottom.GetNumber() == -3) 
+                if(_cardTop.Number == -3 || _cardMiddle.Number == -3 || _cardBottom.Number == -3) 
                     return false;
-                return _cardTop.GetNumber() == _cardMiddle.GetNumber() && _cardMiddle.GetNumber() == _cardBottom.GetNumber();
+                return _cardTop.Number == _cardMiddle.Number && _cardMiddle.Number == _cardBottom.Number;
             }
             return false;
         }
