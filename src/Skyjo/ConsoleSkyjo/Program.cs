@@ -11,7 +11,7 @@ Console.WriteLine(testd.ToString());
 
 for (int i = 0; i < 75; i++)
 {
-    testd.DiscradACard(testd.PickACard(0));
+    testd.DiscardACard(testd.PickACard(0));
 }
 
 Console.WriteLine(testd.ToString());
