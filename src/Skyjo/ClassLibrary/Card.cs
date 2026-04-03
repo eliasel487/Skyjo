@@ -5,18 +5,18 @@ namespace ClassLibrary
 {
     public class Card
     {
-        private int _number;
+        private int Number { get; }
         private bool _face = false;
 
         public Card(int nb)
         {
-            if (nb >= -2 && nb <=12) _number = nb;
-            else _number = -3;
+            if (nb >= -2 && nb <=12) Number = nb;
+            else Number = -3;
         }
 
         public int GetNumber()
         {
-            return _number;
+            return Number;
         }
 
         public bool IsReturned()
@@ -31,8 +31,8 @@ namespace ClassLibrary
 
         public override string ToString()
         {
-            if (_face) return $" - {_number} (face visible)";
-            return $" - {_number} (face cachée)";
+            if (_face) return $" - {Number} (face visible)";
+            return $" - {Number} (face cachée)";
         }
     }
 }

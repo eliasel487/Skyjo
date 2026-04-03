@@ -7,20 +7,20 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    internal class Board
+    public class Board
     {
-        private List<Column> _columns;
+        private List<Column> _columns = new();
 
-        public Board()
+        public Board(Deck deck)
         {
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                _columns.Add(new Column(Deck));
+                _columns.Add(new Column(deck.PickACard(0), deck.PickACard(0), deck.PickACard(0)));
             }
         }
         public void ReplaceCard(int y, int x, Card t)
         {
-            
+
             List<Card> cards = _columns[y].GetCards();
             if (x >= 0 && x < cards.Count)
             {
@@ -39,10 +39,14 @@ namespace ClassLibrary
             }
             return true;
         }
-        public Column GetColumns() 
+        public Column GetColumns(int i)
         {
-            return _columns;
+            if (i > 0 && i < 5)
+                if (!_columns[i].isRemovable())
+                    return _columns[i];
+            throw new ArgumentOutOfRangeException();
         }
     }
+}
 
 

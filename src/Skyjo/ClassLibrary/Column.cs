@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    internal class Column
+    public class Column
     {
         private Card _cardTop;
         private Card _cardMiddle;

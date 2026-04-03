@@ -6,29 +6,29 @@ namespace ClassLibrary
 {
     public class Player
     {
-        private string _name;
-        private int _gameScore;
-        private int _roundScore;
+        private string Name { get; }
+        private int GameScore { get; }
+        private int RoundScore { get ; }
         private bool _IA;
         Board _board;
 
 
-        public Player(string name, int GameScore, int RoundScore)
+        public Player(string name, Deck deck, int GameScore, int RoundScore)
         {
-            this._name = name;
-            this._gameScore = GameScore;
-            this._roundScore = RoundScore;
+            this.Name = name;
+            this.GameScore = GameScore;
+            this.RoundScore = RoundScore;
             this._IA = false;
-            _board = new Board();
+            _board = new Board(deck);
             
         }
-        public Player(int GameScore, int RoundScore)
+        public Player(int GameScore, Deck deck, int RoundScore)
         {
-            this._name = "IA";
-            this._gameScore = GameScore;
-            this._roundScore = RoundScore;
+            this.Name = "IA";
+            this.GameScore = GameScore;
+            this.RoundScore = RoundScore;
             this._IA = true;
-            _board = new Board();
+            _board = new Board(deck);
         }
 
         public Card PickACard(Deck d)
