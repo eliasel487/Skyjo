@@ -7,16 +7,14 @@ namespace ClassLibrary
 {
     public class Column
     {
-        private Card _cardTop;
-        private Card _cardMiddle;
-        private Card _cardBottom;
+        private List<Card> _cards = new();
         private bool _valued = true;
 
-        public Column(Card cardTop, Card cardMiddle, Card cardBottom)
+        public Column(Card card1, Card card2, Card card3)
         {
-            _cardTop = cardTop;
-            _cardMiddle = cardMiddle;
-            _cardBottom = cardBottom;
+            _cards.Add(card1);
+            _cards.Add(card2);
+            _cards.Add(card3);
         }
 
         public void Remove()
@@ -29,42 +27,38 @@ namespace ClassLibrary
 
         public bool isRemovable()
         {
-            if(_cardTop.IsReturned() == true && _cardMiddle.IsReturned() == true && _cardBottom.IsReturned() == true)
-            {
-                if(_cardTop.Number == -3 || _cardMiddle.Number == -3 || _cardBottom.Number == -3) 
-                    return false;
-                return _cardTop.Number == _cardMiddle.Number && _cardMiddle.Number == _cardBottom.Number;
-            }
+            if (_cards[0].IsReturned() == true && _cards[1].IsReturned() == true && _cards[2].IsReturned() == true)
+                return _cards[0].Number == _cards[1].Number && _cards[1].Number == _cards[2].Number;
             return false;
         }
 
         List<Card> column = new List<Card>();
         public List<Card> GetCards()
         {
-            if (_cardTop.GetNumber() == -3 || _cardMiddle.GetNumber() == -3 || _cardBottom.GetNumber() == -3)
+            if (_cards[0].GetNumber() == -3 || _cards[1].GetNumber() == -3 || _cards[2].GetNumber() == -3)
             {
                 return column;
             }
             else
             {
-                column.Add(_cardTop);
-                column.Add(_cardMiddle);
-                column.Add(_cardBottom);
+                column.Add(_cards[0]);
+                column.Add(_cards[1]);
+                column.Add(_cards[2]);
             }
             return column;
         }
 
         public override string ToString()
         {
-            if (_cardTop.GetNumber() == -3 || _cardMiddle.GetNumber() == -3 || _cardBottom.GetNumber() == -3)
+            if (_cards[0].GetNumber() == -3 || _cards[1].GetNumber() == -3 || _cards[2].GetNumber() == -3)
             {
                 return "";
             }
             else
             {
-                return $"{_cardTop.ToString()} \n" +
-                       $"{_cardMiddle.ToString()} \n" +
-                       $"{_cardBottom.ToString()}";
+                return $"{_cards[0].ToString()} \n" +
+                       $"{_cards[1].ToString()} \n" +
+                       $"{_cards[2].ToString()}";
             }
         }
     }
