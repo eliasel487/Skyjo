@@ -33,7 +33,7 @@ namespace ClassLibrary
             {
                 foreach (Card card in c.GetCards())
                 {
-                    if (!card.IsReturned())
+                    if (!card.IsFliped())
                         return false;
                 }
             }
@@ -52,7 +52,7 @@ namespace ClassLibrary
             List<Card> cards = _columns[y].GetCards();
             if (x >= 0 && x < cards.Count)
             {
-                cards[x].ReturnCard();
+                cards[x].FlipCard();
                 return true;
             }
             return false;

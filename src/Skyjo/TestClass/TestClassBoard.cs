@@ -47,11 +47,13 @@ namespace TestClass
 
             // Act
             var resultNegative = board.ReturnACard(0, -1);
-            var resultTooLarge = board.ReturnACard(0, 5);
+            var resultTooLarge = board.ReturnACard(0, 13);
+            var resultTooLarge1 = board.ReturnACard(0, 12);
 
             // Assert
             Assert.False(resultNegative);
             Assert.False(resultTooLarge);
+            Assert.False(resultTooLarge1);
         }
 
         [Fact]
