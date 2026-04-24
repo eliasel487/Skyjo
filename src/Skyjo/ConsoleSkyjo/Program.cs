@@ -3,4 +3,4 @@ using ClassLibrary;
 
 Game game1 = new();
 
-game1.AfficherGame();
+game1.PlayGame();
