@@ -42,7 +42,7 @@ namespace ClassLibrary
         public Column GetColumns(int i)
         {
             if (i > 0 && i < 5)
-                if (!_columns[i].isRemovable())
+                if (!_columns[i].IsRemovable())
                     return _columns[i];
             throw new ArgumentOutOfRangeException();
         }
