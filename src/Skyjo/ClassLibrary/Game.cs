@@ -8,7 +8,8 @@ namespace ClassLibrary
     {
         List<Player> _players = new();
         Deck _deck = new();
-        bool _roundFinished;
+        bool _roundFinished = false;
+        bool _gameOver = false;
 
         public void AddPlayer(Player player)
         {
@@ -22,7 +23,7 @@ namespace ClassLibrary
         {
             foreach (Player player in _players)
             {
-                if (player.Name == name)
+                if (player._name == name)
                 {
                     _players.Remove(player);
                 }
@@ -30,13 +31,59 @@ namespace ClassLibrary
         }
         public void PlayGame()
         {
-            int cpt = 1;
-            while (!_roundFinished)
+            int cpt, temp, nbJoueur = 0;
+            string nomJoueur;
+            
+            Console.WriteLine("Combien de joueur voulez vous ajouter ? : ");
+            nbJoueur = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < nbJoueur; i++)
             {
-                if (cpt == 5) cpt = 1;
-                _players[cpt].Play(_deck);
+                Console.WriteLine("Taper nom du joueur : ");
+                nomJoueur = Console.ReadLine();
+                while(nomJoueur == null)
+                    nomJoueur = Console.ReadLine();
+                Player p = new Player(nomJoueur, _deck, 0, 0);
+                _players.Add(p);
             }
-            cpt++;
+
+            while (!_gameOver)
+            {
+                for (int i = 0; i < _players.Count(); i++)
+                {
+                    if (_players[i]._gameScore >= 100) _gameOver = true;
+                }
+
+                if (_gameOver) break;
+                
+                cpt = 0;
+                while (!_roundFinished)
+                {
+                    AfficherGame(nbJoueur);
+                    if (cpt == _players.Count()-1) cpt = 0;
+                    if (_players[cpt].RoundOver()) _roundFinished = true;
+                    _players[cpt].Play(_deck);
+                    cpt++;
+                }
+                temp = cpt;
+                cpt++;
+                while (cpt != temp)
+                {
+                    if (cpt == _players.Count()-1) cpt = 0;
+                    _players[cpt].Play(_deck);
+                    cpt++;
+                }
+            }
+        }
+
+        public void AfficherGame(int nbJoueur)
+        {
+            int i;
+            for (i = 0; i < nbJoueur; i++)
+            {
+                _players[i].AfficherBoardPlayer();
+                Console.WriteLine();
+            }
         }
     }
 }
