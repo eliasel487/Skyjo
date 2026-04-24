@@ -8,7 +8,7 @@ namespace ClassLibrary
     public class Column
     {
         private List<Card> _cards = new();
-        private bool _valued = true;
+        public bool _valued = true;
 
         public Column(Card card1, Card card2, Card card3)
         {
@@ -17,34 +17,40 @@ namespace ClassLibrary
             _cards.Add(card3);
         }
 
+        public bool GetValued()
+        {
+            return _valued;
+        }
+
         public void Remove()
         {
-            if (isRemovable()) 
+            if (IsRemovable()) 
             {
                 _valued = false;
             }
         }
 
-        public bool isRemovable()
+        public bool IsRemovable()
         {
-            if (_cards[0].IsReturned() == true && _cards[1].IsReturned() == true && _cards[2].IsReturned() == true)
+            if (_cards[0].IsFlipped() == true && _cards[1].IsFlipped() == true && _cards[2].IsFlipped() == true)
                 return _cards[0].Number == _cards[1].Number && _cards[1].Number == _cards[2].Number;
             return false;
         }
 
-        List<Card> column = new List<Card>();
         public List<Card> GetCards()
         {
+            List<Card> column = new List<Card>();
             if (_cards[0].GetNumber() == -3 || _cards[1].GetNumber() == -3 || _cards[2].GetNumber() == -3)
             {
-                return column;
+                return column; // renvoie une liste vide
             }
-            else
+            if (_cards[0].IsFlipped() && _cards[1].IsFlipped() && _cards[2].IsFlipped())
             {
                 column.Add(_cards[0]);
                 column.Add(_cards[1]);
                 column.Add(_cards[2]);
             }
+        
             return column;
         }
 
