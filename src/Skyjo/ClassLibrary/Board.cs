@@ -57,6 +57,16 @@ namespace ClassLibrary
             }
             return false;
         }
+
+        public void AfficherBoard()
+        {
+            int i;
+            for(i = 0; i < 5;  i++)
+            {
+                _columns[i].AfficherColumn();
+                Console.WriteLine();
+            }
+        }
     }
 }
 

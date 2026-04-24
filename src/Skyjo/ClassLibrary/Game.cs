@@ -35,8 +35,19 @@ namespace ClassLibrary
             {
                 if (cpt == 5) cpt = 1;
                 _players[cpt].Play(_deck);
+
             }
             cpt++;
+        }
+
+        public void AfficherGame()
+        {
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                _players[i].AfficherBoardPlayer();
+                Console.WriteLine();
+            }
         }
     }
 }

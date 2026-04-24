@@ -1,4 +1,6 @@
 ﻿
 using ClassLibrary;
 
-Console.WriteLine("jello");
+Game game1 = new();
+
+game1.AfficherGame();

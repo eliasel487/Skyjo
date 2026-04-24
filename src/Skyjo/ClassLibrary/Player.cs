@@ -72,5 +72,11 @@ namespace ClassLibrary
 
 
         }
+
+        public void AfficherBoardPlayer()
+        {
+            _board.AfficherBoard();
+            
+        }
     }
 }
