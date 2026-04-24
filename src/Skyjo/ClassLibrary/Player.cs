@@ -49,7 +49,7 @@ namespace ClassLibrary
         {
             int choose, x, y;
             Card c = PickACard(d); ;
-            c.ReturnCard();
+            c.FlipCard();
             Console.WriteLine("Voici la carte tirer : " + c.GetNumber());
             Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
             choose = Convert.ToInt32(Console.ReadLine());
