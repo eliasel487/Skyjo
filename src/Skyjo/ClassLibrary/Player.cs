@@ -7,27 +7,27 @@ namespace ClassLibrary
 {
     public class Player
     {
-        public string Name { get; }
-        public int GameScore { get; }
-        public int RoundScore { get ; }
+        public string _name { get; }
+        public int _gameScore { get; }
+        public int _roundScore { get ; }
         private bool _IA;
         Board _board;
 
 
         public Player(string name, Deck deck, int GameScore, int RoundScore)
         {
-            this.Name = name;
-            this.GameScore = GameScore;
-            this.RoundScore = RoundScore;
+            this._name = name;
+            this._gameScore = GameScore;
+            this._roundScore = RoundScore;
             this._IA = false;
             _board = new Board(deck);
             
         }
         public Player(int GameScore, Deck deck, int RoundScore)
         {
-            this.Name = "IA";
-            this.GameScore = GameScore;
-            this.RoundScore = RoundScore;
+            this._name = "IA";
+            this._gameScore = GameScore;
+            this._roundScore = RoundScore;
             this._IA = true;
             _board = new Board(deck);
         }
@@ -38,6 +38,11 @@ namespace ClassLibrary
             Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
             choose = Console.Read();
             return d.PickACard(choose);
+        }
+
+        public bool RoundOver()
+        {
+            return _board.IsAllReturned();
         }
 
         public void Play(Deck d)
