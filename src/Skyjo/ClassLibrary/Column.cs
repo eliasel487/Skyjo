@@ -27,7 +27,7 @@ namespace ClassLibrary
 
         public bool isRemovable()
         {
-            if (_cards[0].IsReturned() == true && _cards[1].IsReturned() == true && _cards[2].IsReturned() == true)
+            if (_cards[0].IsFliped() == true && _cards[1].IsFliped() == true && _cards[2].IsFliped() == true)
                 return _cards[0].Number == _cards[1].Number && _cards[1].Number == _cards[2].Number;
             return false;
         }
@@ -67,7 +67,7 @@ namespace ClassLibrary
             int i;
             for (i = 0; i < 3; i++)
             {
-                if (_cards[i].IsReturned() == false)
+                if (_cards[i].IsFliped() == false)
                     Console.Write(" X ");
                 else
                     Console.Write(" " + _cards[i].GetNumber() + " ");

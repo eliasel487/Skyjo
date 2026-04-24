@@ -19,12 +19,12 @@ namespace ClassLibrary
             return Number;
         }
 
-        public bool IsReturned()
+        public bool IsFliped()
         {
             return _face;
         }
 
-        public void ReturnCard()
+        public void FlipCard()
         {
             _face = true;
         }
