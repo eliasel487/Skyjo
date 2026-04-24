@@ -36,7 +36,7 @@ namespace ClassLibrary
         {
             int choose;
             Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
-            choose = Console.Read();
+            choose = Convert.ToInt32(Console.ReadLine()); ;
             return d.PickACard(choose);
         }
 
@@ -48,29 +48,30 @@ namespace ClassLibrary
         public void Play(Deck d)
         {
             int choose, x, y;
-            Card c = PickACard(d);
-
+            Card c = PickACard(d); ;
+            c.ReturnCard();
+            Console.WriteLine("Voici la carte tirer : " + c.GetNumber());
             Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
-            choose = Console.Read();
+            choose = Convert.ToInt32(Console.ReadLine());
 
             if (choose == 0)
             {
                 Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte : ");
-                x = Console.Read();
-                y = Console.Read();
+                x = Convert.ToInt32(Console.ReadLine());
+                y = Convert.ToInt32(Console.ReadLine());
                 _board.ReplaceCard(y, x, c);
             }
             else
             {
                 d.DiscardACard(c);
                 Console.WriteLine("Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
-                x = Console.Read();
-                y = Console.Read();
+                x = Convert.ToInt32(Console.ReadLine());
+                y = Convert.ToInt32(Console.ReadLine());
                 while(_board.ReturnACard(x, y) == false)
                 {
                     Console.WriteLine("Coordoner incorect ! Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
-                    x = Console.Read();
-                    y = Console.Read();
+                    x = Convert.ToInt32(Console.ReadLine());
+                    y = Convert.ToInt32(Console.ReadLine());
                 }
 
             }
