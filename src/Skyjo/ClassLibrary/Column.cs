@@ -61,5 +61,17 @@ namespace ClassLibrary
                        $"{_cards[2].ToString()}";
             }
         }
+
+        public void AfficherColumn()
+        {
+            int i;
+            for (i = 0; i < 4; i++)
+            {
+                if (_cards[i].IsReturned() == false)
+                    Console.Write(" X ");
+                else
+                    Console.Write(" " + _cards[i].GetNumber() + " ");
+            }
+        }
     }
 }
