@@ -31,20 +31,36 @@ namespace ClassLibrary
         }
         public void PlayGame()
         {
-            int cpt, temp;
+            int cpt, temp, nbJoueur = 0;
+            string nomJoueur;
+            
+            Console.WriteLine("Combien de joueur voulez vous ajouter ? : ");
+            nbJoueur = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < nbJoueur; i++)
+            {
+                Console.WriteLine("Taper nom du joueur : ");
+                nomJoueur = Console.ReadLine();
+                while(nomJoueur == null)
+                    nomJoueur = Console.ReadLine();
+                Player p = new Player(nomJoueur, _deck, 0, 0);
+                _players.Add(p);
+            }
+
             while (!_gameOver)
             {
-                for (int i = 1; i <= _players.Count(); i++)
+                for (int i = 0; i < _players.Count(); i++)
                 {
-                    if (_players[i]._gameScore <= 100) _gameOver = true;
+                    if (_players[i]._gameScore >= 100) _gameOver = true;
                 }
 
                 if (_gameOver) break;
                 
-                cpt = 1;
+                cpt = 0;
                 while (!_roundFinished)
                 {
-                    if (cpt == _players.Count()) cpt = 1;
+                    AfficherGame(nbJoueur);
+                    if (cpt == _players.Count()-1) cpt = 0;
                     if (_players[cpt].RoundOver()) _roundFinished = true;
                     _players[cpt].Play(_deck);
                     cpt++;
@@ -53,17 +69,17 @@ namespace ClassLibrary
                 cpt++;
                 while (cpt != temp)
                 {
-                    if (cpt == _players.Count()) cpt = 1;
+                    if (cpt == _players.Count()-1) cpt = 0;
                     _players[cpt].Play(_deck);
                     cpt++;
                 }
             }
         }
 
-        public void AfficherGame()
+        public void AfficherGame(int nbJoueur)
         {
             int i;
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < nbJoueur; i++)
             {
                 _players[i].AfficherBoardPlayer();
                 Console.WriteLine();

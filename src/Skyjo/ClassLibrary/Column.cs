@@ -65,7 +65,7 @@ namespace ClassLibrary
         public void AfficherColumn()
         {
             int i;
-            for (i = 0; i < 4; i++)
+            for (i = 0; i < 3; i++)
             {
                 if (_cards[i].IsReturned() == false)
                     Console.Write(" X ");
