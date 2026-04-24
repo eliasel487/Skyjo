@@ -33,7 +33,7 @@ namespace ClassLibrary
             {
                 foreach (Card card in c.GetCards())
                 {
-                    if (!card.IsFliped())
+                    if (!card.IsFlipped())
                         return false;
                 }
             }
@@ -42,7 +42,7 @@ namespace ClassLibrary
         public Column GetColumns(int i)
         {
             if (i > 0 && i < 5)
-                if (!_columns[i].isRemovable())
+                if (!_columns[i].IsRemovable())
                     return _columns[i];
             throw new ArgumentOutOfRangeException();
         }

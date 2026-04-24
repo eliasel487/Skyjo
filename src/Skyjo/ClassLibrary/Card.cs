@@ -19,7 +19,7 @@ namespace ClassLibrary
             return Number;
         }
 
-        public bool IsFliped()
+        public bool IsFlipped()
         {
             return _face;
         }
