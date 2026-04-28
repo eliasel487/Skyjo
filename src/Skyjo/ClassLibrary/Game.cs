@@ -11,11 +11,14 @@ namespace ClassLibrary
         bool _roundFinished = false;
         bool _gameOver = false;
 
-        public void AddPlayer(Player player)
+        public void AddPlayer(string nomJoueur)
         {
-            if (_players.Count < 5)
+            Player p;
+            p = new Player(nomJoueur, _deck, 0, 0);
+
+            if (_players.Count <= 5)
             {
-                _players.Add(player);
+                _players.Add(p);
             }
         }
 
@@ -31,21 +34,9 @@ namespace ClassLibrary
         }
         public void PlayGame()
         {
-            int cpt, temp, nbJoueur = 0;
-            string nomJoueur;
-            
-            Console.WriteLine("Combien de joueur voulez vous ajouter ? : ");
-            nbJoueur = Convert.ToInt32(Console.ReadLine());
+            int cpt, temp, nbJoueur = _players.Count;
 
-            for (int i = 0; i < nbJoueur; i++)
-            {
-                Console.WriteLine("Taper nom du joueur : ");
-                nomJoueur = Console.ReadLine();
-                while(nomJoueur == null)
-                    nomJoueur = Console.ReadLine();
-                Player p = new Player(nomJoueur, _deck, 0, 0);
-                _players.Add(p);
-            }
+            
 
             while (!_gameOver)
             {
@@ -74,6 +65,13 @@ namespace ClassLibrary
                     cpt++;
                 }
             }
+        }
+
+        Player CreerJoueur(string nomJoueur)
+        {
+            Player p;
+            p = new Player(nomJoueur, _deck, 0, 0);
+            return p;
         }
 
         public void AfficherGame(int nbJoueur)

@@ -36,7 +36,7 @@ namespace ClassLibrary
         {
             int choose;
             Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
-            choose = Convert.ToInt32(Console.ReadLine()); ;
+            choose = Convert.ToInt32(Console.ReadLine());
             return d.PickACard(choose);
         }
 
