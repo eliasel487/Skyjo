@@ -1,0 +1,19 @@
+# Définition des stages
+stages :
+    - 🏗️build
+    - 🧪test
+    - 📦push
+    - ✈️deploy
+
+# Configuration des jobs
+
+build:
+    stage: 🏗️build
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    script:
+        - cd src/Skyjo
+        - dotnet restore Skyjo.sln
+        - dotnet build Skyjo.sln -c Release --no-restore
+        - dotnet publish Skyjo.sln -c Release --no-restore
+    rules:
+        - when: manual
