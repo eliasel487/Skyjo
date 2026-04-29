@@ -14,3 +14,4 @@ build:
         - dotnet publish Skyjo.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
     rules:
         - when: manual
+        - when : EnableWindowsTargeting = true
