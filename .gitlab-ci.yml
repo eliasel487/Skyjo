@@ -1,9 +1,6 @@
 # Définition des stages
 stages :
     - 🏗️build
-    - 🧪test
-    - 📦push
-    - ✈️deploy
 
 # Configuration des jobs
 
