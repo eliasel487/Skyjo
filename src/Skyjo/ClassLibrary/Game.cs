@@ -40,6 +40,7 @@ namespace ClassLibrary
 
             while (!_gameOver)
             {
+                _roundFinished = false;
                 for (int i = 0; i < _players.Count(); i++)
                 {
                     if (_players[i]._gameScore >= 100) _gameOver = true;
@@ -51,8 +52,12 @@ namespace ClassLibrary
                 while (!_roundFinished)
                 {
                     AfficherGame(nbJoueur);
-                    if (cpt == _players.Count()-1) cpt = 0;
-                    if (_players[cpt].RoundOver()) _roundFinished = true;
+                    if (cpt == _players.Count()) cpt = 0;
+                    if (_players[cpt].RoundOver()) 
+                    { 
+                        _roundFinished = true; 
+                        break; 
+                    }
                     _players[cpt].Play(_deck);
                     cpt++;
                 }
@@ -60,19 +65,13 @@ namespace ClassLibrary
                 cpt++;
                 while (cpt != temp)
                 {
-                    if (cpt == _players.Count()-1) cpt = 0;
+                    if (cpt == _players.Count()) cpt = 0;
                     _players[cpt].Play(_deck);
                     cpt++;
                 }
             }
         }
 
-        Player CreerJoueur(string nomJoueur)
-        {
-            Player p;
-            p = new Player(nomJoueur, _deck, 0, 0);
-            return p;
-        }
 
         public void AfficherGame(int nbJoueur)
         {

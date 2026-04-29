@@ -48,7 +48,7 @@ namespace ClassLibrary
         public void Play(Deck d)
         {
             int choose, x, y;
-            Card c = PickACard(d); ;
+            Card c = PickACard(d);
             c.FlipCard();
             Console.WriteLine("Voici la carte tirer : " + c.GetNumber());
             Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");

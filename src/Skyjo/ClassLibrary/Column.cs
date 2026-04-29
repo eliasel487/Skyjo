@@ -44,14 +44,12 @@ namespace ClassLibrary
             {
                 return column; // renvoie une liste vide
             }
-            if (_cards[0].IsFlipped() && _cards[1].IsFlipped() && _cards[2].IsFlipped())
-            {
+            /*
                 column.Add(_cards[0]);
                 column.Add(_cards[1]);
                 column.Add(_cards[2]);
-            }
-        
-            return column;
+            */
+            return _cards;
         }
 
         public override string ToString()

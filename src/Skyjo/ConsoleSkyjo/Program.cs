@@ -12,12 +12,17 @@ void CreerJoueur()
     nbJoueur = Convert.ToInt32(Console.ReadLine());
     for (int i = 0; i < nbJoueur; i++)
     {
-        nomJoueur = null;
-        while(nomJoueur == null)
-            Console.WriteLine("Insere le nom du joeur : ");
-            nomJoueur = Console.ReadLine();
+        Console.WriteLine("Insere le nom du joeur : ");
+        nomJoueur = Console.ReadLine();
         game1.AddPlayer(nomJoueur);
     }
 }
 
-CreerJoueur();
+void jouerPartie()
+{
+    CreerJoueur();
+    game1.PlayGame();
+}
+
+jouerPartie();
+
