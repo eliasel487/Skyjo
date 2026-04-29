@@ -6,7 +6,7 @@ stages :
 
 build:
     stage: 🏗️build
-    image: mcr.microsoft.com/dotnet/sdk:10.0
+    image: codefirst.iut.uca.fr/macheval/codefirstimages/maui10:amd64
     script:
         - cd src/Skyjo
         - dotnet restore Skyjo.sln
