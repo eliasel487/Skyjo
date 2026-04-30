@@ -37,11 +37,8 @@ namespace ClassLibrary
             _board = new Board(d);
         }
 
-        public Card PickACard(Deck d)
+        public Card PickACard(Deck d, int choose)
         {
-            int choose;
-            Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
-            choose = Convert.ToInt32(Console.ReadLine());
             return d.PickACard(choose);
         }
 
@@ -50,38 +47,23 @@ namespace ClassLibrary
             return _board.IsAllReturned();
         }
 
-        public void Play(Deck d)
+        public void Play(Deck d, int choosePick, int chooseCard, int x, int y)
         {
-            int choose, x, y;
-            Card c = PickACard(d);
+            Card c = PickACard(d, choosePick);
             c.FlipCard();
-            Console.WriteLine("Voici la carte tirer : " + c.GetNumber());
-            Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
-            choose = Convert.ToInt32(Console.ReadLine());
+            ActionCard(c, chooseCard, x, y);
+        }
 
+        public void ActionCard(Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
+        {
             if (choose == 0)
             {
-                Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte : ");
-                x = Convert.ToInt32(Console.ReadLine());
-                y = Convert.ToInt32(Console.ReadLine());
                 _board.ReplaceCard(y, x, c);
             }
             else
             {
-                d.DiscardACard(c);
-                Console.WriteLine("Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
-                x = Convert.ToInt32(Console.ReadLine());
-                y = Convert.ToInt32(Console.ReadLine());
-                while(_board.ReturnACard(x, y) == false)
-                {
-                    Console.WriteLine("Coordoner incorect ! Entrer les coordoner X et Y une par une pour retourner une carte face caché : ");
-                    x = Convert.ToInt32(Console.ReadLine());
-                    y = Convert.ToInt32(Console.ReadLine());
-                }
-
+                _board.ReturnACard(x, y); //_board.ReturnACard(x, y) == false
             }
-
-
         }
 
         public void AfficherBoardPlayer()

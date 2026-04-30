@@ -11,7 +11,15 @@ namespace ClassLibrary
         bool RoundFinished = false;
         bool GameOver = false;
 
+        public bool GetRoundFinished()
+        {
+            return RoundFinished;
+        }
 
+        public bool GetGameOver()
+        {
+            return GameOver;
+        }
 
         public void AddPlayer(string nomJoueur)
         {
