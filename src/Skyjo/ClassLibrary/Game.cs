@@ -40,6 +40,12 @@ namespace ClassLibrary
 
             while (!_gameOver)
             {
+
+                for(int i = 0; i < nbJoueur; i++) // créer un nouveau plateau au début de chaque tour
+                {
+                    _players[i].NewBoard(_deck);
+                }
+
                 _roundFinished = false;
                 for (int i = 0; i < _players.Count(); i++)
                 {

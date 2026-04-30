@@ -32,6 +32,11 @@ namespace ClassLibrary
             _board = new Board(deck);
         }
 
+        public void NewBoard(Deck d)
+        {
+            _board = new Board(d);
+        }
+
         public Card PickACard(Deck d)
         {
             int choose;
