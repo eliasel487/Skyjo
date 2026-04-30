@@ -6,7 +6,7 @@ stages :
 
 build:
     stage: 🏗️build
-    image: cmcr.microsoft.com/dotnet/sdk:10.0
+    image: mcr.microsoft.com/dotnet/sdk:10.0
     script:
         - cd src/Skyjo
         - dotnet restore Skyjo.sln
