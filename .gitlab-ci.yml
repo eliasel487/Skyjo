@@ -6,7 +6,7 @@ stages :
 
 build:
     stage: 🏗️build
-    image: $CI_REGISTRY/iut_inf63/base-cicd/documentation-builder:main
+    image: codefirst.iut.uca.fr/macheval/codefirstimages/maui10:amd64
     script:
         - cd src/Skyjo
         - dotnet restore Skyjo.sln
