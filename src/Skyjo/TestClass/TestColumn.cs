@@ -145,7 +145,7 @@ namespace TestClass
             var actual = _colonne.GetCards();
 
             // Assert
-            Assert.NotEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
     }
 }
