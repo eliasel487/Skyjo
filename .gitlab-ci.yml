@@ -9,8 +9,8 @@ build:
     image: mcr.microsoft.com/dotnet/sdk:10.0
     script:
         - cd src/Skyjo
-        - dotnet restore Skyjo.slnx
-        - dotnet build Skyjo.slnx -c Release --no-restore
-        - dotnet publish Skyjo.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+        - dotnet restore Skyjo-CI.slnx
+        - dotnet build Skyjo-CI.slnx -c Release --no-restore
+        - dotnet publish Skyjo-CI.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
     rules:
         - when: manual
