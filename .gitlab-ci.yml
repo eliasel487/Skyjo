@@ -9,8 +9,8 @@ build:
     image: codefirst.iut.uca.fr/macheval/codefirstimages/maui10:amd64
     script:
         - cd src/Skyjo
-        - dotnet restore Skyjo.slnx
-        - dotnet build Skyjo.slnx -c Release --no-restore
-        - dotnet publish Skyjo.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+        - dotnet restore Skyjo.sln
+        - dotnet build Skyjo.sln -c Release --no-restore
+        - dotnet publish Skyjo.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
     rules:
         - when: manual
