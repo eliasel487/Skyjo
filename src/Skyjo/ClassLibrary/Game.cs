@@ -67,7 +67,6 @@ namespace ClassLibrary
                 cpt = 0;
                 while (!RoundFinished)
                 {
-                    AfficherGame(nbJoueur);
                     if (cpt == Players.Count()) cpt = 0;
                     if (Players[cpt].RoundOver()) 
                     {
@@ -88,15 +87,5 @@ namespace ClassLibrary
             }
         }
 
-
-        public void AfficherGame(int nbJoueur)
-        {
-            int i;
-            for (i = 0; i < nbJoueur; i++)
-            {
-                Players[i].AfficherBoardPlayer();
-                Console.WriteLine();
-            }
-        }
     }
 }
