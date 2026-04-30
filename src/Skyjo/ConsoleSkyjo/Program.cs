@@ -58,7 +58,7 @@ void PlayGame()
                 break;
             }
             // le joueur joue à ce moment
-            game1.Players[cpt].Play(game1.Deck);
+            PlayPlayer(game1.Players[cpt]);
             cpt++;
         }
         temp = cpt;
@@ -67,7 +67,7 @@ void PlayGame()
         {
             if (cpt == game1.Players.Count()) cpt = 0;
             // le joueur joue à ce moment
-            game1.Players[cpt].Play(game1.Deck);
+            PlayPlayer(game1.Players[cpt]);
             cpt++;
         }
     }
@@ -90,6 +90,12 @@ void PlayPlayer(Player p)
         Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte : ");
         x = Convert.ToInt32(Console.ReadLine());
         y = Convert.ToInt32(Console.ReadLine());
+        while (x >= 0 && x < 3 && y >= 0 && y < 4)
+        {
+            Console.WriteLine("Coordoner incorect ! Entrer les coordoner X et Y une par une pour placer une carte : ");
+            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
+        }
         p.ActionCard(c, choose, x, y);
     }
     else
@@ -104,5 +110,33 @@ void PlayPlayer(Player p)
             y = Convert.ToInt32(Console.ReadLine());
         }
         p.ActionCard(c, choose, x, y);
+    }
+}
+
+void AfficherLesPlateaux()
+{
+    int i;
+    Board b;
+    List<Column> _columns = new();
+    List<Card> _cards = new();
+    for (i = 0; i < game1.Players.Count; i++)
+    {
+        b = game1.Players[i].GetBoard();
+        _columns = b.GetColumns();
+        //Players[i].AfficherBoardPlayer();
+        for (i = 0; i < 4; i++)
+        {
+            _columns[i].GetCards();
+            //_columns[i].AfficherColumn();
+            for (i = 0; i < 3; i++)
+            {
+                if (_cards[i].IsFlipped() == false)
+                    Console.Write(" X ");
+                else
+                    Console.Write(" " + _cards[i].GetNumber() + " ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
     }
 }

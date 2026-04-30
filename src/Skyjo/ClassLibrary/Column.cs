@@ -66,16 +66,6 @@ namespace ClassLibrary
             }
         }
 
-        public void AfficherColumn()
-        {
-            int i;
-            for (i = 0; i < 3; i++)
-            {
-                if (_cards[i].IsFlipped() == false)
-                    Console.Write(" X ");
-                else
-                    Console.Write(" " + _cards[i].GetNumber() + " ");
-            }
-        }
+        
     }
 }

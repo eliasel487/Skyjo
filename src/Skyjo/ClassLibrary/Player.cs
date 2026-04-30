@@ -32,6 +32,11 @@ namespace ClassLibrary
             _board = new Board(deck);
         }
 
+        public Board GetBoard()
+        {
+            return _board;
+        }
+
         public void NewBoard(Deck d)
         {
             _board = new Board(d);
@@ -47,8 +52,9 @@ namespace ClassLibrary
             return _board.IsAllReturned();
         }
 
-        public void Play(Deck d, int choosePick, int chooseCard, int x, int y)
+        public void Play(Deck d) //fonction utiliser pour les vues, elle sera peut être inutile
         {
+            int choosePick = 0, chooseCard = 0, x = 0, y = 0;
             Card c = PickACard(d, choosePick);
             c.FlipCard();
             ActionCard(c, chooseCard, x, y);
@@ -64,12 +70,6 @@ namespace ClassLibrary
             {
                 _board.ReturnACard(x, y); //_board.ReturnACard(x, y) == false
             }
-        }
-
-        public void AfficherBoardPlayer()
-        {
-            _board.AfficherBoard();
-            
         }
     }
 }
