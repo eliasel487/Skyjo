@@ -6,12 +6,11 @@ stages :
 
 build:
     stage: 🏗️build
-    image: mcr.microsoft.com/dotnet/sdk:10.0
+    image: $CI_REGISTRY/iut_inf63/base-cicd/documentation-builder:main
     script:
         - cd src/Skyjo
         - dotnet restore Skyjo.sln
         - dotnet build Skyjo.sln -c Release --no-restore
         - dotnet publish Skyjo.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
-        - dotnet workload restore
     rules:
         - when: manual
