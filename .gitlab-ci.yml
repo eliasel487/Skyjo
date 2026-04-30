@@ -6,7 +6,7 @@ stages :
 
 build:
     stage: 🏗️build
-    image: $CI_REGISTRY/iut_inf63/base-cicd/documentation-builder:main
+    image: mcr.microsoft.com/dotnet/sdk:9.0
     script:
         - cd src/Skyjo
         - dotnet restore Skyjo.sln
