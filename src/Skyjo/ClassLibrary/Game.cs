@@ -6,87 +6,86 @@ namespace ClassLibrary
 {
     public class Game
     {
-        List<Player> _players = new();
-        Deck _deck = new();
-        bool _roundFinished = false;
-        bool _gameOver = false;
+        public List<Player> Players { get; } = new();
+        public Deck Deck { get; } = new();
+        bool RoundFinished = false;
+        bool GameOver = false;
+
+        public bool GetRoundFinished()
+        {
+            return RoundFinished;
+        }
+
+        public bool GetGameOver()
+        {
+            return GameOver;
+        }
 
         public void AddPlayer(string nomJoueur)
         {
             Player p;
-            p = new Player(nomJoueur, _deck, 0, 0);
+            p = new Player(nomJoueur, Deck, 0, 0);
 
-            if (_players.Count <= 5)
+            if (Players.Count <= 5)
             {
-                _players.Add(p);
+                Players.Add(p);
             }
         }
 
         public void RemovePlayer(string name)
         {
-            foreach (Player player in _players)
+            foreach (Player player in Players)
             {
                 if (player._name == name)
                 {
-                    _players.Remove(player);
+                    Players.Remove(player);
                 }
             }
         }
         public void PlayGame()
         {
-            int cpt, temp, nbJoueur = _players.Count;
+            int cpt, temp, nbJoueur = Players.Count;
 
             
 
-            while (!_gameOver)
+            while (!GameOver)
             {
 
                 for(int i = 0; i < nbJoueur; i++) // créer un nouveau plateau au début de chaque tour
                 {
-                    _players[i].NewBoard(_deck);
+                    Players[i].NewBoard(Deck);
                 }
 
-                _roundFinished = false;
-                for (int i = 0; i < _players.Count(); i++)
+                RoundFinished = false;
+                for (int i = 0; i < Players.Count(); i++)
                 {
-                    if (_players[i]._gameScore >= 100) _gameOver = true;
+                    if (Players[i]._gameScore >= 100) GameOver = true;
                 }
 
-                if (_gameOver) break;
+                if (GameOver) break;
                 
                 cpt = 0;
-                while (!_roundFinished)
+                while (!RoundFinished)
                 {
-                    AfficherGame(nbJoueur);
-                    if (cpt == _players.Count()) cpt = 0;
-                    if (_players[cpt].RoundOver()) 
-                    { 
-                        _roundFinished = true; 
+                    if (cpt == Players.Count()) cpt = 0;
+                    if (Players[cpt].RoundOver()) 
+                    {
+                        RoundFinished = true; 
                         break; 
                     }
-                    _players[cpt].Play(_deck);
+                    Players[cpt].Play(Deck);
                     cpt++;
                 }
                 temp = cpt;
                 cpt++;
                 while (cpt != temp)
                 {
-                    if (cpt == _players.Count()) cpt = 0;
-                    _players[cpt].Play(_deck);
+                    if (cpt == Players.Count()) cpt = 0;
+                    Players[cpt].Play(Deck);
                     cpt++;
                 }
             }
         }
 
-
-        public void AfficherGame(int nbJoueur)
-        {
-            int i;
-            for (i = 0; i < nbJoueur; i++)
-            {
-                _players[i].AfficherBoardPlayer();
-                Console.WriteLine();
-            }
-        }
     }
 }

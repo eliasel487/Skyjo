@@ -39,12 +39,12 @@ namespace ClassLibrary
             }
             return true;
         }
-        public Column GetColumns(int i)
+        public List<Column> GetColumns()
         {
-            if (i > 0 && i < 5)
-                if (!_columns[i].IsRemovable())
-                    return _columns[i];
-            throw new ArgumentOutOfRangeException();
+            //if (i > 0 && i < 5)
+            //    if (!_columns[i].IsRemovable())
+            return _columns;
+            //throw new ArgumentOutOfRangeException();
         }
 
         public bool ReturnACard(int y, int x)
@@ -56,16 +56,6 @@ namespace ClassLibrary
                 return true;
             }
             return false;
-        }
-
-        public void AfficherBoard()
-        {
-            int i;
-            for(i = 0; i < 4;  i++)
-            {
-                _columns[i].AfficherColumn();
-                Console.WriteLine();
-            }
         }
     }
 }
