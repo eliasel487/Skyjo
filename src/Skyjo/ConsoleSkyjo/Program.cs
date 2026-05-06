@@ -28,9 +28,8 @@ jouerPartie();
 
 void PlayGame() // fait joueur une game
 {
-    int cpt, temp, nbJoueur = game1.Players.Count;
-    bool RoundFinished = game1.GetRoundFinished(), GameOver = game1.GetGameOver();
-
+    int nbJoueur = game1.Players.Count;
+    bool GameOver = game1.GetGameOver();
 
     while (!GameOver)
     {
@@ -39,37 +38,54 @@ void PlayGame() // fait joueur une game
             game1.Players[i].NewBoard(game1.Deck);
         }
 
-        RoundFinished = false;
         for (int i = 0; i < game1.Players.Count(); i++)
         {
             if (game1.Players[i]._gameScore >= 100) GameOver = true;
         }
 
         if (GameOver) break;
+        JouerUneManche();
 
-        cpt = 0;
-        while (!RoundFinished)
+    }
+}
+void JouerUneManche()
+{
+    int cpt = 0, temp;
+    bool RoundFinished = game1.GetRoundFinished();
+
+    while (!RoundFinished)
+    {
+        if (cpt == game1.Players.Count()) cpt = 0;
+        AfficherLesPlateaux(game1.Players[cpt]);
+        if (game1.Players[cpt].RoundOver())
         {
-            AfficherLesPlateaux();
-            if (cpt == game1.Players.Count()) cpt = 0;
-            if (game1.Players[cpt].RoundOver())
-            {
-                RoundFinished = true;
-                break;
-            }
-            // le joueur joue à ce moment
-            PlayPlayer(game1.Players[cpt]);
-            cpt++;
+            RoundFinished = true;
+            break;
         }
-        temp = cpt;
+        // le joueur joue à ce moment
+        PlayPlayer(game1.Players[cpt]);
         cpt++;
-        while (cpt != temp)
+    }
+    temp = cpt;
+    cpt++;
+    while (cpt != temp)
+    {
+        if (cpt == game1.Players.Count()) cpt = 0;
+        if (cpt == temp) break;
+        // le joueur joue à ce moment
+        PlayPlayer(game1.Players[cpt]);
+        cpt++;
+    }
+    for (int i = 0; i < game1.Players.Count(); i++)
+    {
+        for (int x = 0; x < 4; x++)
         {
-            if (cpt == game1.Players.Count()) cpt = 0;
-            // le joueur joue à ce moment
-            PlayPlayer(game1.Players[cpt]);
-            cpt++;
+            for (int y = 0; y < 3; y++)
+            {
+                game1.Players[i].GetBoard().ReturnACard(x, y);
+            }
         }
+        AfficherLesPlateaux(game1.Players[i]);
     }
 }
 
@@ -87,12 +103,12 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
 
     if (choose == 0)
     {
-        Console.WriteLine("Entrer les coordoner X et Y une par une pour placer votre carte : ");
-        x = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Entrer les coordonée X et Y une par une pour placer votre carte : ");
         y = Convert.ToInt32(Console.ReadLine());
+        x = Convert.ToInt32(Console.ReadLine());
         while (x < 0 && x >= 3 && y < 0 && y >= 4)
         {
-            Console.WriteLine("Coordoner incorect ! Entrer les coordoner X et Y une par une pour placer une carte : ");
+            Console.WriteLine("Coordoneé incorect ! Entrer les coordoner X et Y une par une pour placer une carte : ");
             x = Convert.ToInt32(Console.ReadLine());
             y = Convert.ToInt32(Console.ReadLine());
         }
@@ -113,30 +129,35 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
     }
 }
 
-void AfficherLesPlateaux() // affiche le plateau de chaque joueur
+void AfficherLesPlateaux(Player p) // affiche le plateau de chaque joueur
 {
-    int i, j, m ;
+    int j, k;
     Board b;
     List<Column> columns = new();
     List<Card> cards = new();
-    for (i = 0; i < game1.Players.Count; i++)
+    b = p.GetBoard();
+    columns = b.GetColumns();
+    Console.WriteLine(p._name + ":");
+    //Players[i].AfficherBoardPlayer();
+    for (k = 0; k < 3; k++)
     {
-        b = game1.Players[i].GetBoard();
-        columns = b.GetColumns();
-        //Players[i].AfficherBoardPlayer();
+        Console.WriteLine("---------------------");
+        Console.Write("|");
         for (j = 0; j < 4; j++)
         {
             cards = columns[j].GetCards();
             //_columns[i].AfficherColumn();
-            for (m = 0; m < 3; m++)
-            {
-                if (cards[m].IsFlipped() == false)
-                    Console.Write(" X ");
+            if (cards[k].IsFlipped() == false)
+                Console.Write(" XX |");
+            else
+                if (cards[k].GetNumber() < 0 || cards[k].GetNumber() >= 10)
+                {
+                    Console.Write(" " + cards[k].GetNumber() + " |");
+                }
                 else
-                    Console.Write(" " + cards[m].GetNumber() + " ");
-            }
-            Console.WriteLine();
+                    Console.Write(" 0" + cards[k].GetNumber() + " |");
         }
         Console.WriteLine();
     }
+    Console.WriteLine("---------------------");
 }

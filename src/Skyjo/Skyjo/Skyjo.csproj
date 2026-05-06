@@ -66,6 +66,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="CreateGame.xaml.cs">
 	    <DependentUpon>CreateGame.xaml</DependentUpon>
 	  </Compile>
