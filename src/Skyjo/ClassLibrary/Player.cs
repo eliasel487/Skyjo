@@ -68,7 +68,7 @@ namespace ClassLibrary
             }
             else
             {
-                _board.ReturnACard(x, y); //_board.ReturnACard(x, y) == false
+                _board.ReturnACard(y, x); //_board.ReturnACard(x, y) == false
             }
         }
     }
