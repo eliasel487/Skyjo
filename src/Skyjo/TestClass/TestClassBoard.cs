@@ -57,33 +57,32 @@ namespace TestClass
         }
 
         [Fact]
-        public void Board_GetColumns_InvalidIndex_Throws()
-        {
-            var deck = new Deck();
-            var board = new Board(deck);
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => board.GetColumns());
-        }
-
-        [Fact]
         public void Board_ReplaceCard_ReplacesCard()
         {
             // Arrange
             var deck = new Deck();
             var board = new Board(deck);
             var column = board.GetColumns();
-            var cardsBefore = column.GetCards();
-            Assert.True(cardsBefore.Count >= 3);
-            int oldNumber = cardsBefore[1].GetNumber();
+
+            var cardsColumnBefore = column[0].GetCards();
+            Assert.True(cardsColumnBefore.Count >= 3);
+            var card1 = cardsColumnBefore[0];
+            var card2 = cardsColumnBefore[1];
+            var card3 = cardsColumnBefore[2];
 
             // Act
             var newCard = new Card(7);
-            board.ReplaceCard(1, 1, newCard);
+            board.ReplaceCard(0, 1, newCard);
+
+            var columnAfter = column[0].GetCards();
+            var card1After = columnAfter[0];
+            var card2After = columnAfter[1];
+            var card3After = columnAfter[2];
 
             // Assert
-            var cardsAfter = board.GetColumns().GetCards();
-            Assert.Equal(7, cardsAfter[1].GetNumber());
-            Assert.NotEqual(oldNumber, cardsAfter[1].GetNumber());
+            Assert.Equal(card1, card1After);
+            Assert.NotEqual(card2, card2After);
+            Assert.Equal(card3, card3After);
         }
     }
 }

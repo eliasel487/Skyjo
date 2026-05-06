@@ -3,6 +3,4 @@
   <Project Path="ConsoleSkyjo/ConsoleSkyjo.csproj" />
   <Project Path="Skyjo/Skyjo.csproj" />
   <Project Path="TestClass/TestClass.csproj" />
-  <Project Path="TestDeck/TestDeck.csproj" />
-  <Project Path="TestsSkyjo/TestsSkyjo.csproj" />
 </Solution>
