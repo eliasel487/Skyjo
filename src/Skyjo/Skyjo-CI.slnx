@@ -1,4 +1,6 @@
 <Solution>
+  <Folder Name="/Tests/">
+      <Project Path="TestClass/TestClass.csproj" />
+  </Folder>
   <Project Path="ConsoleSkyjo/ConsoleSkyjo.csproj" />
-  <Project Path="TestClass/TestClass.csproj" />
 </Solution>
