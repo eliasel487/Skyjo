@@ -7,6 +7,7 @@ namespace ClassLibrary
     public class Game
     {
         public List<Player> Players { get; } = new();
+        public List<IA> IAs { get; } = new();
         public Deck Deck { get; } = new();
         bool RoundFinished = false;
         bool GameOver = false;
@@ -21,6 +22,11 @@ namespace ClassLibrary
             return GameOver;
         }
 
+        public Deck GetDeck()
+        {
+            return Deck;
+        }
+
         public void AddPlayer(string nomJoueur)
         {
             Player p;
@@ -32,6 +38,17 @@ namespace ClassLibrary
             }
         }
 
+        public void AddIA()
+        {
+            IA ia;
+            ia = new IA(0, Deck, 0);
+
+            if (Players.Count <= 5)
+            {
+                IAs.Add(ia);
+            }
+        }
+
         public void RemovePlayer(string name)
         {
             foreach (Player player in Players)
@@ -40,6 +57,14 @@ namespace ClassLibrary
                 {
                     Players.Remove(player);
                 }
+            }
+        }
+
+        public void RemoveAllIA()
+        {
+            foreach (IA ia in IAs)
+            {
+                    IAs.Remove(ia);
             }
         }
         public void PlayGame()

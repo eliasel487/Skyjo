@@ -18,9 +18,21 @@ void CreerJoueur()
     }
 }
 
+void CreerIA()
+{
+    int nbIA;
+    Console.WriteLine("Combien d'IA' voulez vous créer ? (0 si vous voulez pas en créer) : ");
+    nbIA = Convert.ToInt32(Console.ReadLine());
+    for (int i = 0; i < nbIA; i++)
+    {
+        game1.AddIA();
+    }
+}
+
 void jouerPartie()
 {
     CreerJoueur();
+    CreerIA();
     PlayGame();
 }
 
@@ -63,7 +75,10 @@ void JouerUneManche()
             break;
         }
         // le joueur joue à ce moment
-        PlayPlayer(game1.Players[cpt]);
+        if (game1.Players[cpt].GetIA())
+            game1.IAs[cpt].PlayRound(game1.GetDeck());
+        else
+            PlayPlayer(game1.Players[cpt]);
         cpt++;
     }
     temp = cpt;
@@ -73,7 +88,10 @@ void JouerUneManche()
         if (cpt == game1.Players.Count()) cpt = 0;
         if (cpt == temp) break;
         // le joueur joue à ce moment
-        PlayPlayer(game1.Players[cpt]);
+        if (game1.Players[cpt].GetIA())
+            game1.IAs[cpt].PlayRound(game1.GetDeck());
+        else
+            PlayPlayer(game1.Players[cpt]);
         cpt++;
     }
     for (int i = 0; i < game1.Players.Count(); i++)

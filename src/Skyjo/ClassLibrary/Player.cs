@@ -32,6 +32,11 @@ namespace ClassLibrary
             _board = new Board(deck);
         }
 
+        public bool GetIA()
+        {
+            return _IA;
+        }
+
         public Board GetBoard()
         {
             return _board;
