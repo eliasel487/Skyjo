@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ClassLibrary;
 using Xunit;
 
@@ -62,7 +62,7 @@ namespace TestClass
             var deck = new Deck();
             var board = new Board(deck);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => board.GetColumns(0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => board.GetColumns());
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace TestClass
             // Arrange
             var deck = new Deck();
             var board = new Board(deck);
-            var column = board.GetColumns(1);
+            var column = board.GetColumns();
             var cardsBefore = column.GetCards();
             Assert.True(cardsBefore.Count >= 3);
             int oldNumber = cardsBefore[1].GetNumber();
@@ -81,7 +81,7 @@ namespace TestClass
             board.ReplaceCard(1, 1, newCard);
 
             // Assert
-            var cardsAfter = board.GetColumns(1).GetCards();
+            var cardsAfter = board.GetColumns().GetCards();
             Assert.Equal(7, cardsAfter[1].GetNumber());
             Assert.NotEqual(oldNumber, cardsAfter[1].GetNumber());
         }
