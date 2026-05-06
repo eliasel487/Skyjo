@@ -1,6 +1,7 @@
 # Définition des stages
 stages :
     - 🏗️build
+    - 🧪tests
 
 # Configuration des jobs
 
@@ -14,3 +15,15 @@ build:
         - dotnet publish Skyjo-CI.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
     rules:
         - when: manual
+
+tests:
+  stage: 🧪tests
+  image: mcr.microsoft.com/dotnet/sdk:10.0
+  script:
+    - cd CM4_part3/Shopping/Sources/
+    - dotnet restore Shopping.slnx
+    - dotnet test Shopping.slnx -c Release --no-restore
+  needs:
+    - job: build
+  rules:
+    - when: manual
