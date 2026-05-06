@@ -20,9 +20,9 @@ tests:
   stage: 🧪tests
   image: mcr.microsoft.com/dotnet/sdk:10.0
   script:
-    - cd CM4_part3/Shopping/Sources/
-    - dotnet restore Shopping.slnx
-    - dotnet test Shopping.slnx -c Release --no-restore
+    - cd src/Skyjo
+    - dotnet restore Skyjo-CI.slnx
+    - dotnet test Skyjo-CI.slnx -c Release --no-restore
   needs:
     - job: build
   rules:
