@@ -14,8 +14,7 @@ build:
         - dotnet restore Skyjo-CI.slnx
         - dotnet build Skyjo-CI.slnx -c Release --no-restore
         - dotnet publish Skyjo-CI.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
-    rules:
-        - when: manual
+
 
 tests:
   stage: 🧪tests
@@ -26,8 +25,7 @@ tests:
     - dotnet test Skyjo-CI.slnx -c Release --no-restore
   needs:
     - job: build
-  rules:
-    - when: manual
+ 
 
 sonar_analysis:
   stage: ☢️code-analysis
@@ -45,5 +43,4 @@ sonar_analysis:
     - dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
   needs:
     - job: build
-  rules:
-    - when: manual
+
