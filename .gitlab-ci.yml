@@ -15,7 +15,6 @@ build:
         - dotnet build Skyjo-CI.slnx -c Release --no-restore
         - dotnet publish Skyjo-CI.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
 
-
 tests:
   stage: 🧪tests
   image: mcr.microsoft.com/dotnet/sdk:10.0
@@ -26,7 +25,6 @@ tests:
   needs:
     - job: build
  
-
 sonar_analysis:
   stage: ☢️code-analysis
   image: codefirst.iut.uca.fr/macheval/codefirstimages/dotnet10:main
