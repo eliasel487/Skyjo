@@ -2,7 +2,7 @@
   <Folder Name="/TestClass/">
       <Project Path="TestClass/TestClass.csproj" />
   </Folder>
-  <Project Path="ClassLibrary/ClassLibrary.csproj" />
+  <Project Path="../ClassLibrary/ClassLibrary.csproj" />
   <Project Path="ConsoleSkyjo/ConsoleSkyjo.csproj" />
   <Project Path="Skyjo/Skyjo.csproj" />
 </Solution>
