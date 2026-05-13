@@ -29,15 +29,15 @@ sonar_analysis:
   stage: ☢️code-analysis
   image: codefirst.iut.uca.fr/macheval/codefirstimages/dotnet10:main
   variables:
-    SONAR_PROJECT_KEY: SONAR_TOKEN
+    SONAR_PROJECT_KEY: EQUIPE_BERT_RABANY_TARDY_EL-MKADEMI
   script:
     - cd src/Skyjo
     - dotnet restore Skyjo-CI.slnx
     - dotnet sonarscanner begin /k:$SONAR_PROJECT_KEY /d:sonar.host.url=$SONAR_HOST /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="Tests/**" /d:sonar.login=$SONAR_TOKEN
-    - dotnet build Skyjo.slnx -c Release --no-restore
-    - dotnet test Skyjo.slnx --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+    - dotnet build Skyjo-CI.slnx -c Release --no-restore
+    - dotnet test Skyjo-CI.slnx --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
     - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
-    - dotnet publish Shopping.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+    - dotnet publish Skyjo-CI.slnx -c Release --no-restore -o $CI_PROJECT_DIR/build/release
     - dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
   needs:
     - job: build

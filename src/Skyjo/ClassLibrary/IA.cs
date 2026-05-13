@@ -16,55 +16,48 @@ namespace ClassLibrary
         public void PlayRound(Deck d) //fait jouer un tour complet a l'IA
         {
             int choosePick = 0, x = 0, y = 0;
+            bool replaced = false;
 
             Card c = PickACard(d, choosePick);
             c.FlipCard();
             if (c.GetNumber() > 7) // si la carte est supérieur à 7 il vas chercher à retourne une carte à la place, sinon il pose la carte
             {
-                for (y = 0; y < 4; y++) // cette boucle vas parcourir tout le tableau pour voir si les cartes sont retournés, sinon il retourne la carte
+                while (y < 4 && replaced == false) // cette boucle vas parcourir tout le tableau pour voir si les cartes sont retournés, sinon il retourne la carte
                 {
                     List<Column> columns = _board.GetColumns();
-                    for (x = 0; x < 3; x++)
+                    List<Card> cards = columns[y].GetCards();
+                    if (cards[x].IsFlipped() == false)
                     {
-                        List<Card> cards = columns[y].GetCards();
-                        if (cards[x].IsFlipped())
-                        {
-                            x++;
-                        }
-                        else
-                            d.DiscardACard(c);
-                            _board.ReturnACard(y, x);
+                        d.DiscardACard(c);
+                        _board.ReturnACard(y, x);
+                        replaced = true;
                     }
-                    y++;
+                    x++;
+                    if (x >= 3) { y++; x = 0; }
                 }
-                PlaceCardAuto(c);
+                if (replaced == false) PlaceCardAuto(c);
             }
-            PlaceCardAuto(c);
-
-
-
+            else PlaceCardAuto(c);
         }
 
         public void PlaceCardAuto(Card c)
         {
+            bool place = false;
             int x = 0, y = 0;
-            for (y = 0; y < 4; y++) // cette boucle vas parcourir tout le tableau pour voir si il peut poser une carte dont le nombre est inférieur à celle retourner sur le plateau
+            while (place == false && y < 4) // cette boucle vas parcourir tout le tableau pour voir si il peut poser une carte dont le nombre est inférieur à celle retourner sur le plateau
                                     // sinon il la pose en 0 0, car il faut bien qu'il fasse quelque chose à un moment
             {
                 List<Column> columns = _board.GetColumns();
-                for (x = 0; x < 3; x++)
+                List<Card> cards = columns[y].GetCards();
+                if (cards[x].IsFlipped() == true && cards[x].GetNumber() < c.GetNumber())
                 {
-                    List<Card> cards = columns[y].GetCards();
-                    if (cards[x].IsFlipped() && cards[x].GetNumber() > c.GetNumber())
-                    {
-                        x++;
-                    }
-                    else
-                        _board.ReplaceCard(y, x, c);
+                    _board.ReplaceCard(y, x, c);
+                    place = true;
                 }
-                y++;
+                x++;
+                if (x >= 3) { y++; x = 0; }
             }
-            _board.ReplaceCard(0, 0, c);
+            if (place == false) _board.ReplaceCard(0, 0, c);
         }
     }
 }

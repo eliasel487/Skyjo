@@ -4,5 +4,4 @@
   </Folder>
   <Project Path="ClassLibrary/ClassLibrary.csproj" />
   <Project Path="ConsoleSkyjo/ConsoleSkyjo.csproj" />
-  <Project Path="Skyjo/Skyjo.csproj" />
 </Solution>
