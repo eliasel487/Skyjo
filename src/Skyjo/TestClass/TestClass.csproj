@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\..\ClassLibrary\ClassLibrary.csproj" />
+=======
+>>>>>>> b712da3c6322336530843ce5926d4f549047ea0b
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
   </ItemGroup>
 
