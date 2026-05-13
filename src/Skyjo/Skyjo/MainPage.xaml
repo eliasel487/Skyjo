@@ -1,52 +1,107 @@
 ﻿<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Skyjo.MainPage"
-    BackgroundColor="#f2f2f2">
+    x:Class="Skyjo.MainPage">
 
-    <VerticalStackLayout Padding="20" Spacing="20">
-<!--Cambiar:
-        fondo
-        lo que esta en commentario
-        pegar eso hacia bajo
-        quitter et regles en botones-->
-        <Image
-            Source="skyjo.png"
-            HeightRequest="80"
-            HorizontalOptions="Center"
-            Aspect="AspectFit"/>
-        <!--poner en grid el frame-->
-        <Frame
-            BackgroundColor="#d9d9d9"
-            CornerRadius="25"
-            Padding="20"
-            Margin="0,30,0,30"
-            VerticalOptions="FillAndExpand">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1a0a2e" Offset="0"/>
+            <GradientStop Color="#2d1050" Offset="0.5"/>
+            <GradientStop Color="#1a0a3e" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
-            <VerticalStackLayout Spacing="25" VerticalOptions="Center">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="28,60,28,40">
 
-                <Button
-                    Text="Commencer une partie"
-                    BackgroundColor="#bfbfbf"
-                    TextColor="Black"
-                    CornerRadius="20"
-                    FontAttributes="Bold"/>
+        <!-- LOGO -->
+        <VerticalStackLayout Grid.Row="0" Spacing="6" HorizontalOptions="Center">
+            <Image
+                Source="skyjo.png"
+                HeightRequest="90"
+                HorizontalOptions="Center"
+                Aspect="AspectFit"/>
 
-                <Button
-                    Text="Poursuivre une partie"
-                    BackgroundColor="#bfbfbf"
-                    TextColor="Black"
-                    CornerRadius="20"
-                    FontAttributes="Bold"/>
+        </VerticalStackLayout>
 
-                <Grid Margin="0,20,0,0" ColumnDefinitions="*,*">
-                    <Label Text="Quitter" HorizontalOptions="Center"/>
-                    <Label Text="Règles" Grid.Column="1" HorizontalOptions="Center"/>
-                    <!--cambiar los label por botones-->
-                </Grid>
+        <Border
+            Grid.Row="1"
+            Margin="0,40,0,0"
+            VerticalOptions="Center"
+            StrokeThickness="1"
+            Stroke="#44cc99ff">
+            <Border.Background>
+                <SolidColorBrush Color="#1acc99ff"/>
+            </Border.Background>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="28"/>
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Padding="28,32" Spacing="14">
+
+
+                <Border StrokeThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#9b59b6" Offset="0"/>
+                            <GradientStop Color="#c39bd3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+                    <Button
+                        Text="Commencer une partie"
+                        BackgroundColor="Transparent"
+                        TextColor="#ffffff"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        Padding="0,16"
+                        BorderWidth="0"/>
+                </Border>
+
+                <Border
+                    StrokeThickness="1.5"
+                    Stroke="#9b59b6">
+                    <Border.Background>
+                        <SolidColorBrush Color="Transparent"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+                    <Button
+                        Text="Poursuivre une partie"
+                        BackgroundColor="Transparent"
+                        TextColor="#c39bd3"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        Padding="0,16"
+                        BorderWidth="0"/>
+                </Border>
 
             </VerticalStackLayout>
-        </Frame>
-    </VerticalStackLayout>
+        </Border>
+
+        <Grid
+            Grid.Row="2"
+            ColumnDefinitions="*,*"
+            Margin="0,20,0,0">
+            <Label
+                Text="Quitter"
+                TextColor="#88c39bd3"
+                FontSize="14"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+            <Label
+                Grid.Column="1"
+                Text="Règles du jeu"
+                TextColor="#88c39bd3"
+                FontSize="14"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Grid>
+
+    </Grid>
 
 </ContentPage>

@@ -4,13 +4,13 @@
              x:Class="Skyjo.PartieEnCours"
              Title="PartieEnCours"
              Background="LightBlue">
-    
+
     <Grid
         ColumnDefinitions="*"
             RowDefinitions="*"
             ColumnSpacing="5"
             RowSpacing="5">
-        
+
 
         <Grid ColumnDefinitions="90,90,90,90"
             RowDefinitions="130,130,130"
@@ -260,5 +260,5 @@
             </Button>
         </Grid>
     </Grid>
-    
+
 </ContentPage>
