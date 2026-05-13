@@ -2,29 +2,154 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skyjo.CreateGame">
-    <VerticalStackLayout>
-        
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-        
-            <Label Text="Nouvelle partie"
-                   BackgroundColor="DarkSalmon"
-                   FontSize="70"
-                   FontFamily="Helvetica"
-                   Grid.Row="0"
-                   HorizontalTextAlignment="Center"/>
-        </Grid>
 
-        <FlexLayout Direction="Row" HeightRequest="100">
-            <Rectangle Fill="red" FlexLayout.Grow="1" Margin="2">
-                
-            </Rectangle>
-            <Rectangle Fill="Black" FlexLayout.Grow="1" Margin="2"/>
-        </FlexLayout>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1a0a2e" Offset="0"/>
+            <GradientStop Color="#2d1050" Offset="0.5"/>
+            <GradientStop Color="#1a0a3e" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
-        <Button Text="Démarrer partie"/> <!-- A rendre inutilisable si NBJOUEURS < 2 -->
+    <Grid RowDefinitions="Auto,*,Auto" Padding="28,60,28,40">
 
-    </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="0" Spacing="6" HorizontalOptions="Center">
+            <Label
+                Text="NOUVELLE PARTIE"
+                TextColor="#ffffff"
+                FontSize="28"
+                FontAttributes="Bold"
+                CharacterSpacing="4"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <Border
+            Grid.Row="1"
+            Margin="0,32,0,0"
+            VerticalOptions="Start"
+            StrokeThickness="1"
+            Stroke="#44c39bd3">
+            <Border.Background>
+                <SolidColorBrush Color="#1acc99ff"/>
+            </Border.Background>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="28"/>
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Padding="24,28" Spacing="12">
+
+                <Label
+                    Text="JOUEURS"
+                    TextColor="#c39bd3"
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    CharacterSpacing="3"
+                    Margin="0,0,0,4"/>
+
+                <Border StrokeThickness="1" Stroke="#33c39bd3">
+                    <Border.Background>
+                        <SolidColorBrush Color="#22ffffff"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
+                        <Label
+                            Grid.Column="0"
+                            Text="👤"
+                            FontSize="20"
+                            VerticalOptions="Center"/>
+                        <Entry
+                            Grid.Column="1"
+                            Placeholder="Joueur 1"
+                            PlaceholderColor="#55c39bd3"
+                            TextColor="#ffffff"
+                            BackgroundColor="Transparent"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Margin="12,0"/>
+                        <Label
+                            Grid.Column="2"
+                            Text="✕"
+                            TextColor="#55c39bd3"
+                            FontSize="16"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="1" Stroke="#33c39bd3">
+                    <Border.Background>
+                        <SolidColorBrush Color="#22ffffff"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
+                        <Label
+                            Grid.Column="0"
+                            Text="👤"
+                            FontSize="20"
+                            VerticalOptions="Center"/>
+                        <Entry
+                            Grid.Column="1"
+                            Placeholder="Joueur 2"
+                            PlaceholderColor="#55c39bd3"
+                            TextColor="#ffffff"
+                            BackgroundColor="Transparent"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Margin="12,0"/>
+                        <Label
+                            Grid.Column="2"
+                            Text="✕"
+                            TextColor="#55c39bd3"
+                            FontSize="16"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="1.5" Stroke="#44c39bd3" Margin="0,6,0,0">
+                    <Border.Background>
+                        <SolidColorBrush Color="Transparent"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Button
+                        Text="＋  Ajouter un joueur"
+                        BackgroundColor="Transparent"
+                        TextColor="#c39bd3"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Padding="0,12"
+                        BorderWidth="0"/>
+                </Border>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <Border Grid.Row="2" Margin="0,24,0,0" StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#9b59b6" Offset="0"/>
+                    <GradientStop Color="#c39bd3" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="50"/>
+            </Border.StrokeShape>
+            <Button
+                Text="Démarrer la partie"
+                BackgroundColor="Transparent"
+                TextColor="#ffffff"
+                FontAttributes="Bold"
+                FontSize="16"
+                Padding="0,18"
+                BorderWidth="0"
+                IsEnabled="False"
+                Opacity="0.4"/>
+        </Border>
+
+    </Grid>
+
 </ContentPage>
