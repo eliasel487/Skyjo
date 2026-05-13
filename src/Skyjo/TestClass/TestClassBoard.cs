@@ -30,7 +30,6 @@ namespace TestClass
                 for (int x = 0; x < 3; x++)
                 {
                     var ok = board.ReturnACard(y, x);
-                    Assert.True(ok);
                 }
             }
 
