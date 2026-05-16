@@ -34,12 +34,22 @@ namespace ClassLibrary
             {
                 n = rnd.Next(_pull.Count);
                 res = _pull[n];
-                _pull.Remove(_pull[n]);
+                _pull.RemoveAt(n);
                 return res;
             }
             res = _discard.First();
-            _pull.Remove(_discard.First());
+            _discard.RemoveAt(0);
             return res;
+        }
+
+        public bool IsEmptyPull()
+        {
+            return _pull.Count == 0;
+        }
+
+        public bool IsEmptyDiscard()
+        {
+            return _discard.Count == 0;
         }
 
         public override string ToString()
