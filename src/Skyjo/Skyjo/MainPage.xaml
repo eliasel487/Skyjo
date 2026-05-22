@@ -87,21 +87,23 @@
             Grid.Row="2"
             ColumnDefinitions="*,*"
             Margin="0,20,0,0">
-            <Label
+            <Button
                 Text="Quitter"
                 TextColor="#88c39bd3"
                 FontSize="14"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"/>
-            <Label
+                VerticalOptions="Center"
+                Clicked=""/>
+            <Button
                 Grid.Column="1"
                 Text="Règles du jeu"
                 TextColor="#88c39bd3"
                 FontSize="14"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center"
+                Clicked="OnRulesClicked"/>
         </Grid>
 
     </Grid>
