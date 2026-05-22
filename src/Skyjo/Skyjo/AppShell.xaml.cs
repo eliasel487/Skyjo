@@ -5,11 +5,10 @@
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("page1", typeof(Main));
-            Routing.RegisterRoute("//page1", typeof(Page1));
-            Routing.RegisterRoute("page2", typeof(Page2));
-            Routing.RegisterRoute("//page2", typeof(Page2));
-            Routing.RegisterRoute(nameof(PartieEnCours), typeof(PartieEnCours));
+            Routing.RegisterRoute(nameof(CreateGame), typeof(CreateGame));
+            Routing.RegisterRoute(nameof(ContinueGame), typeof(ContinueGame));
+            Routing.RegisterRoute(nameof(GamePage), typeof(GamePage));
+            Routing.RegisterRoute(nameof(RulePage), typeof(RulePage));
         }
     }
 }

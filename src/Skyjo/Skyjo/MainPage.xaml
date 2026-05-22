@@ -56,7 +56,8 @@
                         FontAttributes="Bold"
                         FontSize="15"
                         Padding="0,16"
-                        BorderWidth="0"/>
+                        BorderWidth="0"
+                        Clicked="OnCreateGameClicked"/>
                 </Border>
 
                 <Border
@@ -75,7 +76,8 @@
                         FontAttributes="Bold"
                         FontSize="15"
                         Padding="0,16"
-                        BorderWidth="0"/>
+                        BorderWidth="0"
+                        Clicked="OnContinueGameClicked"/>
                 </Border>
 
             </VerticalStackLayout>
