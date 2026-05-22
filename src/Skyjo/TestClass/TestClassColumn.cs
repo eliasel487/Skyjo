@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestClass
 {
-    public class TestColumn
+    public class TestClassColumn
     {
         [Fact]
         public void isRemovable_ReturnsTrue()
@@ -146,6 +146,30 @@ namespace TestClass
 
             // Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetCards_ReturnsNone()
+        {
+            // Arrange
+            var _card1 = new Card(91);
+            var _card2 = new Card(91);
+            var _card3 = new Card(9);
+            var _colonne = new Column(_card1, _card2, _card3);
+            _card1.FlipCard();
+            _card2.FlipCard();
+            _card3.FlipCard();
+
+            List<Card> expected = new List<Card>();
+            expected.Add(_card1);
+            expected.Add(_card2);
+            expected.Add(_card3);
+
+            // Act
+            var actual = _colonne.GetCards();
+
+            // Assert
+            Assert.Empty(actual);
         }
     }
 }

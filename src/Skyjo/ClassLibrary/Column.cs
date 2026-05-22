@@ -44,28 +44,7 @@ namespace ClassLibrary
             {
                 return column; // renvoie une liste vide
             }
-            /*
-                column.Add(_cards[0]);
-                column.Add(_cards[1]);
-                column.Add(_cards[2]);
-            */
             return _cards;
         }
-
-        public override string ToString()
-        {
-            if (_cards[0].GetNumber() == -3 || _cards[1].GetNumber() == -3 || _cards[2].GetNumber() == -3)
-            {
-                return "";
-            }
-            else
-            {
-                return $"{_cards[0].ToString()} \n" +
-                       $"{_cards[1].ToString()} \n" +
-                       $"{_cards[2].ToString()}";
-            }
-        }
-
-        
     }
 }

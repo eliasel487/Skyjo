@@ -20,6 +20,9 @@ namespace ClassLibrary
             }
         }
 
+        public int NbCardPull() { return _pull.Count; }
+        public int NbCardDiscard() { return _discard.Count; }
+
         public void DiscardACard(Card card)
         {
             _discard.Add(card);
@@ -50,21 +53,6 @@ namespace ClassLibrary
         public bool IsEmptyDiscard()
         {
             return _discard.Count == 0;
-        }
-
-        public override string ToString()
-        {
-            string res = $"Deck : \n";
-            foreach (Card i in _pull)
-            {
-                res += $"{i}\n";
-            }
-            res += "\nDiscard : \n";
-            foreach (Card i in _discard)
-            {
-                res += $"{i}\n";
-            }
-            return res;
         }
     }
 }

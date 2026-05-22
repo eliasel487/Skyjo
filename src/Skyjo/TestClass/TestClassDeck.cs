@@ -5,7 +5,7 @@ using ClassLibrary;
 
 namespace TestClass
 {
-    public class TestDeck
+    public class TestClassDeck
     {
         [Fact]
         public void VerifCreationDeck()
@@ -66,6 +66,67 @@ namespace TestClass
             Assert.Equal(10, nb10);
             Assert.Equal(10, nb11);
             Assert.Equal(10, nb12);
+        }
+
+        [Fact]
+        public void Deck_PickACard_nbPullDecrease()
+        {
+            //act
+            Deck deck = new Deck();
+
+            //arrange
+            deck.PickACard(0);
+
+            //assert
+            Assert.Equal(150, deck.NbCardPull());
+        }
+
+        [Fact]
+        public void Deck_DiscardACard_nbDiscardIncrease()
+        {
+            //act
+            Deck deck = new Deck();
+
+            //arrange
+            deck.DiscardACard(deck.PickACard(0));
+
+            //assert
+            Assert.Equal(1, deck.NbCardDiscard());
+        }
+
+        [Fact]
+        public void Deck_PickACardDiscard_nbDiscardDecrease()
+        {
+            //act
+            Deck deck = new Deck();
+
+            //arrange
+            deck.DiscardACard(deck.PickACard(0));
+            deck.PickACard(1);
+
+            //assert
+            Assert.Equal(0, deck.NbCardDiscard());
+        }
+
+        [Fact]
+        public void Deck_PickAllCards_DiscardAndPullEmpty()
+        {
+            //act
+            Deck deck = new Deck();
+            int n = deck.NbCardPull();
+
+            for (int i = 0; i < n; i++)
+            {
+                deck.PickACard(0);
+            }
+
+            //arrange
+            bool dicard = deck.IsEmptyDiscard();
+            bool pull = deck.IsEmptyPull();
+
+            //assert
+            Assert.True(dicard);
+            Assert.True(pull);
         }
     }
 }
