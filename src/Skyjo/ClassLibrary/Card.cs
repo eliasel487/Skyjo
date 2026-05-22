@@ -28,11 +28,5 @@ namespace ClassLibrary
         {
             _face = true;
         }
-
-        public override string ToString()
-        {
-            if (_face) return $" - {Number} (face visible)";
-            return $" - {Number} (face cachée)";
-        }
     }
 }

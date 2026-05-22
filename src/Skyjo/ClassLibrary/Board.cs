@@ -20,11 +20,13 @@ namespace ClassLibrary
         }
         public void ReplaceCard(int y, int x, Card t)
         {
-
-            List<Card> cards = _columns[y].GetCards();
-            if (x >= 0 && x < cards.Count)
+            if (y >= 0 && y < _columns.Count)
             {
-                cards[x] = t;
+                List<Card> cards = _columns[y].GetCards();
+                if (x >= 0 && x < cards.Count)
+                {
+                    cards[x] = t;
+                }
             }
         }
         public bool IsAllReturned()

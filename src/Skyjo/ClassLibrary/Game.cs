@@ -32,7 +32,7 @@ namespace ClassLibrary
             Player p;
             p = new Player(nomJoueur, Deck, 0, 0);
 
-            if (Players.Count <= 5)
+            if (Players.Count < 4)
             {
                 Players.Add(p);
             }
@@ -43,7 +43,7 @@ namespace ClassLibrary
             IA ia;
             ia = new IA(0, Deck, 0);
 
-            if (Players.Count <= 5)
+            if (IAs.Count < 4)
             {
                 IAs.Add(ia);
             }
@@ -51,66 +51,25 @@ namespace ClassLibrary
 
         public void RemovePlayer(string name)
         {
-            foreach (Player player in Players)
+            int n = Players.Count;
+            int id = -1;
+            for (int i = 0; i < n; i++)
             {
-                if (player._name == name)
+                if (Players[i]._name == name)
                 {
-                    Players.Remove(player);
+                    id = i; break;
                 }
             }
+            if (id >= 0) { Players.RemoveAt(id); }
         }
 
         public void RemoveAllIA()
         {
-            foreach (IA ia in IAs)
+            int n = IAs.Count;
+            for (int i = 0; i < n; i++)
             {
-                    IAs.Remove(ia);
+                IAs.RemoveAt(0);
             }
         }
-        public void PlayGame()
-        {
-            int cpt, temp, nbJoueur = Players.Count;
-
-            
-
-            while (!GameOver)
-            {
-
-                for(int i = 0; i < nbJoueur; i++) // créer un nouveau plateau au début de chaque tour
-                {
-                    Players[i].NewBoard(Deck);
-                }
-
-                RoundFinished = false;
-                for (int i = 0; i < Players.Count(); i++)
-                {
-                    if (Players[i]._gameScore >= 100) GameOver = true;
-                }
-
-                if (GameOver) break;
-                
-                cpt = 0;
-                while (!RoundFinished)
-                {
-                    if (cpt == Players.Count()) cpt = 0;
-                    if (Players[cpt].RoundOver()) 
-                    {
-                        RoundFinished = true; 
-                        break; 
-                    }
-                    Players[cpt].Play(Deck);
-                    cpt++;
-                }
-                temp = cpt;
-                cpt++;
-                while (cpt != temp)
-                {
-                    if (cpt == Players.Count()) cpt = 0;
-                    Players[cpt].Play(Deck);
-                    cpt++;
-                }
-            }
-        }
-
     }
 }
