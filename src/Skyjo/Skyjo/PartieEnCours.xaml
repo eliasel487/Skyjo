@@ -1,264 +1,563 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skyjo.PartieEnCours"
-             Title="PartieEnCours"
-             Background="LightBlue">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Skyjo.GamePage"
+    Shell.NavBarIsVisible="False">
 
-    <Grid
-        ColumnDefinitions="*"
-            RowDefinitions="*"
-            ColumnSpacing="5"
-            RowSpacing="5">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1a0a2e" Offset="0"/>
+            <GradientStop Color="#2d1050" Offset="0.5"/>
+            <GradientStop Color="#1a0a3e" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
+    <ContentPage.Resources>
+        <!-- Card value colors -->
+        <Color x:Key="CardNeg2Bg">#1a3a5c</Color>
+        <Color x:Key="CardNeg1Bg">#12503a</Color>
+        <Color x:Key="CardZeroBg">#3a2a5c</Color>
+        <Color x:Key="CardLowBg">#3d2a12</Color>
+        <Color x:Key="CardMidBg">#5c2a12</Color>
+        <Color x:Key="CardHighBg">#5c1212</Color>
+        <Color x:Key="CardHiddenBg">#2d1255</Color>
 
-        <Grid ColumnDefinitions="90,90,90,90"
-            RowDefinitions="130,130,130"
-            ColumnSpacing="5"
-            RowSpacing="5">
+        <Color x:Key="CardNeg2Text">#85b7eb</Color>
+        <Color x:Key="CardNeg1Text">#5dcaa5</Color>
+        <Color x:Key="CardZeroText">#afa9ec</Color>
+        <Color x:Key="CardLowText">#ef9f27</Color>
+        <Color x:Key="CardMidText">#f09575</Color>
+        <Color x:Key="CardHighText">#f09595</Color>
 
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="1"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="0" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="3"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="0"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="3"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="3"
-                />
+        <Color x:Key="Teal">#44cc99</Color>
+        <Color x:Key="TealFaint">#1a44cc99</Color>
+        <Color x:Key="Purple">#9b59b6</Color>
+        <Color x:Key="PurpleLight">#c39bd3</Color>
+        <Color x:Key="PurpleFaint">#2d9b59b6</Color>
+        <Color x:Key="Muted">#88c39bd3</Color>
+
+        <!-- Reusable styles -->
+        <Style x:Key="SectionLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource Muted}"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="CharacterSpacing" Value="2"/>
+        </Style>
+
+        <Style x:Key="NavLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource Muted}"/>
+            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- ========== HEADER ========== -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="44,*,Auto"
+            Padding="20,52,20,12">
+
+            <!-- Back button -->
+            <Border
+                WidthRequest="36" HeightRequest="36"
+                StrokeThickness="1" Stroke="#44c39bd3"
+                HorizontalOptions="Start" VerticalOptions="Center">
+                <Border.Background>
+                    <SolidColorBrush Color="#2d9b59b6"/>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Label
+                    Text="‹"
+                    TextColor="{StaticResource PurpleLight}"
+                    FontSize="22" FontAttributes="Bold"
+                    HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+
+            <Label
+                Grid.Column="1"
+                Text="PARTIE EN COURS"
+                TextColor="{StaticResource Muted}"
+                FontSize="12" FontAttributes="Bold"
+                CharacterSpacing="2"
+                HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!-- Round badge -->
+            <Border
+                Grid.Column="2"
+                StrokeThickness="1" Stroke="#669b59b6"
+                VerticalOptions="Center">
+                <Border.Background>
+                    <SolidColorBrush Color="#2d9b59b6"/>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+                <Label
+                    Text="Manche 2"
+                    TextColor="{StaticResource PurpleLight}"
+                    FontSize="11" FontAttributes="Bold"
+                    Padding="12,4"/>
+            </Border>
         </Grid>
-        <Grid ColumnDefinitions="130,130,130,130"
-            RowDefinitions="160,160,160"
-            ColumnSpacing="5"
-            RowSpacing="5"
-            VerticalOptions="End">
 
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="0" Grid.Column="3"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="0"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="3"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="0"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="3"
-                />
-        </Grid>
-        <Grid ColumnDefinitions="90,90,90,90"
-            RowDefinitions="130,130,130"
-            ColumnSpacing="5"
-            RowSpacing="5"
-            HorizontalOptions="End">
+        <!-- ========== SCROLLABLE CONTENT ========== -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,0,16,16" Spacing="0">
 
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="3"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="3"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="0"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="1"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="3"
-                />
-        </Grid>
-        <Grid ColumnDefinitions="90,90,90,90"
-            RowDefinitions="130,130,130"
-            ColumnSpacing="5"
-            RowSpacing="5"
-            HorizontalOptions="End"
-            VerticalOptions="End">
+                <!-- OPPONENTS -->
+                <Label Text="ADVERSAIRES" Style="{StaticResource SectionLabel}" Margin="0,0,0,10"/>
 
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="1"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="0" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="0" Grid.Column="3"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="0"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="1" Grid.Column="1"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="2"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="1" Grid.Column="3"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="0"
-                />
-            <Image
-                Source="carte_skyjo_0.jpg"
-                Grid.Row="2" Grid.Column="1"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="2"
-                />
-            <Image
-                Source="carte_dos.jpg"
-                Grid.Row="2" Grid.Column="3"
-                />
-        </Grid>
-        <Grid ColumnDefinitions="*,*"
-            RowDefinitions="200"
-            ColumnSpacing="5"
-            RowSpacing="5"
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10" Margin="0,0,0,18">
 
-            <Image
-        Source="carte_dos.jpg"
-        Grid.Row="0" Grid.Column="0"
-        />
-            <Image
-        Source="carte_skyjo_2.jpg"
-        Grid.Row="0" Grid.Column="1"
-        />
-        </Grid>
-        <Grid ColumnDefinitions="400"
-            RowDefinitions="50"
-            ColumnSpacing="5"
-            RowSpacing="5"
-            HorizontalOptions="Center"
-            VerticalOptions="Start">
+                    <!-- Opponent 1 : Lucas -->
+                    <Border
+                        Grid.Column="0"
+                        StrokeThickness="1" Stroke="#33c39bd3" Padding="10">
+                        <Border.Background>
+                            <SolidColorBrush Color="#3d2d1050"/>
+                        </Border.Background>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                            <Border WidthRequest="32" HeightRequest="32" StrokeThickness="0" HorizontalOptions="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
+                                <Label Text="LU" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="Lucas" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <!-- Mini card grid 4x3 -->
+                            <Grid ColumnDefinitions="14,14,14,14" RowDefinitions="18,18,18" ColumnSpacing="2" RowSpacing="2" HorizontalOptions="Center">
+                                <BoxView Grid.Row="0" Grid.Column="0" Color="{StaticResource CardNeg2Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="2" Color="{StaticResource CardNeg1Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="3" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="1" Color="{StaticResource CardLowBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="3" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="0" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="1" Color="{StaticResource CardHighBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="3" Color="{StaticResource CardZeroBg}" CornerRadius="2"/>
+                            </Grid>
+                            <Label Text="14" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="pts manche" TextColor="{StaticResource Muted}" FontSize="9" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
 
-            <Button Text="Quitter">
+                    <!-- Opponent 2 : Marie -->
+                    <Border
+                        Grid.Column="1"
+                        StrokeThickness="1" Stroke="#33c39bd3" Padding="10">
+                        <Border.Background>
+                            <SolidColorBrush Color="#3d2d1050"/>
+                        </Border.Background>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                            <Border WidthRequest="32" HeightRequest="32" StrokeThickness="0" HorizontalOptions="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
+                                <Label Text="MA" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="Marie" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Grid ColumnDefinitions="14,14,14,14" RowDefinitions="18,18,18" ColumnSpacing="2" RowSpacing="2" HorizontalOptions="Center">
+                                <BoxView Grid.Row="0" Grid.Column="0" Color="{StaticResource CardNeg1Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="3" Color="{StaticResource CardLowBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="1" Color="{StaticResource CardNeg1Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="3" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="0" Color="{StaticResource CardMidBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="3" Color="{StaticResource CardNeg2Bg}" CornerRadius="2"/>
+                            </Grid>
+                            <Label Text="8" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="pts manche" TextColor="{StaticResource Muted}" FontSize="9" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
 
-            </Button>
-        </Grid>
+                    <!-- Opponent 3 : Thomas -->
+                    <Border
+                        Grid.Column="2"
+                        StrokeThickness="1" Stroke="#33c39bd3" Padding="10">
+                        <Border.Background>
+                            <SolidColorBrush Color="#3d2d1050"/>
+                        </Border.Background>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                            <Border WidthRequest="32" HeightRequest="32" StrokeThickness="0" HorizontalOptions="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
+                                <Label Text="TH" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Text="Thomas" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Grid ColumnDefinitions="14,14,14,14" RowDefinitions="18,18,18" ColumnSpacing="2" RowSpacing="2" HorizontalOptions="Center">
+                                <BoxView Grid.Row="0" Grid.Column="0" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="1" Color="{StaticResource CardHighBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="0" Grid.Column="3" Color="{StaticResource CardNeg2Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="0" Color="{StaticResource CardNeg1Bg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="1" Grid.Column="3" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="0" Color="{StaticResource CardLowBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="2" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
+                                <BoxView Grid.Row="2" Grid.Column="3" Color="{StaticResource CardMidBg}" CornerRadius="2"/>
+                            </Grid>
+                            <Label Text="21" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="pts manche" TextColor="{StaticResource Muted}" FontSize="9" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- DIVIDER -->
+                <BoxView HeightRequest="1" Margin="0,0,0,18">
+                    <BoxView.Color>
+                        <Color>#33c39bd3</Color>
+                    </BoxView.Color>
+                </BoxView>
+
+                <!-- PIOCHE / DÉFAUSSE -->
+                <Grid ColumnDefinitions="*,40,*" Margin="0,0,0,16">
+
+                    <!-- Pioche -->
+                    <VerticalStackLayout Grid.Column="0" Spacing="8" HorizontalOptions="Center">
+                        <Border
+                            WidthRequest="70" HeightRequest="96"
+                            StrokeThickness="2" Stroke="#669b59b6"
+                            HorizontalOptions="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#2d1255" Offset="0"/>
+                                    <GradientStop Color="#4a1b7a" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                            <Label
+                                Text="?"
+                                TextColor="#66c39bd3"
+                                FontSize="32" FontAttributes="Bold"
+                                HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <Label Text="PIOCHE" Style="{StaticResource SectionLabel}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+
+                    <!-- OU -->
+                    <Border
+                        Grid.Column="1"
+                        WidthRequest="30" HeightRequest="30"
+                        StrokeThickness="1" Stroke="#33c39bd3"
+                        VerticalOptions="Center" HorizontalOptions="Center">
+                        <Border.Background>
+                            <SolidColorBrush Color="#2d9b59b6"/>
+                        </Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="15"/></Border.StrokeShape>
+                        <Label
+                            Text="ou"
+                            TextColor="{StaticResource Muted}"
+                            FontSize="9" FontAttributes="Bold"
+                            HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- Défausse -->
+                    <VerticalStackLayout Grid.Column="2" Spacing="8" HorizontalOptions="Center">
+                        <Border
+                            WidthRequest="70" HeightRequest="96"
+                            StrokeThickness="2.5" Stroke="#8844cc99"
+                            HorizontalOptions="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#0a3d2e" Offset="0"/>
+                                    <GradientStop Color="#0d5c40" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                                <Label
+                                    x:Name="DiscardValueLabel"
+                                    Text="7"
+                                    TextColor="{StaticResource Teal}"
+                                    FontSize="30" FontAttributes="Bold"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    Text="DÉFAUSSE"
+                                    TextColor="#6644cc99"
+                                    FontSize="8" FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+                        <Label Text="DÉFAUSSE" Style="{StaticResource SectionLabel}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- ACTION BUTTONS -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,0,0,20">
+                    <Border Grid.Column="0" StrokeThickness="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#9b59b6" Offset="0"/>
+                                <GradientStop Color="#c39bd3" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
+                        <Button
+                            Text="Piocher"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            FontAttributes="Bold" FontSize="12"
+                            Padding="0,10"
+                            Clicked="OnDrawCardClicked"/>
+                    </Border>
+                    <Border Grid.Column="1" StrokeThickness="1.5" Stroke="#669b59b6">
+                        <Border.Background><SolidColorBrush Color="Transparent"/></Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
+                        <Button
+                            Text="Défausse"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource PurpleLight}"
+                            FontAttributes="Bold" FontSize="12"
+                            Padding="0,10"
+                            Clicked="OnTakeDiscardClicked"/>
+                    </Border>
+                    <Border Grid.Column="2" StrokeThickness="1.5" Stroke="#6644cc99">
+                        <Border.Background><SolidColorBrush Color="Transparent"/></Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
+                        <Button
+                            Text="Scores"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource Teal}"
+                            FontAttributes="Bold" FontSize="12"
+                            Padding="0,10"
+                            Clicked="OnShowScoresClicked"/>
+                    </Border>
+                </Grid>
+
+                <!-- ========== PLAYER AREA ========== -->
+                <Border
+                    StrokeThickness="1.5" Stroke="#5544cc99"
+                    Padding="16,20,16,16">
+                    <Border.Background>
+                        <SolidColorBrush Color="#CC1a0a3e"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="24"/>
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- Player header -->
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Border
+                                WidthRequest="42" HeightRequest="42"
+                                StrokeThickness="0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#44cc99" Offset="0"/>
+                                        <GradientStop Color="#22aa77" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="21"/></Border.StrokeShape>
+                                <Label Text="Toi" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="12,0,0,0" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Toi" TextColor="White" FontSize="15" FontAttributes="Bold"/>
+                                <Label
+                                    x:Name="PlayerStatusLabel"
+                                    Text="En attente d'une carte"
+                                    TextColor="#AA44cc99"
+                                    FontSize="11"/>
+                            </VerticalStackLayout>
+
+                            <!-- Score box -->
+                            <Border
+                                Grid.Column="2"
+                                StrokeThickness="1" Stroke="#5544cc99"
+                                Padding="14,8">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#2044cc99"/>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <VerticalStackLayout HorizontalOptions="Center">
+                                    <Label
+                                        x:Name="PlayerScoreLabel"
+                                        Text="12"
+                                        TextColor="{StaticResource Teal}"
+                                        FontSize="24" FontAttributes="Bold"
+                                        HorizontalOptions="Center"/>
+                                    <Label
+                                        Text="PTS"
+                                        TextColor="#6644cc99"
+                                        FontSize="9" FontAttributes="Bold"
+                                        CharacterSpacing="1"
+                                        HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <!-- "Ton tour" badge -->
+                        <Border
+                            StrokeThickness="0"
+                            HorizontalOptions="Center">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44cc99" Offset="0"/>
+                                    <GradientStop Color="#22aa77" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
+                            <Label
+                                Text="✦  Ton tour"
+                                TextColor="White"
+                                FontSize="11" FontAttributes="Bold"
+                                Padding="16,5"/>
+                        </Border>
+
+                        <!-- Player card grid 4x3 -->
+                        <Grid
+                            ColumnDefinitions="*,*,*,*"
+                            RowDefinitions="72,72,72"
+                            ColumnSpacing="8" RowSpacing="8">
+
+                            <!-- Row 0 -->
+                            <Border Grid.Row="0" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CardNeg1Bg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardNeg1Bg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="-1" TextColor="{StaticResource CardNeg1Text}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CardLowBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardLowBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="3" TextColor="{StaticResource CardLowText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="2" StrokeThickness="2" Stroke="{StaticResource CardNeg2Bg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardNeg2Bg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="-2" TextColor="{StaticResource CardNeg2Text}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="0" Grid.Column="3" StrokeThickness="2" Stroke="{StaticResource CardHighBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardHighBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="8" TextColor="{StaticResource CardHighText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Row 1 -->
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CardZeroBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardZeroBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="0" TextColor="{StaticResource CardZeroText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CardMidBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardMidBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="6" TextColor="{StaticResource CardMidText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <!-- Hidden card -->
+                            <Border Grid.Row="1" Grid.Column="2" StrokeThickness="2" Stroke="#669b59b6" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardHiddenBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="?" TextColor="#44c39bd3" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="3" StrokeThickness="2" Stroke="{StaticResource CardHighBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardHighBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="11" TextColor="{StaticResource CardHighText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Row 2 -->
+                            <Border Grid.Row="2" Grid.Column="0" StrokeThickness="2" Stroke="{StaticResource CardNeg2Bg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardNeg2Bg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="-2" TextColor="{StaticResource CardNeg2Text}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="1" StrokeThickness="2" Stroke="{StaticResource CardLowBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardLowBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="4" TextColor="{StaticResource CardLowText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <!-- Hidden card -->
+                            <Border Grid.Row="2" Grid.Column="2" StrokeThickness="2" Stroke="#669b59b6" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardHiddenBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="?" TextColor="#44c39bd3" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="3" StrokeThickness="2" Stroke="{StaticResource CardLowBg}" Padding="0">
+                                <Border.Background><SolidColorBrush Color="{StaticResource CardLowBg}"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="1" TextColor="{StaticResource CardLowText}" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ========== BOTTOM NAV ========== -->
+        <Border
+            Grid.Row="2"
+            StrokeThickness="0"
+            StrokeShape="Rectangle">
+            <Border.Background>
+                <SolidColorBrush Color="#EE1a0a2e"/>
+            </Border.Background>
+            <Grid
+                ColumnDefinitions="*,*,*"
+                Padding="0,10,0,28"
+                x:Name="BottomNav">
+                <Border.Stroke>
+                    <SolidColorBrush Color="#339b59b6"/>
+                </Border.Stroke>
+
+                <!-- Jeu -->
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="3">
+                    <Label Text="🃏" FontSize="20" HorizontalOptions="Center"/>
+                    <Label Text="JEU" TextColor="{StaticResource Teal}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Scores -->
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="3">
+                    <Label Text="🏆" FontSize="20" HorizontalOptions="Center"/>
+                    <Label Text="SCORES" Style="{StaticResource NavLabel}" FontSize="9" CharacterSpacing="1"/>
+                </VerticalStackLayout>
+
+                <!-- Règles -->
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="3">
+                    <Label Text="📖" FontSize="20" HorizontalOptions="Center"/>
+                    <Label Text="RÈGLES" Style="{StaticResource NavLabel}" FontSize="9" CharacterSpacing="1"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
     </Grid>
-
 </ContentPage>
