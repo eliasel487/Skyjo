@@ -1,10 +1,11 @@
-﻿namespace Skyjo
+﻿using Microsoft.Maui.Controls;
+
+namespace Skyjo;
+
+public partial class RulesPage : ContentPage
 {
-    public partial class RulePage : ContentPage
+    public RulesPage()
     {
-        public RulePage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

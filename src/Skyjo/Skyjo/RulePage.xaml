@@ -1,78 +1,514 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skyjo.RulePage">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Skyjo.RulesPage"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1a0a2e" Offset="0"/>
+            <GradientStop Color="#2d1050" Offset="0.5"/>
+            <GradientStop Color="#1a0a3e" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ContentPage.Resources>
-        <Style x:Key="Titles" TargetType="Label">
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="TextColor" Value="DarkViolet"/>
+        <Color x:Key="Teal">#44cc99</Color>
+        <Color x:Key="Purple">#9b59b6</Color>
+        <Color x:Key="PurpleLight">#c39bd3</Color>
+        <Color x:Key="Muted">#88c39bd3</Color>
+        <Color x:Key="CardBack">#2d1255</Color>
+
+        <Style x:Key="SectionLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="#88c39bd3"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="CharacterSpacing" Value="2"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
         </Style>
-        <Style x:Key="Content" TargetType="Label">
-            <Setter Property="Padding" Value="20, 10, 0, 15"/>
-            <Setter Property="TextColor" Value="MediumPurple"/>
+
+        <Style x:Key="RuleCardBorder" TargetType="Border">
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="Stroke" Value="#33c39bd3"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="18"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#CC1a0a3e"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RuleTitle" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="RuleSub" TargetType="Label">
+            <Setter Property="TextColor" Value="#88c39bd3"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="RuleBody" TargetType="Label">
+            <Setter Property="TextColor" Value="#CCc39bd3"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.6"/>
         </Style>
     </ContentPage.Resources>
 
-    <ScrollView>
-        <VerticalStackLayout Margin="5">
-            <Label Style="{StaticResource Titles}"
-                   FontSize="25" 
-                   TextDecorations="Underline" 
-                   TextTransform="None"
-                   FontAttributes="Bold">
-                Règles :
-            </Label>
-                <VerticalStackLayout Padding="20,10,0,0">
-                    <Label Style="{StaticResource Titles}">
-                    Le but du jeu :
-                </Label>
-                <Label Style="{StaticResource Content}">
-                        Dans Skyjo, le but est simple : avoir le moins de points possible à la fin de la partie.
-                    </Label>
-                <Label Style="{StaticResource Titles}">
-                    Mise en place :
-                </Label>
-                <Label Style="{StaticResource Content}">
-                    - Mélangez bien toutes les cartes.
-- Distribuez 12 cartes face cachée à chaque joueur, disposées en trois lignes de quatre.
-- Placez la pioche au centre et retournez la première carte pour créer la défausse.
-- Chaque joueur retourne deux cartes de son choix sur son plateau
-- Le premier joueur est celui qui a le plus petit score sur l'addition des deux cartes retournées
-                </Label>
-                <Label Style="{StaticResource Titles}">
-                    Déroulement du jeu :
-                </Label>
-                <Label Style="{StaticResource Content}">
-                    À chaque tour, un joueur choisit entre deux actions :
-     - Prendre la carte visible de la défausse et remplacer l’une de ses cartes.
-     - Piocher une carte face cachée : s’il la garde, il remplace une de ses cartes ; s’il la refuse, il la défausse et retourne une carte cachée.
-Si vous obtenez trois cartes identiques dans une même colonne, vous pouvez retirer toute la colonne de votre jeu.
-                </Label>
-                <Label Style="{StaticResource Titles}">
-                Objectif
-            </Label>
-                <Label Style="{StaticResource Content}">
-                Révélez progressivement toutes vos cartes tout en gardant la plus petite somme possible.
-                </Label>
-                <Label Style="{StaticResource Titles}">
-                    Fin de manche
-                </Label>
-                <Label Style="{StaticResource Content}">
-                    Quand un joueur a toutes ses cartes visibles, les autres jouent encore un dernier tour.
-Ensuite, tout le monde additionne ses points : le joueur au score le plus faible remporte la manche.
-Que faire en cas d’égalité ? 
-Si deux (ou plusieurs) joueurs ont le même total de points à la fin d’une manche, ils sont tous considérés comme vainqueurs de la manche. On inscrit simplement leurs scores respectifs sur la feuille de score, il n’y a pas de départage nécessaire à ce moment-là.
-            </Label>
-                <Label Style="{StaticResource Titles}">
-                Fin de partie
-            </Label>
-                <Label Style="{StaticResource Content}">
-La partie s’arrête lorsqu’un joueur atteint ou dépasse 100 points.
-C’est alors celui qui a le total le plus bas qui gagne.
-            </Label>
-        </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
+    <Grid RowDefinitions="Auto,*" >
 
+        <!-- ===== HEADER ===== -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="44,*,44"
+            Padding="16,52,16,0">
+
+            <Border
+                WidthRequest="36" HeightRequest="36"
+                StrokeThickness="1" Stroke="#33c39bd3"
+                HorizontalOptions="Start" VerticalOptions="Center">
+                <Border.Background><SolidColorBrush Color="#2d9b59b6"/></Border.Background>
+                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                <Label
+                    Text="‹" TextColor="{StaticResource PurpleLight}"
+                    FontSize="22" FontAttributes="Bold"
+                    HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+
+            <Label
+                Grid.Column="1"
+                Text="RÈGLES DU JEU"
+                TextColor="{StaticResource Muted}"
+                FontSize="11" FontAttributes="Bold"
+                CharacterSpacing="2"
+                HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+        <!-- ===== SCROLLABLE CONTENT ===== -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,16,16,40" Spacing="0">
+
+                <!-- HERO -->
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="8" Margin="0,0,0,24">
+                    <Border StrokeThickness="0" HorizontalOptions="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#9b59b6" Offset="0"/>
+                                <GradientStop Color="#c39bd3" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
+                        <Label
+                            Text="✦  SKYJO"
+                            TextColor="White" FontSize="11"
+                            FontAttributes="Bold" CharacterSpacing="2"
+                            Padding="16,5"/>
+                    </Border>
+                    <Label
+                        Text="Moins de points, tu gagnes !"
+                        TextColor="White" FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"/>
+                    <Label
+                        Text="Le jeu de cartes qui fait tout basculer"
+                        TextColor="{StaticResource Muted}"
+                        FontSize="13" FontAttributes="Bold"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- INFO STRIP -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,0,0,20">
+                    <Border Grid.Column="0" StrokeThickness="1" Stroke="#22c39bd3" Padding="10">
+                        <Border.Background><SolidColorBrush Color="#552d1050"/></Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="14"/></Border.StrokeShape>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
+                            <Label Text="2–8" TextColor="{StaticResource Teal}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Joueurs" TextColor="{StaticResource Muted}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" StrokeThickness="1" Stroke="#22c39bd3" Padding="10">
+                        <Border.Background><SolidColorBrush Color="#552d1050"/></Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="14"/></Border.StrokeShape>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
+                            <Label Text="12" TextColor="{StaticResource Teal}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Cartes chacun" TextColor="{StaticResource Muted}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2" StrokeThickness="1" Stroke="#22c39bd3" Padding="10">
+                        <Border.Background><SolidColorBrush Color="#552d1050"/></Border.Background>
+                        <Border.StrokeShape><RoundRectangle CornerRadius="14"/></Border.StrokeShape>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
+                            <Label Text="100" TextColor="{StaticResource Teal}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="Pts limite" TextColor="{StaticResource Muted}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- DIVIDER -->
+                <BoxView HeightRequest="1" Color="#33c39bd3" Margin="0,0,0,18"/>
+
+                <!-- ===== MISE EN PLACE ===== -->
+                <Label Text="MISE EN PLACE" Style="{StaticResource SectionLabel}"/>
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="38,*">
+                            <Border WidthRequest="34" HeightRequest="34" StrokeThickness="1" Stroke="#669b59b6">
+                                <Border.Background><SolidColorBrush Color="#2d9b59b6"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Label Text="🃏" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Distribution" Style="{StaticResource RuleTitle}"/>
+                                <Label Text="Début de partie" Style="{StaticResource RuleSub}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Label Style="{StaticResource RuleBody}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Chaque joueur reçoit "/>
+                                    <Span Text="12 cartes" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=" disposées en grille "/>
+                                    <Span Text="4×3" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=", toutes face cachée. Chacun retourne "/>
+                                    <Span Text="2 cartes" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=" de son choix. Le reste forme la "/>
+                                    <Span Text="pioche" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=". La première carte est posée sur la "/>
+                                    <Span Text="défausse" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text="."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ===== TOUR DE JEU ===== -->
+                <Label Text="DÉROULEMENT D'UN TOUR" Style="{StaticResource SectionLabel}" Margin="0,8,0,10"/>
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="38,*">
+                            <Border WidthRequest="34" HeightRequest="34" StrokeThickness="1" Stroke="#6644cc99">
+                                <Border.Background><SolidColorBrush Color="#2244cc99"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Label Text="🔄" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Ton tour" Style="{StaticResource RuleTitle}"/>
+                                <Label Text="3 options possibles" Style="{StaticResource RuleSub}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Step 1 -->
+                        <Grid ColumnDefinitions="28,*" ColumnSpacing="10">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" VerticalOptions="Start" Margin="0,1,0,0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="1" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Grid.Column="1" Style="{StaticResource RuleBody}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Piocher" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text=" la carte du dessus — tu peux l'"/>
+                                        <Span Text="échanger" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text=" avec une de tes cartes ou la "/>
+                                        <Span Text="défausser" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text="."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <!-- Step 2 -->
+                        <Grid ColumnDefinitions="28,*" ColumnSpacing="10">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" VerticalOptions="Start" Margin="0,1,0,0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="2" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Grid.Column="1" Style="{StaticResource RuleBody}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Si tu défausses" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text=" la carte piochée, tu dois "/>
+                                        <Span Text="retourner" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text=" une de tes cartes encore cachées."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        <!-- Step 3 -->
+                        <Grid ColumnDefinitions="28,*" ColumnSpacing="10">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" VerticalOptions="Start" Margin="0,1,0,0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#9b59b6" Offset="0"/>
+                                        <GradientStop Color="#c39bd3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="12"/></Border.StrokeShape>
+                                <Label Text="3" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Label Grid.Column="1" Style="{StaticResource RuleBody}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Tu peux aussi prendre "/>
+                                        <Span Text="directement la défausse" TextColor="White" FontAttributes="Bold"/>
+                                        <Span Text=" pour l'échanger avec une de tes cartes."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ===== COLONNES IDENTIQUES ===== -->
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="38,*">
+                            <Border WidthRequest="34" HeightRequest="34" StrokeThickness="1" Stroke="#66ef9f27">
+                                <Border.Background><SolidColorBrush Color="#22ef9f27"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Label Text="⭐" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Colonnes identiques" Style="{StaticResource RuleTitle}"/>
+                                <Label Text="Élimination de cartes" Style="{StaticResource RuleSub}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Label Style="{StaticResource RuleBody}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Si tu complètes une "/>
+                                    <Span Text="colonne de 3 cartes identiques" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=", ces cartes sont immédiatement "/>
+                                    <Span Text="retirées du jeu" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=" — elles ne comptent plus dans ton score. Stratégie clé !"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ===== FIN DE MANCHE ===== -->
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="38,*">
+                            <Border WidthRequest="34" HeightRequest="34" StrokeThickness="1" Stroke="#66e24b4a">
+                                <Border.Background><SolidColorBrush Color="#22e24b4a"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Label Text="🏁" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" Spacing="2">
+                                <Label Text="Fin de manche" Style="{StaticResource RuleTitle}"/>
+                                <Label Text="Déclenchement" Style="{StaticResource RuleSub}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Label Style="{StaticResource RuleBody}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Dès qu'un joueur "/>
+                                    <Span Text="retourne sa dernière carte cachée" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=", chaque autre joueur joue encore "/>
+                                    <Span Text="un dernier tour" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=". Puis tout le monde révèle ses cartes et additionne les valeurs.&#10;&#10;"/>
+                                    <Span Text="Attention ! " TextColor="#f09595" FontAttributes="Bold"/>
+                                    <Span Text="Si le joueur ayant déclenché la fin n'a "/>
+                                    <Span Text="pas le score le plus bas" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=", son score est "/>
+                                    <Span Text="doublé !" TextColor="#f09595" FontAttributes="Bold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- DIVIDER -->
+                <BoxView HeightRequest="1" Color="#33c39bd3" Margin="0,8,0,18"/>
+
+                <!-- ===== VALEUR DES CARTES ===== -->
+                <Label Text="VALEUR DES CARTES" Style="{StaticResource SectionLabel}"/>
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Guide des couleurs" TextColor="White" FontSize="13" FontAttributes="Bold" Margin="0,0,0,2"/>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="8">
+                            <!-- -2 -->
+                            <Border Grid.Row="0" Grid.Column="0" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#378add">
+                                        <Border.Background><SolidColorBrush Color="#1a3a5c"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="-2" TextColor="#85b7eb" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="-2" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="Très bon, rare" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                            <!-- -1 -->
+                            <Border Grid.Row="0" Grid.Column="1" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#1d9e75">
+                                        <Border.Background><SolidColorBrush Color="#12503a"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="-1" TextColor="#5dcaa5" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="-1" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="Bon à garder" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                            <!-- 0 -->
+                            <Border Grid.Row="1" Grid.Column="0" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#7f77dd">
+                                        <Border.Background><SolidColorBrush Color="#3a2a5c"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="0" TextColor="#afa9ec" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="0" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="Neutre" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                            <!-- 1-4 -->
+                            <Border Grid.Row="1" Grid.Column="1" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#ba7517">
+                                        <Border.Background><SolidColorBrush Color="#3d2a12"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="3" TextColor="#ef9f27" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="1 à 4" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="Acceptable" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                            <!-- 5-8 -->
+                            <Border Grid.Row="2" Grid.Column="0" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#d85a30">
+                                        <Border.Background><SolidColorBrush Color="#5c2a12"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="7" TextColor="#f09575" FontSize="13" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="5 à 8" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="À remplacer" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                            <!-- 9-12 -->
+                            <Border Grid.Row="2" Grid.Column="1" StrokeThickness="1" Stroke="#22c39bd3" Padding="8">
+                                <Border.Background><SolidColorBrush Color="#3d2d1050"/></Border.Background>
+                                <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                                <Grid ColumnDefinitions="38,*">
+                                    <Border WidthRequest="32" HeightRequest="40" StrokeThickness="1.5" Stroke="#e24b4a">
+                                        <Border.Background><SolidColorBrush Color="#5c1212"/></Border.Background>
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="7"/></Border.StrokeShape>
+                                        <Label Text="12" TextColor="#f09595" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Margin="8,0,0,0" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="9 à 12" TextColor="White" FontSize="13" FontAttributes="Bold"/>
+                                        <Label Text="Dangereux !" TextColor="{StaticResource Muted}" FontSize="10"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- DIVIDER -->
+                <BoxView HeightRequest="1" Color="#33c39bd3" Margin="0,8,0,18"/>
+
+                <!-- ===== FIN DE PARTIE ===== -->
+                <Label Text="FIN DE PARTIE &amp; SCORE" Style="{StaticResource SectionLabel}"/>
+                <Border Style="{StaticResource RuleCardBorder}">
+                    <VerticalStackLayout Spacing="0">
+                        <Label Margin="0,0,0,14" Style="{StaticResource RuleBody}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="On joue "/>
+                                    <Span Text="plusieurs manches" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=". Les scores s'accumulent. La partie se termine quand un joueur dépasse "/>
+                                    <Span Text="100 points" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=". Le joueur avec le "/>
+                                    <Span Text="moins de points" TextColor="White" FontAttributes="Bold"/>
+                                    <Span Text=" remporte la partie."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <!-- Score rows -->
+                        <BoxView HeightRequest="1" Color="#22c39bd3"/>
+                        <Grid ColumnDefinitions="*,Auto" Padding="0,10">
+                            <Label Text="Score doublé si tu déclenches la fin sans être le meilleur" TextColor="#CCc39bd3" FontSize="12"/>
+                            <Label Grid.Column="1" Text="×2" TextColor="{StaticResource Teal}" FontSize="12" FontAttributes="Bold"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#22c39bd3"/>
+                        <Grid ColumnDefinitions="*,Auto" Padding="0,10">
+                            <Label Text="Colonne de 3 identiques éliminée" TextColor="#CCc39bd3" FontSize="12"/>
+                            <Label Grid.Column="1" Text="0 pt" TextColor="{StaticResource Teal}" FontSize="12" FontAttributes="Bold"/>
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#22c39bd3"/>
+                        <Grid ColumnDefinitions="*,Auto" Padding="0,10,0,0">
+                            <Label Text="Partie terminée au dépassement de" TextColor="#CCc39bd3" FontSize="12"/>
+                            <Label Grid.Column="1" Text="100 pts" TextColor="{StaticResource Teal}" FontSize="12" FontAttributes="Bold"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- TIP BOX -->
+                <Border StrokeThickness="1" Stroke="#4444cc99" Padding="14,12" Margin="0,10,0,0">
+                    <Border.Background><SolidColorBrush Color="#1544cc99"/></Border.Background>
+                    <Border.StrokeShape><RoundRectangle CornerRadius="14"/></Border.StrokeShape>
+                    <Grid ColumnDefinitions="30,*">
+                        <Label Text="💡" FontSize="18" VerticalOptions="Start"/>
+                        <Label Grid.Column="1" Margin="8,0,0,0" TextColor="#CC44cc99" FontSize="12" LineHeight="1.6">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Conseil : " TextColor="#44cc99" FontAttributes="Bold"/>
+                                    <Span Text="retourne d'abord tes cartes les plus hautes pour les remplacer, et tente de former des colonnes identiques pour les éliminer !"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

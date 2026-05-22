@@ -8,7 +8,7 @@
             Routing.RegisterRoute(nameof(CreateGame), typeof(CreateGame));
             Routing.RegisterRoute(nameof(ContinueGame), typeof(ContinueGame));
             Routing.RegisterRoute(nameof(GamePage), typeof(GamePage));
-            Routing.RegisterRoute(nameof(RulePage), typeof(RulePage));
+            Routing.RegisterRoute(nameof(RulesPage), typeof(RulesPage));
         }
     }
 }
