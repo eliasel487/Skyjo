@@ -1,5 +1,5 @@
-﻿using Microsoft.UI.Xaml;
-
+﻿using Microsoft.Maui.Controls;
+using System;
 namespace Skyjo
 {
     public partial class MainPage : ContentPage
@@ -21,10 +21,10 @@ namespace Skyjo
 
         private async void OnRulesClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(RulePage));
+            await Shell.Current.GoToAsync(nameof(RulesPage));
         }
         
-        private void CloseAppClicked(object sender, RoutedEventArgs e)
+        private void CloseAppClicked(object sender, EventArgs e)
         {
             Application.Current?.Quit();
         }

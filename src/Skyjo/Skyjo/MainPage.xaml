@@ -94,7 +94,7 @@
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Clicked=""/>
+               Clicked="CloseAppClicked"/>  <!-- Error -->
             <Button
                 Grid.Column="1"
                 Text="Règles du jeu"

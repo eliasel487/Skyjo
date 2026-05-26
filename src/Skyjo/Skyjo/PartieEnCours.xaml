@@ -522,42 +522,5 @@
 
             </VerticalStackLayout>
         </ScrollView>
-
-        <!-- ========== BOTTOM NAV ========== -->
-        <Border
-            Grid.Row="2"
-            StrokeThickness="0"
-            StrokeShape="Rectangle">
-            <Border.Background>
-                <SolidColorBrush Color="#EE1a0a2e"/>
-            </Border.Background>
-            <Grid
-                ColumnDefinitions="*,*,*"
-                Padding="0,10,0,28"
-                x:Name="BottomNav">
-                <Border.Stroke>
-                    <SolidColorBrush Color="#339b59b6"/>
-                </Border.Stroke>
-
-                <!-- Jeu -->
-                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="3">
-                    <Label Text="🃏" FontSize="20" HorizontalOptions="Center"/>
-                    <Label Text="JEU" TextColor="{StaticResource Teal}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <!-- Scores -->
-                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="3">
-                    <Label Text="🏆" FontSize="20" HorizontalOptions="Center"/>
-                    <Label Text="SCORES" Style="{StaticResource NavLabel}" FontSize="9" CharacterSpacing="1"/>
-                </VerticalStackLayout>
-
-                <!-- Règles -->
-                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="3">
-                    <Label Text="📖" FontSize="20" HorizontalOptions="Center"/>
-                    <Label Text="RÈGLES" Style="{StaticResource NavLabel}" FontSize="9" CharacterSpacing="1"/>
-                </VerticalStackLayout>
-            </Grid>
-        </Border>
-
     </Grid>
 </ContentPage>

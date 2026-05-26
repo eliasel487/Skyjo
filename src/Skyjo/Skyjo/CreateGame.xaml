@@ -60,6 +60,7 @@
                             FontSize="20"
                             VerticalOptions="Center"/>
                         <Entry
+                            x:Name="PlayerEntry1"
                             Grid.Column="1"
                             Placeholder="Joueur 1"
                             PlaceholderColor="#55c39bd3"
@@ -68,12 +69,15 @@
                             FontSize="15"
                             FontAttributes="Bold"
                             Margin="12,0"/>
-                        <Label
+                        <Button
+                            x:Name="RemoveBtn1"
                             Grid.Column="2"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
-                            VerticalOptions="Center"/>
+                            BackgroundColor="Transparent"
+                            Clicked="OnRemovePlayerClicked"
+                            CommandParameter="1"/>
                     </Grid>
                 </Border>
 
@@ -91,6 +95,7 @@
                             FontSize="20"
                             VerticalOptions="Center"/>
                         <Entry
+                            x:Name="PlayerEntry2"
                             Grid.Column="1"
                             Placeholder="Joueur 2"
                             PlaceholderColor="#55c39bd3"
@@ -99,12 +104,86 @@
                             FontSize="15"
                             FontAttributes="Bold"
                             Margin="12,0"/>
-                        <Label
+                        <Button
+                            x:Name="RemoveBtn2"
                             Grid.Column="2"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
+                            BackgroundColor="Transparent"
+                            Clicked="OnRemovePlayerClicked"
+                            CommandParameter="2"/>
+                    </Grid>
+                </Border>
+
+                <!-- Entrées cachées initialement : joueur 3 et 4 -->
+                <Border StrokeThickness="1" Stroke="#33c39bd3" IsVisible="False" x:Name="PlayerRow3">
+                    <Border.Background>
+                        <SolidColorBrush Color="#22ffffff"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
+                        <Label
+                            Grid.Column="0"
+                            Text="👤"
+                            FontSize="20"
                             VerticalOptions="Center"/>
+                        <Entry
+                            x:Name="PlayerEntry3"
+                            Grid.Column="1"
+                            Placeholder="Joueur 3"
+                            PlaceholderColor="#55c39bd3"
+                            TextColor="#ffffff"
+                            BackgroundColor="Transparent"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Margin="12,0"/>
+                        <Button
+                            x:Name="RemoveBtn3"
+                            Grid.Column="2"
+                            Text="✕"
+                            TextColor="#55c39bd3"
+                            FontSize="16"
+                            BackgroundColor="Transparent"
+                            Clicked="OnRemovePlayerClicked"
+                            CommandParameter="3"/>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="1" Stroke="#33c39bd3" IsVisible="False" x:Name="PlayerRow4">
+                    <Border.Background>
+                        <SolidColorBrush Color="#22ffffff"/>
+                    </Border.Background>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
+                        <Label
+                            Grid.Column="0"
+                            Text="👤"
+                            FontSize="20"
+                            VerticalOptions="Center"/>
+                        <Entry
+                            x:Name="PlayerEntry4"
+                            Grid.Column="1"
+                            Placeholder="Joueur 4"
+                            PlaceholderColor="#55c39bd3"
+                            TextColor="#ffffff"
+                            BackgroundColor="Transparent"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Margin="12,0"/>
+                        <Button
+                            x:Name="RemoveBtn4"
+                            Grid.Column="2"
+                            Text="✕"
+                            TextColor="#55c39bd3"
+                            FontSize="16"
+                            BackgroundColor="Transparent"
+                            Clicked="OnRemovePlayerClicked"
+                            CommandParameter="4"/>
                     </Grid>
                 </Border>
 
@@ -116,13 +195,15 @@
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
                     <Button
+                        x:Name="AddPlayerButton"
                         Text="＋  Ajouter un joueur"
                         BackgroundColor="Transparent"
                         TextColor="#c39bd3"
                         FontAttributes="Bold"
                         FontSize="14"
                         Padding="0,12"
-                        BorderWidth="0"/>
+                        BorderWidth="0"
+                        Clicked="OnAddPlayerClicked"/>
                 </Border>
 
             </VerticalStackLayout>
@@ -139,6 +220,7 @@
                 <RoundRectangle CornerRadius="50"/>
             </Border.StrokeShape>
             <Button
+                x:Name="StartButton"
                 Text="Démarrer la partie"
                 BackgroundColor="Transparent"
                 TextColor="#ffffff"
@@ -147,7 +229,8 @@
                 Padding="0,18"
                 BorderWidth="0"
                 IsEnabled="False"
-                Opacity="0.4"/>
+                Opacity="0.4"
+                Clicked="OnStartClicked"/>
         </Border>
 
     </Grid>
