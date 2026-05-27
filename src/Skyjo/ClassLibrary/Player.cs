@@ -69,11 +69,12 @@ namespace ClassLibrary
         {
             if (choose == 0)
             {
+                c.FlipCard();
                 _board.ReplaceCard(y, x, c);
             }
             else
             {
-                _board.ReturnACard(y, x); //_board.ReturnACard(x, y) == false
+                _board.ReturnACard(y, x);
             }
         }
     }

@@ -13,6 +13,11 @@ namespace ClassLibrary
             _board = new Board(deck);
         }
 
+        public new Board GetBoard()
+        {
+            return _board;
+        }
+
         public void PlayRound(Deck d) //fait jouer un tour complet a l'IA
         {
             int choosePick = 0, x = 0, y = 0;
@@ -42,6 +47,7 @@ namespace ClassLibrary
 
         public void PlaceCardAuto(Card c)
         {
+            c.FlipCard();
             bool place = false;
             int x = 0, y = 0;
             while (place == false && y < 4) // cette boucle vas parcourir tout le tableau pour voir si il peut poser une carte dont le nombre est inférieur à celle retourner sur le plateau

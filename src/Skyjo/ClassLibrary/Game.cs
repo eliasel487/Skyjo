@@ -8,7 +8,7 @@ namespace ClassLibrary
     {
         public List<Player> Players { get; } = new();
         public List<IA> IAs { get; } = new();
-        public Deck Deck { get; } = new();
+        Deck _deck = new();
         bool RoundFinished = false;
         bool GameOver = false;
 
@@ -24,13 +24,18 @@ namespace ClassLibrary
 
         public Deck GetDeck()
         {
-            return Deck;
+            return _deck;
+        }
+
+        public void NewDeck()
+        {
+            _deck = new Deck();
         }
 
         public void AddPlayer(string nomJoueur)
         {
             Player p;
-            p = new Player(nomJoueur, Deck, 0, 0);
+            p = new Player(nomJoueur, _deck, 0, 0);
 
             if (Players.Count < 4)
             {
@@ -41,7 +46,7 @@ namespace ClassLibrary
         public void AddIA()
         {
             IA ia;
-            ia = new IA(0, Deck, 0);
+            ia = new IA(0, _deck, 0);
 
             if (IAs.Count < 4)
             {

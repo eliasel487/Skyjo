@@ -10,10 +10,10 @@ namespace TestClass
         [Fact]
         public void Card_CreateCard_GetNumber()
         {
-            //act
+            //arrange
             Card c = new Card(3);
 
-            //arrange
+            //act
             int res = c.GetNumber();
             bool flip = c.IsFlipped();
 
@@ -25,11 +25,11 @@ namespace TestClass
         [Fact]
         public void Card_CreateCardWrongNumber_GetNumber()
         {
-            //act
+            //arrange
             Card c1 = new Card(91);
             Card c2 = new Card(-5);
 
-            //arrange
+            //act
             int res1 = c1.GetNumber();
             bool flip1 = c1.IsFlipped();
             int res2 = c2.GetNumber();
@@ -45,11 +45,11 @@ namespace TestClass
         [Fact]
         public void Card_FlipACard_CardFlipped()
         {
-            //act
+            //arrange
             Card c = new Card(1);
             c.FlipCard();
 
-            //arrange
+            //act
             bool flip = c.IsFlipped();
 
             //assert

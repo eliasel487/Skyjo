@@ -10,7 +10,7 @@ namespace TestClass
         [Fact]
         public void Game_GetRoundFinishedAndGetGameOver()
         {
-            //act
+            //yup
             Game game = new Game();
 
             //arrange
@@ -25,7 +25,7 @@ namespace TestClass
         [Fact]
         public void Game_AddPlayerAndAddIA()
         {
-            //act
+            //yup
             Game game = new Game();
             game.AddPlayer("yipee");
             game.AddIA();
@@ -42,7 +42,7 @@ namespace TestClass
         [Fact]
         public void Game_AddPlayerAndAddIAOverClock()
         {
-            //act
+            //yup
             Game game1 = new Game();
             Game game2 = new Game();
             game1.AddPlayer("yipee1");
@@ -69,7 +69,7 @@ namespace TestClass
         [Fact]
         public void Game_RemovePlayerAndRemoveIA()
         {
-            //act
+            //yup
             Game game = new Game();
             game.AddPlayer("yipee1");
             game.AddPlayer("yipee2");
@@ -89,5 +89,18 @@ namespace TestClass
             Assert.Equal(0, nbIA);
         }
 
+        [Fact]
+        public void Game_NewDeck()
+        {
+            //yup
+            Game game = new Game();
+
+            //arrange
+            game.NewDeck();
+
+            //assert
+            Assert.Equal(0, game.GetDeck().NbCardDiscard());
+            Assert.Equal(151, game.GetDeck().NbCardPull());
+        }
     }
 }

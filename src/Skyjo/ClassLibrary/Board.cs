@@ -43,10 +43,7 @@ namespace ClassLibrary
         }
         public List<Column> GetColumns()
         {
-            //if (i > 0 && i < 5)
-            //    if (!_columns[i].IsRemovable())
             return _columns;
-            //throw new ArgumentOutOfRangeException();
         }
 
         public bool ReturnACard(int y, int x)
