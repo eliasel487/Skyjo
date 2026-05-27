@@ -4,6 +4,6 @@ namespace Skyjo
 {
     public static class GameSession
     {
-        public static Game? CurrentGame { get; set; }
+        public static Game? CurrentSession { get; set; }
     }
 }

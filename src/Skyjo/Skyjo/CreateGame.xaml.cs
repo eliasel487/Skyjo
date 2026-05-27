@@ -78,8 +78,9 @@ namespace Skyjo
                 return;
             }
 
-            GameSession.CurrentGame = game;
+            GameSession.CurrentSession = game;
             await Shell.Current.GoToAsync(nameof(GamePage));
+            
         }
 
         void UpdateUI()
