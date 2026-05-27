@@ -9,8 +9,8 @@ namespace ClassLibrary
         public List<Player> Players { get; } = new();
         public List<IA> IAs { get; } = new();
         public Deck Deck { get; } = new();
-        bool RoundFinished = false;
-        bool GameOver = false;
+        readonly bool RoundFinished = false;
+        readonly bool GameOver = false;
 
         public bool GetRoundFinished()
         {

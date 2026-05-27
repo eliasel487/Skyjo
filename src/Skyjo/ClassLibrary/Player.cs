@@ -10,7 +10,7 @@ namespace ClassLibrary
         public string _name { get; }
         public int _gameScore { get; }
         public int _roundScore { get ; }
-        private bool _IA;
+        private readonly bool _IA;
         Board _board;
 
 
@@ -47,7 +47,7 @@ namespace ClassLibrary
             _board = new Board(d);
         }
 
-        public Card PickACard(Deck d, int choose)
+        public static Card PickACard(Deck d, int choose)
         {
             return d.PickACard(choose);
         }

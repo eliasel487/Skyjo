@@ -9,7 +9,7 @@ namespace ClassLibrary
 {
     public class Board
     {
-        private List<Column> _columns = new();
+        private readonly List<Column> _columns = new();
 
         public Board(Deck deck)
         {
@@ -43,10 +43,7 @@ namespace ClassLibrary
         }
         public List<Column> GetColumns()
         {
-            //if (i > 0 && i < 5)
-            //    if (!_columns[i].IsRemovable())
             return _columns;
-            //throw new ArgumentOutOfRangeException();
         }
 
         public bool ReturnACard(int y, int x)

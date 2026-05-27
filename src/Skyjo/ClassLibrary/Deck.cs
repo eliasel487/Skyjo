@@ -6,8 +6,8 @@ namespace ClassLibrary
 {
     public class Deck
     {
-        List<Card> _pull = new();
-        List<Card> _discard = new();
+        readonly List<Card>  _pull = new();
+        readonly List<Card> _discard = new();
 
         public Deck()
         {
@@ -40,7 +40,7 @@ namespace ClassLibrary
                 _pull.RemoveAt(n);
                 return res;
             }
-            res = _discard.First();
+            res = _discard[0];
             _discard.RemoveAt(0);
             return res;
         }

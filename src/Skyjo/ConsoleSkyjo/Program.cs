@@ -11,20 +11,14 @@ int CreerJoueur()
     int nbJoueur;
     string nomJoueur;
     Console.WriteLine("Combien de joueur voulez vous créer ? (entre 1 et 4) : ");
-    //try
-    //{
-        nbJoueurStr = Console.ReadLine();
-    //} catch (System.Exception)
-    //{
-    //    Console.WriteLine("Vous n'avez rien mis, recommencez");
-    //    nbJoueurStr = "";
-    //}
-        while (nbJoueurStr != "1" && nbJoueurStr != "2" && nbJoueurStr != "3" && nbJoueurStr != "4")
+
+    nbJoueurStr = Console.ReadLine()!;
+    while (nbJoueurStr != "1" && nbJoueurStr != "2" && nbJoueurStr != "3" && nbJoueurStr != "4")
     {
         Console.WriteLine("Vous n'avez pas mis un chiffre entre 1 et 4, combien de joueur voulez vous créer ? (entre 1 et 4) : ");
         try
         {
-            nbJoueurStr = Console.ReadLine();
+            nbJoueurStr = Console.ReadLine()!;
         }
         catch (System.ArgumentNullException)
         {
@@ -36,7 +30,7 @@ int CreerJoueur()
     for (int i = 0; i < nbJoueur; i++)
     {
         Console.WriteLine("Insere le nom du joueur numero " + (i+1) + " : ");
-        nomJoueur = Console.ReadLine();
+        nomJoueur = Console.ReadLine()!;
         if (nomJoueur == "") nomJoueur = "Joueur " + (i+1);        
         game1.AddPlayer(nomJoueur);
     }
@@ -117,7 +111,7 @@ void PlayGame() // fait joueur une game
             game1.Players[i].NewBoard(game1.Deck);
         }
 
-        for (int i = 0; i < game1.Players.Count(); i++)
+        for (int i = 0; i < game1.Players.Count; i++)
         {
             if (game1.Players[i]._gameScore >= 100) GameOver = true;
         }
@@ -139,13 +133,12 @@ void JouerUneManche()
 
     while (!RoundFinished)
     {
-        if (cpt == game1.Players.Count() + game1.IAs.Count) cpt = 0;
+        if (cpt == game1.Players.Count + game1.IAs.Count) cpt = 0;
         AfficherLesPlateaux(game1.Players, game1.IAs);
         if (cpt < game1.Players.Count)
         {
             if (game1.Players[cpt].RoundOver())
             {
-                RoundFinished = true;
                 break;
             }
         }
@@ -153,7 +146,6 @@ void JouerUneManche()
         {
             if (game1.IAs[cpt - game1.Players.Count].RoundOver())
             {
-                RoundFinished = true;
                 break;
             }
         }
@@ -168,7 +160,7 @@ void JouerUneManche()
     cpt++;
     while (cpt != temp)
     {
-        if (cpt == game1.Players.Count() + game1.IAs.Count) cpt = 0;
+        if (cpt == game1.Players.Count + game1.IAs.Count) cpt = 0;
         if (cpt == temp) break;
         // le joueur joue à ce moment
         if (cpt < game1.Players.Count)
@@ -178,7 +170,7 @@ void JouerUneManche()
         cpt++;
     }
     // on retourne toutes les cartes à la fin d'une manche pour pouvoir voir ce que les autres avaient comme cartes
-    for (int i = 0; i < game1.Players.Count(); i++)
+    for (int i = 0; i < game1.Players.Count; i++)
     {
         for (int x = 0; x < 4; x++)
         {
@@ -188,7 +180,7 @@ void JouerUneManche()
             }
         }
     }
-    for (int i = 0; i < game1.IAs.Count(); i++)
+    for (int i = 0; i < game1.IAs.Count; i++)
     {
         for (int x = 0; x < 4; x++)
         {
@@ -207,29 +199,29 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
     string choose;
     int chooseInt, x, y;
     Console.WriteLine("Tour de '" + p._name + "' :");
-    if (game1.Deck.IsEmptyDiscard() == false && game1.Deck.IsEmptyPull() == false)
+    if (!game1.Deck.IsEmptyDiscard() && !game1.Deck.IsEmptyPull())
     {
         Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
-        choose = Console.ReadLine();
+        choose = Console.ReadLine()!;
         while (choose != "0" && choose != "1")
         {
             Console.WriteLine("Vous n'avez pas mis 0 ou 1, voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
-            choose = Console.ReadLine();
+            choose = Console.ReadLine()!;
         }
         chooseInt = Convert.ToInt32(choose);
     }
     else if (game1.Deck.IsEmptyDiscard()) chooseInt = 0;
     else chooseInt = 1;
-    Card c = p.PickACard(game1.Deck, chooseInt);
+    Card c = Player.PickACard(game1.Deck, chooseInt);
     c.FlipCard();
 
     Console.WriteLine("Voici la carte tirée : " + c.GetNumber());
     Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
-    choose = Console.ReadLine();
+    choose = Console.ReadLine()!;
     while (choose != "0" && choose != "1")
     {
         Console.WriteLine("Vous n'avez pas mis 0 ou 1, voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
-        choose = Console.ReadLine();
+        choose = Console.ReadLine()!;
     }
 
     chooseInt = Convert.ToInt32(choose);
@@ -302,8 +294,8 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
 {
     int j, k;
     Board b;
-    List<Column> columns = new();
-    List<Card> cards = new();
+    List<Column> columns;
+    List<Card> cards;
     Console.Clear();
     for (int i = 0; i < p.Count; i++)
     {
@@ -317,7 +309,7 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
             for (j = 0; j < 4; j++)
             {
                 cards = columns[j].GetCards();
-                if (cards[k].IsFlipped() == false)
+                if (!cards[k].IsFlipped())
                     Console.Write(" XX |");
                 else
                     if (cards[k].GetNumber() < 0 || cards[k].GetNumber() >= 10)
@@ -343,7 +335,7 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
             for (j = 0; j < 4; j++)
             {
                 cards = columns[j].GetCards();
-                if (cards[k].IsFlipped() == false)
+                if (!cards[k].IsFlipped())
                     Console.Write(" XX |");
                 else
                     if (cards[k].GetNumber() < 0 || cards[k].GetNumber() >= 10)

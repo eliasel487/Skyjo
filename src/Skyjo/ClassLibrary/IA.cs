@@ -6,7 +6,7 @@ namespace ClassLibrary
 {
     public class IA : Player // le but de cette IA, c'est qu'elle ne soit pas trop dur donc elle vas laisser le joueur finir en premier la manche
     {
-        Board _board;
+        readonly Board _board;
         public IA(int GameScore, Deck deck, int RoundScore) 
             : base(GameScore, deck, RoundScore)
         {
@@ -26,7 +26,7 @@ namespace ClassLibrary
                 {
                     List<Column> columns = _board.GetColumns();
                     List<Card> cards = columns[y].GetCards();
-                    if (cards[x].IsFlipped() == false)
+                    if (!cards[x].IsFlipped())
                     {
                         d.DiscardACard(c);
                         _board.ReturnACard(y, x);
@@ -35,7 +35,7 @@ namespace ClassLibrary
                     x++;
                     if (x >= 3) { y++; x = 0; }
                 }
-                if (replaced == false) PlaceCardAuto(c);
+                if (!replaced) PlaceCardAuto(c);
             }
             else PlaceCardAuto(c);
         }
@@ -49,7 +49,7 @@ namespace ClassLibrary
             {
                 List<Column> columns = _board.GetColumns();
                 List<Card> cards = columns[y].GetCards();
-                if (cards[x].IsFlipped() == true && cards[x].GetNumber() < c.GetNumber())
+                if (cards[x].IsFlipped() && cards[x].GetNumber() < c.GetNumber())
                 {
                     _board.ReplaceCard(y, x, c);
                     place = true;
@@ -57,7 +57,7 @@ namespace ClassLibrary
                 x++;
                 if (x >= 3) { y++; x = 0; }
             }
-            if (place == false) _board.ReplaceCard(0, 0, c);
+            if (!place) _board.ReplaceCard(0, 0, c);
         }
     }
 }

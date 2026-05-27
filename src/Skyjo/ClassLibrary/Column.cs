@@ -7,8 +7,8 @@ namespace ClassLibrary
 {
     public class Column
     {
-        private List<Card> _cards = new();
-        public bool _valued = true;
+        private readonly List<Card> _cards = new();
+        private bool _valued { get; set; } = true;
 
         public Column(Card card1, Card card2, Card card3)
         {
@@ -32,7 +32,7 @@ namespace ClassLibrary
 
         public bool IsRemovable()
         {
-            if (_cards[0].IsFlipped() == true && _cards[1].IsFlipped() == true && _cards[2].IsFlipped() == true)
+            if (_cards[0].IsFlipped() && _cards[1].IsFlipped() && _cards[2].IsFlipped())
                 return _cards[0].Number == _cards[1].Number && _cards[1].Number == _cards[2].Number;
             return false;
         }
