@@ -61,6 +61,7 @@
                             VerticalOptions="Center"/>
                         <Entry
                             x:Name="PlayerEntry1"
+                            Text=""
                             Grid.Column="1"
                             Placeholder="Joueur 1"
                             PlaceholderColor="#55c39bd3"
@@ -96,6 +97,7 @@
                             VerticalOptions="Center"/>
                         <Entry
                             x:Name="PlayerEntry2"
+                            Text=""
                             Grid.Column="1"
                             Placeholder="Joueur 2"
                             PlaceholderColor="#55c39bd3"
@@ -132,6 +134,7 @@
                             VerticalOptions="Center"/>
                         <Entry
                             x:Name="PlayerEntry3"
+                            Text=""
                             Grid.Column="1"
                             Placeholder="Joueur 3"
                             PlaceholderColor="#55c39bd3"
@@ -167,6 +170,7 @@
                             VerticalOptions="Center"/>
                         <Entry
                             x:Name="PlayerEntry4"
+                            Text=""
                             Grid.Column="1"
                             Placeholder="Joueur 4"
                             PlaceholderColor="#55c39bd3"
