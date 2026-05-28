@@ -35,12 +35,12 @@ namespace ClassLibrary
                     x++;
                     if (x >= 3) { y++; x = 0; }
                 }
-                if (!replaced) PlaceCardAuto(c);
+                if (!replaced) PlaceCardAuto(d, c);
             }
-            else PlaceCardAuto(c);
+            else PlaceCardAuto(d, c);
         }
 
-        public void PlaceCardAuto(Card c)
+        public void PlaceCardAuto(Deck deck, Card c)
         {
             bool place = false;
             int x = 0, y = 0;
@@ -51,13 +51,13 @@ namespace ClassLibrary
                 List<Card> cards = columns[y].GetCards();
                 if (cards[x].IsFlipped() && cards[x].GetNumber() < c.GetNumber())
                 {
-                    _board.ReplaceCard(y, x, c);
+                    _board.ReplaceCard(deck, y, x, c);
                     place = true;
                 }
                 x++;
                 if (x >= 3) { y++; x = 0; }
             }
-            if (!place) _board.ReplaceCard(0, 0, c);
+            if (!place) _board.ReplaceCard(deck, 0, 0, c);
         }
     }
 }

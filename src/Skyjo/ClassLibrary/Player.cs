@@ -62,14 +62,14 @@ namespace ClassLibrary
             int choosePick = 0, chooseCard = 0, x = 0, y = 0;
             Card c = PickACard(d, choosePick);
             c.FlipCard();
-            ActionCard(c, chooseCard, x, y);
+            ActionCard(d, c, chooseCard, x, y);
         }
 
-        public void ActionCard(Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
+        public void ActionCard(Deck deck, Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
         {
             if (choose == 0)
             {
-                _board.ReplaceCard(y, x, c);
+                _board.ReplaceCard(deck, y, x, c);
             }
             else
             {

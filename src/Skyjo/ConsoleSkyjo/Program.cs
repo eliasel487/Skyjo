@@ -287,7 +287,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
         }
         game1.Deck.DiscardACard(c);
     }
-    p.ActionCard(c, chooseInt, x, y);
+    p.ActionCard(game1.Deck, c, chooseInt, x, y);
 }
 
 void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de chaque joueur
@@ -349,4 +349,6 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
         }
         Console.WriteLine("---------------------\n");
     }
+
+    Console.WriteLine(game1.Deck.GetFirstCardDiscard() + "\n");
 }

@@ -18,13 +18,14 @@ namespace ClassLibrary
                 _columns.Add(new Column(deck.PickACard(0), deck.PickACard(0), deck.PickACard(0)));
             }
         }
-        public void ReplaceCard(int y, int x, Card t)
+        public void ReplaceCard(Deck deck, int y, int x, Card t)
         {
             if (y >= 0 && y < _columns.Count)
             {
                 List<Card> cards = _columns[y].GetCards();
                 if (x >= 0 && x < cards.Count)
                 {
+                    deck.DiscardACard(cards[x]);
                     cards[x] = t;
                 }
             }

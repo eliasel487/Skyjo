@@ -23,6 +23,13 @@ namespace ClassLibrary
         public int NbCardPull() { return _pull.Count; }
         public int NbCardDiscard() { return _discard.Count; }
 
+        public string GetFirstCardDiscard()
+        {
+            if (!IsEmptyDiscard())
+                return "La défausse contient : "+_discard.Last().Number.ToString();
+            else return "La défausse est vide";
+        }
+
         public void DiscardACard(Card card)
         {
             _discard.Add(card);
@@ -40,8 +47,8 @@ namespace ClassLibrary
                 _pull.RemoveAt(n);
                 return res;
             }
-            res = _discard[0];
-            _discard.RemoveAt(0);
+            res = _discard.Last();
+            _discard.RemoveAt(_discard.Count - 1);
             return res;
         }
 
