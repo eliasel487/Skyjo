@@ -67,14 +67,45 @@ namespace ClassLibrary
 
         public void ActionCard(Deck deck, Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
         {
-            if (choose == 0)
+            if (_board.GetColumns()[y].GetValued())
             {
-                _board.ReplaceCard(deck, y, x, c);
+                if (choose == 0)
+                {
+                    _board.ReplaceCard(deck, y, x, c);
+                }
+                else
+                {
+                    _board.ReturnACard(y, x); //_board.ReturnACard(x, y) == false
+                }
             }
-            else
+        }
+
+        public void RemoveColumn()
+        {
+            for (int i = 0; i < 4; i++)
             {
-                _board.ReturnACard(y, x); //_board.ReturnACard(x, y) == false
+                _board.GetColumns()[i].Remove();
             }
+        }
+
+        public int FlipTwoCard()
+        {
+            Random rnd = new Random();
+            int x1, y1, x2, y2, res = 0;
+            x1 = rnd.Next(0, 3);
+            x2 = rnd.Next(0, 3);
+            y1 = rnd.Next(0, 2);
+            y2 = rnd.Next(0, 2);
+            while (x1 == x2 && y1 == y2)
+            {
+                y2 = rnd.Next(0, 2);
+                x2 = rnd.Next(0, 3);
+            }
+            _board.GetColumns()[x1].GetCards()[y1].FlipCard();
+            _board.GetColumns()[x2].GetCards()[y2].FlipCard();
+            res += _board.GetColumns()[x1].GetCards()[y1].Number;
+            res += _board.GetColumns()[x2].GetCards()[y2].Number;
+            return res;
         }
     }
 }

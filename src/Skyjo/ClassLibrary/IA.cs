@@ -20,7 +20,7 @@ namespace ClassLibrary
 
             Card c = PickACard(d, choosePick);
             c.FlipCard();
-            if (c.GetNumber() > 7) // si la carte est supérieur à 7 il vas chercher à retourne une carte à la place, sinon il pose la carte
+            if (c.GetNumber() > 7) // si la carte est supérieur à 7 il va chercher à retourne une carte à la place, sinon il pose la carte
             {
                 while (y < 4 && replaced == false) // cette boucle vas parcourir tout le tableau pour voir si les cartes sont retournés, sinon il retourne la carte
                 {

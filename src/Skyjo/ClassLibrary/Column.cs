@@ -24,7 +24,7 @@ namespace ClassLibrary
 
         public void Remove()
         {
-            if (IsRemovable()) 
+            if (IsRemovable())
             {
                 _valued = false;
             }
