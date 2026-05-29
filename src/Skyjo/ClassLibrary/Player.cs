@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
+    [DataContract]
     public class Player
     {
-        public string _name { get; }
-        public int _gameScore { get; }
-        public int _roundScore { get ; }
+        [DataMember]
+        public string _name { get; set; }
+        [DataMember]
+        public int _gameScore { get; set; }
+        [DataMember]
+        public int _roundScore { get; set; }
         private readonly bool _IA;
         Board _board;
-
 
         public Player(string name, Deck deck, int GameScore, int RoundScore)
         {
