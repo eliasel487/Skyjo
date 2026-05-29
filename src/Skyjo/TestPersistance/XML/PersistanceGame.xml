@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Partie xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ClassLibrary">
+  <Joueurs>
+    <Player>
+      <_gameScore>0</_gameScore>
+      <_name>Elias</_name>
+      <_roundScore>0</_roundScore>
+    </Player>
+    <Player>
+      <_gameScore>0</_gameScore>
+      <_name>Bouzelouf</_name>
+      <_roundScore>0</_roundScore>
+    </Player>
+  </Joueurs>
+  <IAs>
+    <IA>
+      <_gameScore>0</_gameScore>
+      <_name>IA</_name>
+      <_roundScore>0</_roundScore>
+    </IA>
+  </IAs>
+  <Deck />
+  <Tour_x0020_fini>false</Tour_x0020_fini>
+</Partie>

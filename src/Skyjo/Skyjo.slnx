@@ -3,4 +3,5 @@
   <Project Path="ConsoleSkyjo/ConsoleSkyjo.csproj" />
   <Project Path="Skyjo/Skyjo.csproj" />
   <Project Path="TestClass/TestClass.csproj" />
+  <Project Path="TestPersistance/TestPersistance.csproj" Id="2d54a1fa-b14f-4184-98d5-d4d7b1b38b5e" />
 </Solution>

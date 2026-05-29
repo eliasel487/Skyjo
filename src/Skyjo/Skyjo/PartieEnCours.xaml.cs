@@ -11,7 +11,7 @@ public partial class GamePage : ContentPage
 
     //objectif : récupérer game qui est créer dans gameSession et qui est utiliser dans CreateGame, pour l'utiliser dans PartieEnCours
 
-    public GameSession CurrentSession => (ContentPage.current as GameSession).CurrentSession;
+    public Game CurrentSession => GameSession.CurrentSession;
 
 
 
