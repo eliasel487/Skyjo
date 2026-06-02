@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -74,6 +74,8 @@ namespace ClassLibrary
         {
             if (_board.GetColumns()[y].GetValued())
             {
+                c.FlipCard();
+                _board.ReplaceCard(y, x, c);
                 if (choose == 0)
                 {
                     _board.ReplaceCard(deck, y, x, c);
@@ -89,7 +91,11 @@ namespace ClassLibrary
         {
             for (int i = 0; i < 4; i++)
             {
+<<<<<<< src/Skyjo/ClassLibrary/Player.cs
+                _board.ReturnACard(y, x);
+=======
                 _board.GetColumns()[i].Remove();
+>>>>>>> src/Skyjo/ClassLibrary/Player.cs
             }
         }
 
