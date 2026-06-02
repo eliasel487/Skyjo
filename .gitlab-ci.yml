@@ -3,6 +3,15 @@ stages :
     - 🏗️build
     - 🧪tests
     - ☢️code-analysis
+    - 📦push
+    - 🚀deploy
+
+include:
+  - project: 'IUT_INF63/generic-ci'
+    ref: 'main'
+    file:
+      - 'build/.documentation-build.yml'
+      - 'deploy/.docker-deploy.yml'
 
 # Configuration des jobs
 
@@ -42,3 +51,30 @@ sonar_analysis:
   needs:
     - job: build
 
+build-doxygen-documentation:
+  extends: .build-documentation
+  stage: 🏗️build
+  variables:
+    DOXYGEN_FOLDER_PATH: Documentation/doxygen/
+    DOC_TYPE: DOXYGEN
+    DESTINATION_REGISTRY_IMAGE_NAME: codefirst.iut.uca.fr/iut_inf63/depotsetudiantsr2.02-03_2025-26/equipe_bert_rabany_tardy_el-mkademi
+    DESTINATION_REGISTRY_IMAGE_VERSION: main
+  needs:
+    - job: build
+
+push-doxygen-documentation:
+  extends: .push-documentation-image
+  stage: 📦push
+  needs:
+    - build-doxygen-documentation
+
+deploy-my-pod:
+  extends: .deploy-image
+  stage: 🚀deploy
+  variables:
+      CONTAINER_NAME: shoppingdoc
+      CONTAINER_IMAGE_PATH: codefirst.iut.uca.fr/iut_inf63/mchsamples/preparationamphis/doxygen:main
+      NAMESPACE_NAME: iut-inf63-mchsamples
+      NAMESPACE_TOKEN: $NAMESPACE_TOKEN
+  needs:
+    - push-doxygen-documentation

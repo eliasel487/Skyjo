@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ClassLibrary
 {
+    [DataContract (Name="Partie")]
     public class Game
     {
-        public List<Player> Players { get; } = new();
-        public List<IA> IAs { get; } = new();
-        Deck _deck = new();
-        bool RoundFinished = false;
-        bool GameOver = false;
+        [DataMember (Name ="Joueurs", Order = 0)]
+        public List<Player> Players { get; set;  } = new();
+        [DataMember(Name = "IAs", Order = 1)]
+        public List<IA> IAs { get; set; } = new();
+
+        [DataMember(Name = "Deck", Order = 2)]
+        public Deck Deck { get; set; } = new();
+        [DataMember(Name = "Tour fini", Order = 3)]
+        readonly bool RoundFinished = false;
+        readonly bool GameOver = false;
 
         public bool GetRoundFinished()
         {

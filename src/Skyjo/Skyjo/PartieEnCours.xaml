@@ -136,7 +136,7 @@
                                 <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
                                 <Label Text="LU" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
-                            <Label Text="Lucas" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label x:Name="player1" Text="Lucas" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <!-- Mini card grid 4x3 -->
                             <Grid ColumnDefinitions="14,14,14,14" RowDefinitions="18,18,18" ColumnSpacing="2" RowSpacing="2" HorizontalOptions="Center">
                                 <BoxView Grid.Row="0" Grid.Column="0" Color="{StaticResource CardNeg2Bg}" CornerRadius="2"/>
@@ -178,7 +178,7 @@
                                 <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
                                 <Label Text="MA" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
-                            <Label Text="Marie" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label x:Name="player2" Text="{Binding nomJoueurs[1]}" TextColor="{StaticResource PurpleLight}" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Grid ColumnDefinitions="14,14,14,14" RowDefinitions="18,18,18" ColumnSpacing="2" RowSpacing="2" HorizontalOptions="Center">
                                 <BoxView Grid.Row="0" Grid.Column="0" Color="{StaticResource CardNeg1Bg}" CornerRadius="2"/>
                                 <BoxView Grid.Row="0" Grid.Column="1" Color="{StaticResource CardHiddenBg}" CornerRadius="2"/>
