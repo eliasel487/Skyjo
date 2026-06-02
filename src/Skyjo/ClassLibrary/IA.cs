@@ -8,16 +8,9 @@ namespace ClassLibrary
     [DataContract]
     public class IA : Player // le but de cette IA, c'est qu'elle ne soit pas trop dur donc elle vas laisser le joueur finir en premier la manche
     {
-        readonly Board _board;
-        public IA(int GameScore, Deck deck, int RoundScore) 
+        public IA(int GameScore, Deck deck, int RoundScore)
             : base(GameScore, deck, RoundScore)
         {
-            _board = new Board(deck);
-        }
-
-        public new Board GetBoard()
-        {
-            return _board;
         }
 
         public void PlayRound(Deck d) //fait jouer un tour complet a l'IA
