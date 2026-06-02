@@ -49,6 +49,7 @@ namespace ClassLibrary
         public void NewBoard(Deck d)
         {
             _board = new Board(d);
+            this.CountGameScore();
         }
 
         public static Card PickACard(Deck d, int choose)
@@ -90,6 +91,31 @@ namespace ClassLibrary
             {
                 _board.GetColumns()[i].Remove();
             }
+        }
+
+        public void CountRoundScore()
+        {
+            Card card;
+            Column col;
+            _roundScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                col = _board.GetColumns()[i];
+                for (int j = 0; j < 3; j++)
+                {
+                    card = col.GetCards()[j];
+                    if (card.IsFlipped() && col.GetValued())
+                    {
+                        _roundScore += card.Number;
+                    }
+                }
+            }
+        }
+
+        public void CountGameScore()
+        {
+            _gameScore += _roundScore;
+            if (_gameScore < 0) _gameScore = 0;
         }
 
         public int FlipTwoCard()

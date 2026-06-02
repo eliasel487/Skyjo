@@ -144,7 +144,18 @@ void PlayGame() // fait joueur une game
         if (GameOver) break;
         JouerUneManche(idmin);
     }
+    
+    Console.Clear();
+    int idWinner = 0;
+    for (int i = 0;i < game1.Players.Count; i++)
+    {
+        Console.WriteLine("Score " + game1.Players[i]._name + " : " + game1.Players[i]._gameScore);
+        if (game1.Players[i]._gameScore > game1.Players[idWinner]._gameScore) idWinner = i;
+    }
+
+    Console.WriteLine("Le vainqueur est donc " + game1.Players[idWinner]._name);
 }
+
 void JouerUneManche(int idPremier)
 {
     int cpt = idPremier, temp;
@@ -153,6 +164,11 @@ void JouerUneManche(int idPremier)
     while (!RoundFinished)
     {
         Console.Clear();
+        for (int i = 0; i < game1.Players.Count; i++)
+        {
+            game1.Players[i].RemoveColumn();
+            game1.Players[i].CountRoundScore();
+        }
         if (cpt == game1.Players.Count + game1.IAs.Count) cpt = 0;
         AfficherLesPlateaux(game1.Players, game1.IAs);
         // le joueur joue à ce moment
@@ -181,6 +197,11 @@ void JouerUneManche(int idPremier)
     while (cpt != temp)
     {
         Console.Clear();
+        for (int i = 0; i < game1.Players.Count; i++)
+        {
+            game1.Players[i].RemoveColumn();
+            game1.Players[i].CountRoundScore();
+        }
         AfficherLesPlateaux(game1.Players, game1.IAs);
         if (cpt == game1.Players.Count + game1.IAs.Count) cpt = 0;
         if (cpt == temp) break;
@@ -213,14 +234,15 @@ void JouerUneManche(int idPremier)
         }
     }
 
+    Console.Clear();
     AfficherLesPlateaux(game1.Players, game1.IAs);
+    Console.Read();
 }
 
 void PlayPlayer(Player p) // fait jouer le tour du joueur
 {
     string choose;
     int chooseInt, x, y;
-    p.RemoveColumn();
     Console.WriteLine("Tour de '" + p._name + "' :");
     if (!game1.Deck.IsEmptyDiscard() && !game1.Deck.IsEmptyPull())
     {
@@ -352,7 +374,7 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
     {
         b = p[i].GetBoard();
         columns = b.GetColumns();
-        Console.WriteLine(p[i]._name + ":");
+        Console.WriteLine(p[i]._name + " (Game Score = " + p[i]._gameScore + ", Round Score = " + p[i]._roundScore +") :");
         for (k = 0; k < 3; k++)
         {
             Console.WriteLine("---------------------");
