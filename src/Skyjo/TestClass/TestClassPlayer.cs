@@ -63,12 +63,12 @@ namespace TestClass
             Player p = new Player("Jean", deck, 0, 0);
 
             //act
-            Card c1 = p.PickACard(deck, 0);
-            Card c2 = p.PickACard(deck, 0);
-            Card c3 = p.PickACard(deck, 0);
+            Card c1 = Player.PickACard(deck, 0);
+            Card c2 = Player.PickACard(deck, 0);
+            Card c3 = Player.PickACard(deck, 0);
             deck.DiscardACard(c1);
             deck.DiscardACard(c2);
-            Card c4 = p.PickACard(deck, 1);
+            Card c4 = Player.PickACard(deck, 1);
 
             //assert
             Assert.Equal(136, deck.NbCardPull());
@@ -117,8 +117,8 @@ namespace TestClass
             //arrange 
             Deck deck = new Deck();
             Player p = new Player("Jean", deck, 0, 0);
-            p.ActionCard(deck.PickACard(0), 0, 1, 2);
-            p.ActionCard(deck.PickACard(0), 1, 2, 2);
+            p.ActionCard(deck, deck.PickACard(0), 0, 1, 2);
+            p.ActionCard(deck, deck.PickACard(0), 1, 2, 2);
 
             //act
             Card c1 = p.GetBoard().GetColumns()[2].GetCards()[1];
