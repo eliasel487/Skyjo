@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skyjo.CreateGame">
@@ -46,33 +46,47 @@
                     CharacterSpacing="3"
                     Margin="0,0,0,4"/>
 
-                <Border StrokeThickness="1" Stroke="#33c39bd3">
+                <!-- Joueur 1 -->
+                <Border StrokeThickness="1" Stroke="#33c39bd3" x:Name="PlayerRow1">
                     <Border.Background>
                         <SolidColorBrush Color="#22ffffff"/>
                     </Border.Background>
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
-                        <Label
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto" Padding="16,14">
+                        <Button
+                            x:Name="ToggleBtn1"
                             Grid.Column="0"
                             Text="👤"
                             FontSize="20"
-                            VerticalOptions="Center"/>
+                            BackgroundColor="Transparent"
+                            BorderWidth="0"
+                            Padding="0"
+                            VerticalOptions="Center"
+                            Clicked="OnToggleTypeClicked"
+                            CommandParameter="1"/>
+                        <Label
+                            x:Name="TypeLabel1"
+                            Grid.Column="1"
+                            Text="J"
+                            TextColor="#c39bd3"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            Margin="2,0,0,0"/>
                         <Entry
                             x:Name="PlayerEntry1"
-                            Text=""
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Placeholder="Joueur 1"
                             PlaceholderColor="#55c39bd3"
                             TextColor="#ffffff"
                             BackgroundColor="Transparent"
                             FontSize="15"
                             FontAttributes="Bold"
-                            Margin="12,0"/>
+                            Margin="10,0"/>
                         <Button
-                            x:Name="RemoveBtn1"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
@@ -82,33 +96,47 @@
                     </Grid>
                 </Border>
 
-                <Border StrokeThickness="1" Stroke="#33c39bd3">
+                <!-- Joueur 2 -->
+                <Border StrokeThickness="1" Stroke="#33c39bd3" x:Name="PlayerRow2">
                     <Border.Background>
                         <SolidColorBrush Color="#22ffffff"/>
                     </Border.Background>
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
-                        <Label
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto" Padding="16,14">
+                        <Button
+                            x:Name="ToggleBtn2"
                             Grid.Column="0"
                             Text="👤"
                             FontSize="20"
-                            VerticalOptions="Center"/>
+                            BackgroundColor="Transparent"
+                            BorderWidth="0"
+                            Padding="0"
+                            VerticalOptions="Center"
+                            Clicked="OnToggleTypeClicked"
+                            CommandParameter="2"/>
+                        <Label
+                            x:Name="TypeLabel2"
+                            Grid.Column="1"
+                            Text="J"
+                            TextColor="#c39bd3"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            Margin="2,0,0,0"/>
                         <Entry
                             x:Name="PlayerEntry2"
-                            Text=""
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Placeholder="Joueur 2"
                             PlaceholderColor="#55c39bd3"
                             TextColor="#ffffff"
                             BackgroundColor="Transparent"
                             FontSize="15"
                             FontAttributes="Bold"
-                            Margin="12,0"/>
+                            Margin="10,0"/>
                         <Button
-                            x:Name="RemoveBtn2"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
@@ -118,7 +146,7 @@
                     </Grid>
                 </Border>
 
-                <!-- Entrées cachées initialement : joueur 3 et 4 -->
+                <!-- Joueur 3 (caché) -->
                 <Border StrokeThickness="1" Stroke="#33c39bd3" IsVisible="False" x:Name="PlayerRow3">
                     <Border.Background>
                         <SolidColorBrush Color="#22ffffff"/>
@@ -126,26 +154,39 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
-                        <Label
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto" Padding="16,14">
+                        <Button
+                            x:Name="ToggleBtn3"
                             Grid.Column="0"
                             Text="👤"
                             FontSize="20"
-                            VerticalOptions="Center"/>
+                            BackgroundColor="Transparent"
+                            BorderWidth="0"
+                            Padding="0"
+                            VerticalOptions="Center"
+                            Clicked="OnToggleTypeClicked"
+                            CommandParameter="3"/>
+                        <Label
+                            x:Name="TypeLabel3"
+                            Grid.Column="1"
+                            Text="J"
+                            TextColor="#c39bd3"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            Margin="2,0,0,0"/>
                         <Entry
                             x:Name="PlayerEntry3"
-                            Text=""
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Placeholder="Joueur 3"
                             PlaceholderColor="#55c39bd3"
                             TextColor="#ffffff"
                             BackgroundColor="Transparent"
                             FontSize="15"
                             FontAttributes="Bold"
-                            Margin="12,0"/>
+                            Margin="10,0"/>
                         <Button
-                            x:Name="RemoveBtn3"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
@@ -155,6 +196,7 @@
                     </Grid>
                 </Border>
 
+                <!-- Joueur 4 (caché) -->
                 <Border StrokeThickness="1" Stroke="#33c39bd3" IsVisible="False" x:Name="PlayerRow4">
                     <Border.Background>
                         <SolidColorBrush Color="#22ffffff"/>
@@ -162,26 +204,39 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,14">
-                        <Label
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto" Padding="16,14">
+                        <Button
+                            x:Name="ToggleBtn4"
                             Grid.Column="0"
                             Text="👤"
                             FontSize="20"
-                            VerticalOptions="Center"/>
+                            BackgroundColor="Transparent"
+                            BorderWidth="0"
+                            Padding="0"
+                            VerticalOptions="Center"
+                            Clicked="OnToggleTypeClicked"
+                            CommandParameter="4"/>
+                        <Label
+                            x:Name="TypeLabel4"
+                            Grid.Column="1"
+                            Text="J"
+                            TextColor="#c39bd3"
+                            FontSize="11"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            Margin="2,0,0,0"/>
                         <Entry
                             x:Name="PlayerEntry4"
-                            Text=""
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Placeholder="Joueur 4"
                             PlaceholderColor="#55c39bd3"
                             TextColor="#ffffff"
                             BackgroundColor="Transparent"
                             FontSize="15"
                             FontAttributes="Bold"
-                            Margin="12,0"/>
+                            Margin="10,0"/>
                         <Button
-                            x:Name="RemoveBtn4"
-                            Grid.Column="2"
+                            Grid.Column="3"
                             Text="✕"
                             TextColor="#55c39bd3"
                             FontSize="16"
@@ -200,7 +255,7 @@
                     </Border.StrokeShape>
                     <Button
                         x:Name="AddPlayerButton"
-                        Text="＋  Ajouter un joueur"
+                        Text="＋  Ajouter un joueur / IA"
                         BackgroundColor="Transparent"
                         TextColor="#c39bd3"
                         FontAttributes="Bold"
