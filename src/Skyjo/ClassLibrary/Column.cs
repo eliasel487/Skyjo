@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ClassLibrary
 {
+    [DataContract]
     public class Column
     {
+        [DataMember(Name = "Cartes")]
         private readonly List<Card> _cards = new();
+
+        [DataMember(Name ="Colonne_valuee")]
         private bool _valued { get; set; } = true;
 
         public Column(Card card1, Card card2, Card card3)

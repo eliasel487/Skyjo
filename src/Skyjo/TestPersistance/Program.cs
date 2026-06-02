@@ -13,7 +13,6 @@ Console.WriteLine(j1);
 Player? j2 = null;
 
 */
-
 /*
 // Pour une collection de joueur
 
@@ -67,17 +66,17 @@ else
 Game partie = new Game();
 
 partie.AddPlayer("Elias");
-partie.AddPlayer("Bouzelouf");
+partie.AddPlayer("Tohem");
 partie.AddIA();
 
 Console.WriteLine("Avant sauvegarde");
 foreach(var n in partie.Players)
 {
-    Console.WriteLine($"\t{n._name} - {n._gameScore}");
+    Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
 }
 foreach (var i in partie.IAs)
 {
-    Console.WriteLine($"\t{i._name} - {i._gameScore}");
+    Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
 }
 
 //string file présent au début
@@ -107,11 +106,11 @@ if (p2 != null)
     Console.WriteLine("Après sauvegarde");
     foreach (var n in partie.Players)
     {
-        Console.WriteLine($"\t{n._name} - {n._gameScore}");
+        Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
     }
     foreach (var i in partie.IAs)
     {
-        Console.WriteLine($"\t{i._name} - {i._gameScore}");
+        Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
     }
 }
 else

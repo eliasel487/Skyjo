@@ -1,11 +1,15 @@
 ﻿using System.Net.NetworkInformation;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Serialization;
 
 namespace ClassLibrary
 {
+    [DataContract]
     public class Card
     {
-        public int Number {  get; }
+        [DataMember (Name ="Numero_carte")]
+        public int Number { get; set; }
+        [DataMember (Name ="Carte_retournee")]
         private bool _face = false;
 
         public Card(int nb)

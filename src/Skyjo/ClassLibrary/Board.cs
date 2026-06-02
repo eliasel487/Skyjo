@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ClassLibrary
 {
+    [DataContract]
     public class Board
     {
+        [DataMember (Name ="Colonnes")]
         private readonly List<Column> _columns = new();
 
         public Board(Deck deck)

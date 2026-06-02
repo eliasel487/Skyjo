@@ -1,9 +1,14 @@
-﻿
-using ClassLibrary;
+﻿using ClassLibrary;
 using System.Net.Mail;
 using System.Numerics;
+using System.Runtime.Serialization;
+using System.Xml;
 
 Game game1 = new();
+
+// Persistance — déclarer AVANT toute utilisation
+string xmlFile = Path.Combine("XML", "PersistanceGame.xml");
+var serializer = new DataContractSerializer(typeof(Game));
 
 int CreerJoueur()
 {
@@ -88,8 +93,15 @@ void CreerIA(int nbJoueur)
 
 void jouerPartie()
 {
-    int nbJoueur = CreerJoueur();
-    CreerIA(nbJoueur);
+    if(xmlFile != null && File.Exists(xmlFile))
+    {
+        load();
+    }
+    else 
+    {
+        int nbJoueur = CreerJoueur();
+        CreerIA(nbJoueur);
+    }
     PlayGame();
 }
 
@@ -143,6 +155,7 @@ void PlayGame() // fait joueur une game
 
         if (GameOver) break;
         JouerUneManche(idmin);
+        save();
     }
 }
 void JouerUneManche(int idPremier)
@@ -400,4 +413,44 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
     }
 
     Console.WriteLine(game1.Deck.GetFirstCardDiscard() + "\n");
+}
+
+// Persistance
+
+void save()
+{
+    XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
+    using (TextWriter tw = File.CreateText(xmlFile))
+    {
+        using (XmlWriter writer = XmlWriter.Create(tw, settings))
+        {
+            serializer.WriteObject(writer, game1);
+        }
+    }
+}
+
+void load()
+{
+    Game? p2;
+
+    using (Stream s = File.OpenRead(xmlFile))
+    {
+        p2 = serializer.ReadObject(s) as Game;
+    }
+
+    if (p2 != null)
+    {
+        game1 = p2; // <- correction essentielle : remplacer l'instance vide par l'état chargé
+        Console.WriteLine("Après sauvegarde");
+        foreach (var n in game1.Players)
+        {
+            Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
+        }
+        foreach (var i in game1.IAs)
+        {
+            Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
+        }
+    }
+    else
+        Console.WriteLine("Non");
 }

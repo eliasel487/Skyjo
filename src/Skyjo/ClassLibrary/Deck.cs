@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ClassLibrary
 {
+    [DataContract]
     public class Deck
     {
+        [DataMember (Name ="Pioche")]
         readonly List<Card>  _pull = new();
+        [DataMember (Name ="Defausse")]
         readonly List<Card> _discard = new();
 
         public Deck()

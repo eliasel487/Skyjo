@@ -15,8 +15,9 @@ namespace ClassLibrary
 
         [DataMember(Name = "Deck", Order = 2)]
         public Deck Deck { get; set; } = new();
-        [DataMember(Name = "Tour fini", Order = 3)]
+        [DataMember(Name = "Tour_fini", Order = 3)]
         readonly bool RoundFinished = false;
+        // Pas besoin d'un DataMember ici car si la partie est finie, on ne la garde pas.
         readonly bool GameOver = false;
 
         public bool GetRoundFinished()

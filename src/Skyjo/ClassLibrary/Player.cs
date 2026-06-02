@@ -9,14 +9,18 @@ namespace ClassLibrary
     [DataContract]
     public class Player
     {
-        [DataMember]
+        [DataMember (Name="Nom_joueur")]
         public string _name { get; set; }
-        [DataMember]
+
+        [DataMember (Name="Score_total_joueur")]
         public int _gameScore { get; set; }
-        [DataMember]
+
+        [DataMember (Name="Score_manche_actuelle")]
         public int _roundScore { get; set; }
+
         private readonly bool _IA;
-        Board _board;
+        [DataMember (Name="Plateau_carte_joueur")]
+        public Board _board;
 
         public Player(string name, Deck deck, int GameScore, int RoundScore)
         {
