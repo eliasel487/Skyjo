@@ -71,7 +71,7 @@ namespace TestClass
 
             // Act
             var newCard = new Card(7);
-            board.ReplaceCard(0, 1, newCard);
+            board.ReplaceCard(deck, 0, 1, newCard);
 
             var columnAfter = column[0].GetCards();
             var card1After = columnAfter[0];
@@ -100,10 +100,10 @@ namespace TestClass
 
             // Act
             var newCard = new Card(7);
-            board.ReplaceCard(0, 8, newCard);
-            board.ReplaceCard(0, -1, newCard);
-            board.ReplaceCard(-1, 1, newCard);
-            board.ReplaceCard(8, 1, newCard);
+            board.ReplaceCard(deck, 0, 8, newCard);
+            board.ReplaceCard(deck, 0, -1, newCard);
+            board.ReplaceCard(deck, -1, 1, newCard);
+            board.ReplaceCard(deck, 8, 1, newCard);
 
             var columnAfter = column[0].GetCards();
             var card1After = columnAfter[0];

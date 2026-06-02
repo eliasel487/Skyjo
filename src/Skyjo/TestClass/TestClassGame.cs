@@ -89,5 +89,31 @@ namespace TestClass
             Assert.Equal(0, nbIA);
         }
 
+        [Fact]
+        public void Game_NewDeck()
+        {
+            //act
+            Game game = new Game();
+
+            //arrange
+            game.NewDeck();
+
+            //assert
+            Assert.Equal(0, game.GetDeck().NbCardDiscard());
+            Assert.Equal(151, game.GetDeck().NbCardPull());
+        }
+
+        [Fact]
+        public void Game_GetDeck()
+        {
+            //arrange
+            Game game = new Game();
+
+            //act
+            int nb = game.GetDeck().NbCardPull();
+
+            //assert
+            Assert.Equal(151, nb);
+        }
     }
 }

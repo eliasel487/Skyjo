@@ -71,10 +71,10 @@ namespace TestClass
         [Fact]
         public void Deck_PickACard_nbPullDecrease()
         {
-            //act
+            //arrange
             Deck deck = new Deck();
 
-            //arrange
+            //act
             deck.PickACard(0);
 
             //assert
@@ -84,10 +84,10 @@ namespace TestClass
         [Fact]
         public void Deck_DiscardACard_nbDiscardIncrease()
         {
-            //act
+            //arrange
             Deck deck = new Deck();
 
-            //arrange
+            //act
             deck.DiscardACard(deck.PickACard(0));
 
             //assert
@@ -97,10 +97,10 @@ namespace TestClass
         [Fact]
         public void Deck_PickACardDiscard_nbDiscardDecrease()
         {
-            //act
+            //arrange
             Deck deck = new Deck();
 
-            //arrange
+            //act
             deck.DiscardACard(deck.PickACard(0));
             deck.PickACard(1);
 
@@ -111,7 +111,7 @@ namespace TestClass
         [Fact]
         public void Deck_PickAllCards_DiscardAndPullEmpty()
         {
-            //act
+            //arrange
             Deck deck = new Deck();
             int n = deck.NbCardPull();
 
@@ -120,7 +120,7 @@ namespace TestClass
                 deck.PickACard(0);
             }
 
-            //arrange
+            //act
             bool dicard = deck.IsEmptyDiscard();
             bool pull = deck.IsEmptyPull();
 

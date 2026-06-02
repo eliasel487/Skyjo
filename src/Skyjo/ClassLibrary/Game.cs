@@ -35,6 +35,11 @@ namespace ClassLibrary
             return Deck;
         }
 
+        public void NewDeck()
+        {
+            Deck = new Deck();
+        }
+
         public void AddPlayer(string nomJoueur)
         {
             Player p;
