@@ -33,7 +33,7 @@ namespace TestClass
             //arrange
             Deck deck = new Deck();
             IA ia = new IA(0, deck, 0);
-            ia.PlaceCardAuto(deck.PickACard(0));
+            ia.PlaceCardAuto(deck, deck.PickACard(0));
 
             //act
             Card c = ia.GetBoard().GetColumns()[0].GetCards()[0];

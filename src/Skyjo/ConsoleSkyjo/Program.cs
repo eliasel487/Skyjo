@@ -136,7 +136,11 @@ void PlayGame() // fait joueur une game
         }
 
         if (GameOver) break;
-        JouerUneManche();
+        for (int i = 0; i < pts.Count; i++)
+        {
+            if (pts[i] < pts[idmin]) idmin = i;
+        }
+        JouerUneManche(idmin);
     }
     
     Console.Clear();
