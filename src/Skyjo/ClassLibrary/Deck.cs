@@ -46,6 +46,15 @@ namespace ClassLibrary
             Card res;
             if (nb == 0)
             {
+                if (_pull.Count == 0)
+                {
+                    // Règle Skyjo : on retourne la défausse (sauf la carte du dessus) pour reformer la pioche
+                    Card topDiscard = _discard.Last();
+                    _discard.RemoveAt(_discard.Count - 1);
+                    _pull.AddRange(_discard);
+                    _discard.Clear();
+                    _discard.Add(topDiscard);
+                }
                 n = rnd.Next(_pull.Count);
                 res = _pull[n];
                 _pull.RemoveAt(n);

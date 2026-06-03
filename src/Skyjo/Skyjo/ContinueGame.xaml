@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skyjo.ContinueGame">
@@ -13,7 +13,6 @@
 
     <Grid RowDefinitions="Auto,*" Padding="28,60,28,40">
 
-
         <VerticalStackLayout Grid.Row="0" Spacing="6" HorizontalOptions="Center" Margin="0,0,0,32">
             <Label
                 Text="REPRENDRE"
@@ -24,215 +23,17 @@
                 HorizontalOptions="Center"/>
         </VerticalStackLayout>
 
-
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout Spacing="12">
+            <VerticalStackLayout x:Name="SavesList" Spacing="12">
 
-
-                <Border StrokeThickness="1" Stroke="#44c39bd3">
-                    <Border.Background>
-                        <SolidColorBrush Color="#1acc99ff"/>
-                    </Border.Background>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Grid ColumnDefinitions="*,Auto" Padding="20,16">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
-                            <Label
-                                Text="Partie du 01/05/2025"
-                                TextColor="#ffffff"
-                                FontSize="15"
-                                FontAttributes="Bold"/>
-                            <Label
-                                Text="👥 Alice, Bob, Charlie"
-                                TextColor="#88c39bd3"
-                                FontSize="12"/>
-                        </VerticalStackLayout>
-                        <Border
-                            Grid.Column="1"
-                            StrokeThickness="0"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            VerticalOptions="Center">
-                            <Border.Background>
-                                <SolidColorBrush Color="#339b59b6"/>
-                            </Border.Background>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50"/>
-                            </Border.StrokeShape>
-                            <Label
-                                Text="✕"
-                                TextColor="#c39bd3"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
-                </Border>
-
-                <Border StrokeThickness="1" Stroke="#44c39bd3">
-                    <Border.Background>
-                        <SolidColorBrush Color="#1acc99ff"/>
-                    </Border.Background>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Grid ColumnDefinitions="*,Auto" Padding="20,16">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
-                            <Label
-                                Text="Partie du 28/04/2025"
-                                TextColor="#ffffff"
-                                FontSize="15"
-                                FontAttributes="Bold"/>
-                            <Label
-                                Text="👥 Alice, David"
-                                TextColor="#88c39bd3"
-                                FontSize="12"/>
-                        </VerticalStackLayout>
-                        <Border
-                            Grid.Column="1"
-                            StrokeThickness="0"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            VerticalOptions="Center">
-                            <Border.Background>
-                                <SolidColorBrush Color="#339b59b6"/>
-                            </Border.Background>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50"/>
-                            </Border.StrokeShape>
-                            <Label
-                                Text="✕"
-                                TextColor="#c39bd3"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
-                </Border>
-
-                <Border StrokeThickness="1" Stroke="#44c39bd3">
-                    <Border.Background>
-                        <SolidColorBrush Color="#1acc99ff"/>
-                    </Border.Background>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Grid ColumnDefinitions="*,Auto" Padding="20,16">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
-                            <Label
-                                Text="Partie du 20/04/2025"
-                                TextColor="#ffffff"
-                                FontSize="15"
-                                FontAttributes="Bold"/>
-                            <Label
-                                Text="👥 Bob, Charlie, Eva, Marc"
-                                TextColor="#88c39bd3"
-                                FontSize="12"/>
-                        </VerticalStackLayout>
-                        <Border
-                            Grid.Column="1"
-                            StrokeThickness="0"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            VerticalOptions="Center">
-                            <Border.Background>
-                                <SolidColorBrush Color="#339b59b6"/>
-                            </Border.Background>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50"/>
-                            </Border.StrokeShape>
-                            <Label
-                                Text="✕"
-                                TextColor="#c39bd3"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
-                </Border>
-
-                <Border StrokeThickness="1" Stroke="#44c39bd3">
-                    <Border.Background>
-                        <SolidColorBrush Color="#1acc99ff"/>
-                    </Border.Background>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Grid ColumnDefinitions="*,Auto" Padding="20,16">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
-                            <Label
-                                Text="Partie du 15/04/2025"
-                                TextColor="#ffffff"
-                                FontSize="15"
-                                FontAttributes="Bold"/>
-                            <Label
-                                Text="👥 Alice, Bob"
-                                TextColor="#88c39bd3"
-                                FontSize="12"/>
-                        </VerticalStackLayout>
-                        <Border
-                            Grid.Column="1"
-                            StrokeThickness="0"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            VerticalOptions="Center">
-                            <Border.Background>
-                                <SolidColorBrush Color="#339b59b6"/>
-                            </Border.Background>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50"/>
-                            </Border.StrokeShape>
-                            <Label
-                                Text="✕"
-                                TextColor="#c39bd3"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
-                </Border>
-
-                <Border StrokeThickness="1" Stroke="#44c39bd3">
-                    <Border.Background>
-                        <SolidColorBrush Color="#1acc99ff"/>
-                    </Border.Background>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Grid ColumnDefinitions="*,Auto" Padding="20,16">
-                        <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
-                            <Label
-                                Text="Partie du 10/04/2025"
-                                TextColor="#ffffff"
-                                FontSize="15"
-                                FontAttributes="Bold"/>
-                            <Label
-                                Text="👥 Eva, Marc, Alice"
-                                TextColor="#88c39bd3"
-                                FontSize="12"/>
-                        </VerticalStackLayout>
-                        <Border
-                            Grid.Column="1"
-                            StrokeThickness="0"
-                            WidthRequest="40"
-                            HeightRequest="40"
-                            VerticalOptions="Center">
-                            <Border.Background>
-                                <SolidColorBrush Color="#339b59b6"/>
-                            </Border.Background>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50"/>
-                            </Border.StrokeShape>
-                            <Label
-                                Text="✕"
-                                TextColor="#c39bd3"
-                                FontSize="16"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
-                </Border>
+                <Label
+                    x:Name="EmptyLabel"
+                    Text="Aucune partie sauvegardée."
+                    TextColor="#88c39bd3"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsVisible="False"/>
 
             </VerticalStackLayout>
         </ScrollView>

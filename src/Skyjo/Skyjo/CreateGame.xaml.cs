@@ -125,6 +125,7 @@ namespace Skyjo
             }
 
             GameSession.CurrentSession = game;
+            GameSession.CurrentSaveFile = null;
             await Shell.Current.GoToAsync(nameof(GamePage));
         }
 

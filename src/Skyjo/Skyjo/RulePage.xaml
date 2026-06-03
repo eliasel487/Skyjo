@@ -78,6 +78,9 @@
                 HorizontalOptions="Start" VerticalOptions="Center">
                 <Border.Background><SolidColorBrush Color="#2d9b59b6"/></Border.Background>
                 <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped"/>
+                </Border.GestureRecognizers>
                 <Label
                     Text="‹" TextColor="{StaticResource PurpleLight}"
                     FontSize="22" FontAttributes="Bold"
@@ -108,7 +111,7 @@
                         </Border.Background>
                         <Border.StrokeShape><RoundRectangle CornerRadius="20"/></Border.StrokeShape>
                         <Label
-                            Text="✦  SKYJO"
+                            Text="SKYJO"
                             TextColor="White" FontSize="11"
                             FontAttributes="Bold" CharacterSpacing="2"
                             Padding="16,5"/>
@@ -132,7 +135,7 @@
                         <Border.Background><SolidColorBrush Color="#552d1050"/></Border.Background>
                         <Border.StrokeShape><RoundRectangle CornerRadius="14"/></Border.StrokeShape>
                         <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
-                            <Label Text="2–8" TextColor="{StaticResource Teal}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="2–4" TextColor="{StaticResource Teal}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
                             <Label Text="Joueurs" TextColor="{StaticResource Muted}" FontSize="9" FontAttributes="Bold" CharacterSpacing="1" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>

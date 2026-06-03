@@ -8,4 +8,9 @@ public partial class RulesPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private async void OnBackTapped(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

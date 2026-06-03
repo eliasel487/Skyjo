@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Xml;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using ClassLibrary;
@@ -305,6 +308,12 @@ public partial class GamePage : ContentPage
     {
         if (_mustPlaceCard) return;
 
+        if (_game.Deck.IsEmptyPull() && _game.Deck.IsEmptyDiscard())
+        {
+            await DisplayAlert("Pioche vide", "Plus aucune carte disponible !", "OK");
+            return;
+        }
+
         _cardInHand = Player.PickACard(_game.Deck, 0); // pioche aléatoire
         _cardInHand.FlipCard();
         _mustPlaceCard = true;
@@ -460,6 +469,31 @@ public partial class GamePage : ContentPage
         string scores = string.Join("\n",
             _turnOrder.Select(p => $"{p._name} : {p._roundScore} pts manche | {p._gameScore} pts total"));
         await DisplayAlert("Scores", scores, "Fermer");
+    }
+
+    // ── Bouton retour avec sauvegarde ─────────────────────────────────
+    async void OnBackButtonTapped(object sender, TappedEventArgs e)
+    {
+        SaveGame();
+        await Shell.Current.GoToAsync("..");
+    }
+
+    void SaveGame()
+    {
+        // Réutiliser le fichier existant si la partie a déjà été sauvegardée, sinon en créer un nouveau
+        if (GameSession.CurrentSaveFile == null)
+        {
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            GameSession.CurrentSaveFile = Path.Combine(FileSystem.Current.AppDataDirectory, $"save_{timestamp}.xml");
+        }
+
+        var serializer = new DataContractSerializer(typeof(Game));
+        XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
+        using (TextWriter tw = File.CreateText(GameSession.CurrentSaveFile))
+        using (XmlWriter writer = XmlWriter.Create(tw, settings))
+        {
+            serializer.WriteObject(writer, _game);
+        }
     }
 
     // ── Couleurs cartes ────────────────────────────────────────────────

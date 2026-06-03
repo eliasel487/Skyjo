@@ -46,12 +46,15 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
 
-        <!-- HEADER -->
+        <!-- EN-TÊTE -->
         <Grid Grid.Row="0" ColumnDefinitions="44,*,Auto" Padding="20,52,20,12">
             <Border WidthRequest="36" HeightRequest="36" StrokeThickness="1" Stroke="#44c39bd3"
                     HorizontalOptions="Start" VerticalOptions="Center">
                 <Border.Background><SolidColorBrush Color="#2d9b59b6"/></Border.Background>
                 <Border.StrokeShape><RoundRectangle CornerRadius="10"/></Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                </Border.GestureRecognizers>
                 <Label Text="‹" TextColor="{StaticResource PurpleLight}" FontSize="22" FontAttributes="Bold"
                        HorizontalOptions="Center" VerticalOptions="Center"/>
             </Border>
@@ -66,7 +69,7 @@
             </Border>
         </Grid>
 
-        <!-- SCROLLABLE CONTENT -->
+        <!-- CONTENU DÉFILANT -->
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="16,0,16,16" Spacing="0">
 
@@ -75,7 +78,7 @@
                 <!-- Conteneur généré dynamiquement dans le code -->
                 <Grid x:Name="OpponentsGrid" ColumnDefinitions="*,*,*" ColumnSpacing="10" Margin="0,0,0,18"/>
 
-                <!-- DIVIDER -->
+                <!-- SÉPARATEUR -->
                 <BoxView HeightRequest="1" Margin="0,0,0,18">
                     <BoxView.Color><Color>#33c39bd3</Color></BoxView.Color>
                 </BoxView>
@@ -126,7 +129,7 @@
                     </VerticalStackLayout>
                 </Grid>
 
-                <!-- ACTION BUTTONS -->
+                <!-- BOUTONS D'ACTION -->
                 <Grid x:Name="ActionButtonsGrid" ColumnDefinitions="*,*,*" ColumnSpacing="8" Margin="0,0,0,20">
                     <Border Grid.Column="0" StrokeThickness="0">
                         <Border.Background>
@@ -156,13 +159,13 @@
                     </Border>
                 </Grid>
 
-                <!-- PLAYER AREA -->
+                <!-- ZONE DU JOUEUR -->
                 <Border StrokeThickness="1.5" Stroke="#5544cc99" Padding="16,20,16,16">
                     <Border.Background><SolidColorBrush Color="#CC1a0a3e"/></Border.Background>
                     <Border.StrokeShape><RoundRectangle CornerRadius="24"/></Border.StrokeShape>
                     <VerticalStackLayout Spacing="16">
 
-                        <!-- Player header -->
+                        <!-- En-tête du joueur -->
                         <Grid ColumnDefinitions="Auto,*,Auto">
                             <Border WidthRequest="42" HeightRequest="42" StrokeThickness="0">
                                 <Border.Background>
@@ -205,7 +208,7 @@
                                    TextColor="White" FontSize="11" FontAttributes="Bold" Padding="16,5"/>
                         </Border>
 
-                        <!-- Player card grid 4 cols x 3 rows — généré dynamiquement -->
+                        <!-- Grille de cartes du joueur 4 col × 3 lignes — générée dynamiquement -->
                         <Grid x:Name="PlayerBoardGrid"
                               ColumnDefinitions="*,*,*,*"
                               RowDefinitions="72,72,72"
