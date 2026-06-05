@@ -15,9 +15,9 @@ namespace TestClass
             IA ia = new IA(0, deck, 0);
 
             //act
-            string name = ia._name;
-            int game = ia._gameScore;
-            int round = ia._roundScore;
+            string name = ia.Name;
+            int game = ia.GameScore;
+            int round = ia.RoundScore;
             bool IsIA = ia.GetIA();
 
             //assert
@@ -36,7 +36,7 @@ namespace TestClass
             ia.PlaceCardAuto(deck, deck.PickACard(0));
 
             //act
-            Card c = ia.GetBoard().GetColumns()[0].GetCards()[0];
+            Card c = ia.Board.GetColumns()[0].GetCards()[0];
 
             //assert
             Assert.True(c.IsFlipped());
@@ -51,7 +51,7 @@ namespace TestClass
             ia.PlayRound(deck);
 
             //act
-            Card c = ia.GetBoard().GetColumns()[0].GetCards()[0];
+            Card c = ia.Board.GetColumns()[0].GetCards()[0];
 
             //assert
             Assert.True(c.IsFlipped());

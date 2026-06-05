@@ -15,9 +15,9 @@ namespace TestClass
             Player p = new Player("Jean", deck, 0, 0);
 
             //act
-            string name = p._name;
-            int game = p._gameScore;
-            int round = p._roundScore;
+            string name = p.Name;
+            int game = p.GameScore;
+            int round = p.RoundScore;
 
             //assert
             Assert.Equal("Jean", name);
@@ -31,11 +31,11 @@ namespace TestClass
             //arrange 
             Deck deck = new Deck();
             Player p = new Player("Jean", deck, 0, 0);
-            Card before = p.GetBoard().GetColumns()[0].GetCards()[0];
+            Card before = p.Board.GetColumns()[0].GetCards()[0];
 
             //act
             p.NewBoard(deck);
-            Card after = p.GetBoard().GetColumns()[0].GetCards()[0];
+            Card after = p.Board.GetColumns()[0].GetCards()[0];
 
             //assert
             Assert.NotEqual(before, after);
@@ -85,7 +85,7 @@ namespace TestClass
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    p.GetBoard().GetColumns()[i].GetCards()[j].FlipCard();
+                    p.Board.GetColumns()[i].GetCards()[j].FlipCard();
                 }
             }
 
@@ -105,7 +105,7 @@ namespace TestClass
             p.Play(deck);
 
             //act
-            Card c = p.GetBoard().GetColumns()[0].GetCards()[0];
+            Card c = p.Board.GetColumns()[0].GetCards()[0];
 
             //assert
             Assert.True(c.IsFlipped());
@@ -121,8 +121,8 @@ namespace TestClass
             p.ActionCard(deck, deck.PickACard(0), 1, 2, 2);
 
             //act
-            Card c1 = p.GetBoard().GetColumns()[2].GetCards()[1];
-            Card c2 = p.GetBoard().GetColumns()[2].GetCards()[2];
+            Card c1 = p.Board.GetColumns()[2].GetCards()[1];
+            Card c2 = p.Board.GetColumns()[2].GetCards()[2];
 
             //assert
             Assert.True(c1.IsFlipped());

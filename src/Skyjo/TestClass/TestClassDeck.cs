@@ -18,35 +18,35 @@ namespace TestClass
             for (int i = 0; i <= 150; i++)
             {
                 Card card1 = deck1.PickACard(0);
-                if (card1.GetNumber() == -2)
+                if (card1.Number == -2)
                     nbM2++;
-                if (card1.GetNumber() == -1)
+                if (card1.Number == -1)
                     nbM1++;
-                if (card1.GetNumber() == 0)
+                if (card1.Number == 0)
                     nb0++;
-                if (card1.GetNumber() == 1)
+                if (card1.Number == 1)
                     nb1++;
-                if (card1.GetNumber() == 2)
+                if (card1.Number == 2)
                     nb2++;
-                if (card1.GetNumber() == 3)
+                if (card1.Number == 3)
                     nb3++;
-                if (card1.GetNumber() == 4)
+                if (card1.Number == 4)
                     nb4++;
-                if (card1.GetNumber() == 5)
+                if (card1.Number == 5)
                     nb5++;
-                if (card1.GetNumber() == 6)
+                if (card1.Number == 6)
                     nb6++;
-                if (card1.GetNumber() == 7)
+                if (card1.Number == 7)
                     nb7++;
-                if (card1.GetNumber() == 8)
+                if (card1.Number == 8)
                     nb8++;
-                if (card1.GetNumber() == 9)
+                if (card1.Number == 9)
                     nb9++;
-                if (card1.GetNumber() == 10)
+                if (card1.Number == 10)
                     nb10++;
-                if (card1.GetNumber() == 11)
+                if (card1.Number == 11)
                     nb11++;
-                if (card1.GetNumber() == 12)
+                if (card1.Number == 12)
                     nb12++;
             }
 

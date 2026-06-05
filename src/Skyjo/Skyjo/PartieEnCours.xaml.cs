@@ -60,11 +60,11 @@ public partial class GamePage : ContentPage
     void RefreshHeader()
     {
         var p = CurrentPlayer;
-        string name = p._name ?? "IA";
+        string name = p.Name ?? "IA";
         CurrentPlayerName.Text    = name;
         CurrentPlayerInitial.Text = name.Length >= 2 ? name[..2].ToUpper() : name.ToUpper();
         p.CountRoundScore();
-        PlayerScoreLabel.Text = p._roundScore.ToString();
+        PlayerScoreLabel.Text = p.RoundScore.ToString();
         TurnBadgeLabel.Text   = p.GetIA() ? $"🤖  Tour de {name}" : $"✦  Ton tour, {name}";
         PlayerStatusLabel.Text = "Pioche une carte ou prends la défausse";
     }
@@ -87,7 +87,7 @@ public partial class GamePage : ContentPage
         {
             var p = opponents[col];
             p.CountRoundScore();
-            string name = p._name ?? "IA";
+            string name = p.Name ?? "IA";
             string initials = name.Length >= 2 ? name[..2].ToUpper() : name.ToUpper();
 
             var stack = new VerticalStackLayout { Spacing = 8, HorizontalOptions = LayoutOptions.Center };
@@ -112,7 +112,7 @@ public partial class GamePage : ContentPage
             // Score
             stack.Children.Add(new Label
             {
-                Text = p._roundScore.ToString(),
+                Text = p.RoundScore.ToString(),
                 TextColor = Colors.White,
                 FontSize = 18,
                 FontAttributes = FontAttributes.Bold,
@@ -182,7 +182,7 @@ public partial class GamePage : ContentPage
             HorizontalOptions = LayoutOptions.Center
         };
 
-        var columns = p.GetBoard().GetColumns();
+        var columns = p.Board.GetColumns();
         for (int col = 0; col < 4 && col < columns.Count; col++)
         {
             var cards = columns[col].GetCards();
@@ -208,7 +208,7 @@ public partial class GamePage : ContentPage
         PlayerBoardGrid.Children.Clear();
 
         var p = CurrentPlayer;
-        var columns = p.GetBoard().GetColumns();
+        var columns = p.Board.GetColumns();
 
         for (int col = 0; col < 4 && col < columns.Count; col++)
         {
@@ -348,13 +348,13 @@ public partial class GamePage : ContentPage
         {
             // Pas de carte en main : retourner une carte cachée
             var p = CurrentPlayer;
-            var card = p.GetBoard().GetColumns()[col].GetCards()[row];
+            var card = p.Board.GetColumns()[col].GetCards()[row];
             if (!card.IsFlipped())
             {
-                p.GetBoard().ReturnACard(col, row);
+                p.Board.ReturnACard(col, row);
                 RefreshPlayerBoard();
                 p.CountRoundScore();
-                PlayerScoreLabel.Text = p._roundScore.ToString();
+                PlayerScoreLabel.Text = p.RoundScore.ToString();
                 // Retourner une carte sans carte en main = fin du tour
                 EndTurn();
             }
@@ -362,13 +362,13 @@ public partial class GamePage : ContentPage
         }
 
         // On a une carte en main : on l'échange avec la case cliquée
-        CurrentPlayer.GetBoard().ReplaceCard(_game.Deck, col, row, _cardInHand!);
+        CurrentPlayer.Board.ReplaceCard(_game.Deck, col, row, _cardInHand!);
         _cardInHand = null;
         _mustPlaceCard = false;
 
         CurrentPlayer.RemoveColumn(); // vérifie colonnes identiques
         CurrentPlayer.CountRoundScore();
-        PlayerScoreLabel.Text = CurrentPlayer._roundScore.ToString();
+        PlayerScoreLabel.Text = CurrentPlayer.RoundScore.ToString();
 
         RefreshDiscard();
         RefreshPlayerBoard();
@@ -382,7 +382,7 @@ public partial class GamePage : ContentPage
         if (CurrentPlayer.RoundOver())
         {
             await DisplayAlert("Manche terminée !",
-                $"{CurrentPlayer._name} a retourné toutes ses cartes !\nCalcul des scores...", "OK");
+                $"{CurrentPlayer.Name} a retourné toutes ses cartes !\nCalcul des scores...", "OK");
             EndRound();
             return;
         }
@@ -436,17 +436,17 @@ public partial class GamePage : ContentPage
         }
 
         string scores = string.Join("\n",
-            _turnOrder.Select(p => $"{p._name} : {p._roundScore} pts (total : {p._gameScore})"));
+            _turnOrder.Select(p => $"{p.Name} : {p.RoundScore} pts (total : {p.GameScore})"));
 
         await DisplayAlert("Scores de la manche", scores, "Continuer");
 
         // Vérifier si la partie est terminée (100 pts)
-        var loser = _turnOrder.FirstOrDefault(p => p._gameScore >= 100);
+        var loser = _turnOrder.FirstOrDefault(p => p.GameScore >= 100);
         if (loser != null)
         {
-            var winner = _turnOrder.OrderBy(p => p._gameScore).First();
+            var winner = _turnOrder.OrderBy(p => p.GameScore).First();
             await DisplayAlert("Partie terminée !",
-                $"🏆 {winner._name} gagne avec {winner._gameScore} pts !\n\n{scores}", "OK");
+                $"🏆 {winner.Name} gagne avec {winner.GameScore} pts !\n\n{scores}", "OK");
             await Shell.Current.GoToAsync("..");
             return;
         }
@@ -467,7 +467,7 @@ public partial class GamePage : ContentPage
     {
         foreach (var p in _turnOrder) p.CountRoundScore();
         string scores = string.Join("\n",
-            _turnOrder.Select(p => $"{p._name} : {p._roundScore} pts manche | {p._gameScore} pts total"));
+            _turnOrder.Select(p => $"{p.Name} : {p.RoundScore} pts manche | {p.GameScore} pts total"));
         await DisplayAlert("Scores", scores, "Fermer");
     }
 

@@ -14,8 +14,8 @@ namespace TestClass
             Game game = new Game();
 
             //arrange
-            bool round = game.GetRoundFinished();
-            bool g = game.GetGameOver();
+            bool round = game.RoundFinished;
+            bool g = game.GameOver;
 
             //assert
             Assert.False(round);
@@ -99,18 +99,18 @@ namespace TestClass
             game.NewDeck();
 
             //assert
-            Assert.Equal(0, game.GetDeck().NbCardDiscard());
-            Assert.Equal(151, game.GetDeck().NbCardPull());
+            Assert.Equal(0, game.Deck.NbCardDiscard());
+            Assert.Equal(151, game.Deck.NbCardPull());
         }
 
         [Fact]
-        public void Game_GetDeck()
+        public void Game_Deck
         {
             //arrange
             Game game = new Game();
 
             //act
-            int nb = game.GetDeck().NbCardPull();
+            int nb = game.Deck.NbCardPull();
 
             //assert
             Assert.Equal(151, nb);

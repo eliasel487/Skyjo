@@ -54,8 +54,8 @@ namespace Skyjo
 
                 if (game == null) continue;
 
-                var names = game.Players.Select(p => p._name)
-                    .Concat(game.IAs.Select(ia => ia._name + " (IA)"))
+                var names = game.Players.Select(p => p.Name)
+                    .Concat(game.IAs.Select(ia => ia.Name + " (IA)"))
                     .ToList();
                 string playersText = "👥 " + string.Join(", ", names);
 

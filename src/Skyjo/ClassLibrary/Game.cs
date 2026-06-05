@@ -5,41 +5,37 @@ using System.Text;
 
 namespace ClassLibrary
 {
+    /**
+     * @class Game
+     * @brief Class qui permet d'instancier une partie
+     */
     [DataContract (Name="Partie")]
     public class Game
     {
-        [DataMember (Name ="Joueurs", Order = 0)]
-        public List<Player> Players { get; set;  } = new();
-        [DataMember(Name = "IAs", Order = 1)]
-        public List<IA> IAs { get; set; } = new();
+        [DataMember (Name ="Joueurs", Order = 0)]//!< Joueurs Liste des joueurs de la partie pour la persistance
+        public List<Player> Players { get; set;  } = new();//!< Joueurs Liste des joueurs de la partie
+        [DataMember(Name = "IAs", Order = 1)]//!< IAs Liste des IAs de la partie pour la persistance
+        public List<IA> IAs { get; set; } = new();//!< IAs Liste des IAs de la partie
 
-        [DataMember(Name = "Deck", Order = 2)]
-        public Deck Deck { get; set; } = new();
-        [DataMember(Name = "Tour_fini", Order = 3)]
-        readonly bool RoundFinished = false;
+        [DataMember(Name = "Deck", Order = 2)]//!< Deck Deck de la partie pour la persistance
+        public Deck Deck { get; set; } = new();//!< Deck Deck de la partie
+        [DataMember(Name = "Tour_fini", Order = 3)]//!< Tour_fini Permet de savoir si la manche est fini ou non pour la persistance
+        public readonly bool RoundFinished = false;//!< Tour_fini Permet de savoir si la manche est fini ou non
         // Pas besoin d'un DataMember ici car si la partie est finie, on ne la garde pas.
-        readonly bool GameOver = false;
+        public readonly bool GameOver = false;//!< Tour_fini Permet de savoir si la partie est fini ou non
 
-        public bool GetRoundFinished()
-        {
-            return RoundFinished;
-        }
-
-        public bool GetGameOver()
-        {
-            return GameOver;
-        }
-
-        public Deck GetDeck()
-        {
-            return Deck;
-        }
-
+        /**
+         * @brief Déclaration de la méthode NewDeck qui permet de créer un nouveau deck pour la partie
+         */
         public void NewDeck()
         {
             Deck = new Deck();
         }
 
+        /**
+         * @brief Déclaration de AddPlayer qui permet de créer et ajouter un joueur à la partie
+         * @param nomJoueur Le nom du joueur qu'on veut ajouter
+         */
         public void AddPlayer(string nomJoueur)
         {
             Player p;
@@ -51,6 +47,9 @@ namespace ClassLibrary
             }
         }
 
+        /**
+         * @brief Déclaration de AddIA qui permet de créer et ajouter une IA à la partie
+         */
         public void AddIA()
         {
             IA ia;
@@ -62,13 +61,17 @@ namespace ClassLibrary
             }
         }
 
+        /**
+         * @brief Déclaration de RemovePlayer qui permet de supprimer un joueur de la partie
+         * @param nomJoueur Le nom du joueur qu'on veut supprimer
+         */
         public void RemovePlayer(string name)
         {
             int n = Players.Count;
             int id = -1;
             for (int i = 0; i < n; i++)
             {
-                if (Players[i]._name == name)
+                if (Players[i].Name == name)
                 {
                     id = i; break;
                 }
@@ -76,6 +79,9 @@ namespace ClassLibrary
             if (id >= 0) { Players.RemoveAt(id); }
         }
 
+        /**
+         * @brief Déclaration de RemoveIA qui permet de supprimer une IA à la partie
+         */
         public void RemoveAllIA()
         {
             int n = IAs.Count;

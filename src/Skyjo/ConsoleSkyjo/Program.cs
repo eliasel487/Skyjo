@@ -124,7 +124,7 @@ jouerPartie();
 
 void PlayGame() // fait joueur une game
 {
-    bool GameOver = game1.GetGameOver();
+    bool GameOver = game1.GameOver;
     List<int> pts = [];
     int idmin = 0;
 
@@ -133,12 +133,12 @@ void PlayGame() // fait joueur une game
         pts.Clear();
         for (int i = 0; i < game1.Players.Count; i++) // créer un nouveau plateau au début de chaque tour
         {
-            game1.Players[i].NewBoard(game1.GetDeck());
+            game1.Players[i].NewBoard(game1.Deck);
         }
 
         for (int i = 0; i < game1.IAs.Count; i++) // créer un nouveau plateau au début de chaque tour
         {
-            game1.Players[i].NewBoard(game1.GetDeck());
+            game1.Players[i].NewBoard(game1.Deck);
         }
 
         game1.Deck.DiscardACard(game1.Deck.PickACard(0));
@@ -155,12 +155,12 @@ void PlayGame() // fait joueur une game
 
         for (int i = 0; i < game1.Players.Count; i++)
         {
-            if (game1.Players[i]._gameScore >= 100) GameOver = true;
+            if (game1.Players[i].GameScore >= 100) GameOver = true;
         }
 
         for (int i = 0; i < game1.IAs.Count(); i++)
         {
-            if (game1.IAs[i]._gameScore >= 100) GameOver = true;
+            if (game1.IAs[i].GameScore >= 100) GameOver = true;
         }
 
         if (GameOver) break;
@@ -176,17 +176,17 @@ void PlayGame() // fait joueur une game
     int idWinner = 0;
     for (int i = 0;i < game1.Players.Count; i++)
     {
-        Console.WriteLine("Score " + game1.Players[i]._name + " : " + game1.Players[i]._gameScore);
-        if (game1.Players[i]._gameScore > game1.Players[idWinner]._gameScore) idWinner = i;
+        Console.WriteLine("Score " + game1.Players[i].Name + " : " + game1.Players[i].GameScore);
+        if (game1.Players[i].GameScore > game1.Players[idWinner].GameScore) idWinner = i;
     }
 
-    Console.WriteLine("Le vainqueur est donc " + game1.Players[idWinner]._name);
+    Console.WriteLine("Le vainqueur est donc " + game1.Players[idWinner].Name);
 }
 
 void JouerUneManche(int idPremier)
 {
     int cpt = idPremier, temp;
-    bool RoundFinished = game1.GetRoundFinished();
+    bool RoundFinished = game1.RoundFinished;
 
     while (!RoundFinished)
     {
@@ -202,7 +202,7 @@ void JouerUneManche(int idPremier)
         if (cpt < game1.Players.Count)
             PlayPlayer(game1.Players[cpt]);
         else
-            game1.IAs[cpt - game1.Players.Count].PlayRound(game1.GetDeck());
+            game1.IAs[cpt - game1.Players.Count].PlayRound(game1.Deck);
         if (cpt < game1.Players.Count)
         {
             if (game1.Players[cpt].RoundOver())
@@ -236,7 +236,7 @@ void JouerUneManche(int idPremier)
         if (cpt < game1.Players.Count)
             PlayPlayer(game1.Players[cpt]);
         else
-            game1.IAs[cpt - game1.Players.Count].PlayRound(game1.GetDeck());
+            game1.IAs[cpt - game1.Players.Count].PlayRound(game1.Deck);
         cpt++;
     }
     // on retourne toutes les cartes à la fin d'une manche pour pouvoir voir ce que les autres avaient comme cartes
@@ -246,7 +246,7 @@ void JouerUneManche(int idPremier)
         {
             for (int y = 0; y < 3; y++)
             {
-                game1.Players[i].GetBoard().ReturnACard(x, y);
+                game1.Players[i].Board.ReturnACard(x, y);
             }
         }
     }
@@ -256,7 +256,7 @@ void JouerUneManche(int idPremier)
         {
             for (int y = 0; y < 3; y++)
             {
-                game1.IAs[i].GetBoard().ReturnACard(x, y);
+                game1.IAs[i].Board.ReturnACard(x, y);
             }
         }
     }
@@ -270,7 +270,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
 {
     string choose;
     int chooseInt, x, y;
-    Console.WriteLine("Tour de '" + p._name + "' :");
+    Console.WriteLine("Tour de '" + p.Name + "' :");
     if (!game1.Deck.IsEmptyDiscard() && !game1.Deck.IsEmptyPull())
     {
         Console.WriteLine("Voulez vous tirer dans le deck ou la défausse (0 : tirer, 1 : défausse) : ");
@@ -282,14 +282,14 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
         }
         chooseInt = Convert.ToInt32(choose);
     }
-    else if (game1.GetDeck().IsEmptyDiscard()) chooseInt = 0;
+    else if (game1.Deck.IsEmptyDiscard()) chooseInt = 0;
     else chooseInt = 1;
     Card c = Player.PickACard(game1.Deck, chooseInt);
     c.FlipCard();
 
     if (chooseInt == 0)
     {
-        Console.WriteLine("Voici la carte tirée : " + c.GetNumber());
+        Console.WriteLine("Voici la carte tirée : " + c.Number);
         Console.WriteLine("Voulez vous placer votre carte ou la défausser (0 : placer, 1 : défausser) : ");
         choose = Console.ReadLine()!;
         while (choose != "0" && choose != "1")
@@ -303,7 +303,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
 
     else
     {
-        Console.WriteLine("La carte de la défausse est : " + c.GetNumber());
+        Console.WriteLine("La carte de la défausse est : " + c.Number);
         chooseInt = 0;
     }
     
@@ -320,7 +320,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
             x = -1;
             y = -1;
         }
-        if ((y >= 0 && y < 5) && !p.GetBoard().GetColumns()[y].GetValued())
+        if ((y >= 0 && y < 5) && !p.Board.GetColumns()[y].GetValued())
         {
             Console.WriteLine("Cette colonne à été suprimée.");
             x = -1;
@@ -339,7 +339,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
                 x = -1;
                 y = -1;
             }
-            if ((y >= 0 && y < 5) && !p.GetBoard().GetColumns()[y].GetValued())
+            if ((y >= 0 && y < 5) && !p.Board.GetColumns()[y].GetValued())
             {
                 Console.WriteLine("Cette colonne à été suprimée.");
                 x = -1;
@@ -360,7 +360,7 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
             x = -1;
             y = -1;
         }
-        if (!p.GetBoard().GetColumns()[y].GetValued())
+        if (!p.Board.GetColumns()[y].GetValued())
         {
             Console.WriteLine("Cette colonne à été suprimée.");
             x = -1;
@@ -379,14 +379,14 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
                 x = -1;
                 y = -1;
             }
-            if (!p.GetBoard().GetColumns()[y].GetValued())
+            if (!p.Board.GetColumns()[y].GetValued())
             {
                 Console.WriteLine("Cette colonne à été suprimée.");
                 x = -1;
                 y = -1;
             }
         }
-        game1.GetDeck().DiscardACard(c);
+        game1.Deck.DiscardACard(c);
     }
     p.ActionCard(game1.Deck, c, chooseInt, x, y);
 }
@@ -399,9 +399,9 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
     List<Card> cards;
     for (int i = 0; i < p.Count; i++)
     {
-        b = p[i].GetBoard();
+        b = p[i].Board;
         columns = b.GetColumns();
-        Console.WriteLine(p[i]._name + " (Game Score = " + p[i]._gameScore + ", Round Score = " + p[i]._roundScore +") :");
+        Console.WriteLine(p[i].Name + " (Game Score = " + p[i].GameScore + ", Round Score = " + p[i].RoundScore +") :");
         for (k = 0; k < 3; k++)
         {
             Console.WriteLine("---------------------");
@@ -412,11 +412,11 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
                 if (!columns[j].GetValued()) Console.Write(" // |");
                 else if (!cards[k].IsFlipped()) Console.Write(" XX |");
                 else
-                if (cards[k].GetNumber() < 0 || cards[k].GetNumber() >= 10)
+                if (cards[k].Number < 0 || cards[k].Number >= 10)
                 {
-                    Console.Write(" " + cards[k].GetNumber() + " |");
+                    Console.Write(" " + cards[k].Number + " |");
                 }
-                else Console.Write(" 0" + cards[k].GetNumber() + " |");
+                else Console.Write(" 0" + cards[k].Number + " |");
             }
             Console.WriteLine();
         }
@@ -424,9 +424,9 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
     }
     for (int i = 0; i < ia.Count; i++)
     {
-        b = ia[i].GetBoard();
+        b = ia[i].Board;
         columns = b.GetColumns();
-        Console.WriteLine(ia[i]._name + ":");
+        Console.WriteLine(ia[i].Name + ":");
         for (k = 0; k < 3; k++)
         {
             Console.WriteLine("---------------------");
@@ -437,11 +437,11 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
                 if (!columns[j].GetValued()) Console.Write(" // |");
                 else if (!cards[k].IsFlipped()) Console.Write(" XX |");
                 else
-                if (cards[k].GetNumber() < 0 || cards[k].GetNumber() >= 10)
+                if (cards[k].Number < 0 || cards[k].Number >= 10)
                 {
-                    Console.Write(" " + cards[k].GetNumber() + " |");
+                    Console.Write(" " + cards[k].Number + " |");
                 }
-                else Console.Write(" 0" + cards[k].GetNumber() + " |");
+                else Console.Write(" 0" + cards[k].Number + " |");
             }
             Console.WriteLine();
         }
@@ -480,11 +480,11 @@ void load()
         Console.WriteLine("Après sauvegarde");
         foreach (var n in game1.Players)
         {
-            Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
+            Console.WriteLine($"\t{n.Name} - {n.RoundScore} - {n.Board} - {n.GameScore}");
         }
         foreach (var i in game1.IAs)
         {
-            Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
+            Console.WriteLine($"\t{i.Name} - {i.RoundScore} - {i.Board} - {i.GameScore}");
         }
     }
     else

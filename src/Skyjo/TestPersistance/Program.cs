@@ -72,11 +72,11 @@ partie.AddIA();
 Console.WriteLine("Avant sauvegarde");
 foreach(var n in partie.Players)
 {
-    Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
+    Console.WriteLine($"\t{n.Name} - {n.RoundScore} - {n.Board} - {n.GameScore}");
 }
 foreach (var i in partie.IAs)
 {
-    Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
+    Console.WriteLine($"\t{i.Name} - {i.RoundScore} - {i.Board} - {i.GameScore}");
 }
 
 //string file présent au début
@@ -106,11 +106,11 @@ if (p2 != null)
     Console.WriteLine("Après sauvegarde");
     foreach (var n in partie.Players)
     {
-        Console.WriteLine($"\t{n._name} - {n._roundScore} - {n._board} - {n._gameScore}");
+        Console.WriteLine($"\t{n.Name} - {n.RoundScore} - {n.Board} - {n.GameScore}");
     }
     foreach (var i in partie.IAs)
     {
-        Console.WriteLine($"\t{i._name} - {i._roundScore} - {i._board} - {i._gameScore}");
+        Console.WriteLine($"\t{i.Name} - {i.RoundScore} - {i.Board} - {i.GameScore}");
     }
 }
 else

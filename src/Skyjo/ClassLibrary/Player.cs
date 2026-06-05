@@ -6,64 +6,95 @@ using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
+    /**
+     * @class Player
+     * @brief Classe qui permet d'instancier un joueur
+     */
     [DataContract]
     public class Player
     {
-        [DataMember (Name="Nom_joueur")]
-        public string _name { get; set; }
+        [DataMember (Name="Nom_joueur")]//!< Nom_joueur Le nom du joueur pour la persictance
+        public string Name { get; set; }//!< Name Le nom du joueur
 
-        [DataMember (Name="Score_total_joueur")]
-        public int _gameScore { get; set; }
+        [DataMember (Name="Score_total_joueur")]//!< Score_total_joueur Le score total du joueur pour la persictance
+        public int GameScore { get; set; }//!< GameScore Le score total du joueur
 
-        [DataMember (Name="Score_manche_actuelle")]
-        public int _roundScore { get; set; }
+        [DataMember (Name="Score_manche_actuelle")]//!< Score_manch_actuelle Le score de la manche pour le joueur pour la persictance
+        public int RoundScore { get; set; }//!< RoundScore Le score de la manche pour le joueur
 
-        private readonly bool _IA;
-        [DataMember (Name="Plateau_carte_joueur")]
-        public Board _board;
+        private readonly bool _IA;//!< _IA L'etat du joueur (IA ou non)
+        [DataMember (Name="Plateau_carte_joueur")]//!< Plateau_carte_joueur Le plateau du joueur pour la persictance
+        public Board Board { get; set; }//!< Board Le plateau du joueur
 
+        /**
+         * @brief Déclaration du constructeur de la classe Player
+         * @param name Le nom du joueur
+         * @param deck Le deck qui permet de fournir les cartes 
+         * @param GameScore Le score total du joueur
+         * @param RoundScore le score de la manche du joueur
+         */
         public Player(string name, Deck deck, int GameScore, int RoundScore)
         {
-            this._name = name;
-            this._gameScore = GameScore;
-            this._roundScore = RoundScore;
+            this.Name = name;
+            this.GameScore = GameScore;
+            this.RoundScore = RoundScore;
             this._IA = false;
-            _board = new Board(deck);
-            
-        }
-        public Player(int GameScore, Deck deck, int RoundScore)
-        {
-            this._name = "IA";
-            this._gameScore = GameScore;
-            this._roundScore = RoundScore;
-            this._IA = true;
-            _board = new Board(deck);
+            Board = new Board(deck);
+
         }
 
+        /**
+         * @brief Déclaration du constructeur de la classe Player
+         * @param deck Le deck qui permet de fournir les cartes 
+         * @param GameScore Le score total du joueur
+         * @param RoundScore le score de la manche du joueur
+         */
+        public Player(int GameScore, Deck deck, int RoundScore)
+        {
+            this.Name = "IA";
+            this.GameScore = GameScore;
+            this.RoundScore = RoundScore;
+            this._IA = true;
+            Board = new Board(deck);
+        }
+
+        /**
+         * @brief Accesseur de l'attribut IA
+         * @return _IA L'etat du joueur (IA ou non)
+         */
         public bool GetIA()
         {
             return _IA;
         }
 
-        public Board GetBoard()
-        {
-            return _board;
-        }
-
+        /**
+         * @brief Déclaration de la méthode NewBoard qui permet de recréer un plateau
+         * @param d DEck qui fournit les cartes
+         */
         public void NewBoard(Deck d)
         {
-            _board = new Board(d);
+            Board = new Board(d);
             this.CountGameScore();
         }
 
+        /**
+         * @brief Déclaration de la méthode PickACard qui permet de tirer une carte
+         * @param d Le deck dans lequel on tire la carte
+         * @param choose Le choix de la pioche (0) et de l adéffausse (1)
+         * @return d.PickACard(choose) La carte tirée dasn le deck
+         */
         public static Card PickACard(Deck d, int choose)
         {
             return d.PickACard(choose);
         }
 
+        /**
+         * @brief Déclaration de la méthode RoundOver qui permet de détérminer si la manche est terminée
+         * @return Board.IsAllReturned() Le booléen qui permet de détérminer si la manche est terminée
+         */
         public bool RoundOver()
         {
-            return _board.IsAllReturned();
+            return Board.IsAllReturned();
         }
 
         public void Play(Deck d) //fonction utiliser pour les vues, elle sera peut être inutile
@@ -76,16 +107,16 @@ namespace ClassLibrary
 
         public void ActionCard(Deck deck, Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
         {
-            if (_board.GetColumns()[y].GetValued())
+            if (Board.GetColumns()[y].GetValued())
             {
                 c.FlipCard();
                 if (choose == 0)
                 {
-                    _board.ReplaceCard(deck, y, x, c);
+                    Board.ReplaceCard(deck, y, x, c);
                 }
                 else
                 {
-                    _board.ReturnACard(y, x); //_board.ReturnACard(x, y) == false
+                    Board.ReturnACard(y, x); //Board.ReturnACard(x, y) == false
                 }
             }
         }
@@ -94,7 +125,7 @@ namespace ClassLibrary
         {
             for (int i = 0; i < 4; i++)
             {
-                _board.GetColumns()[i].Remove();
+                Board.GetColumns()[i].Remove();
             }
         }
 
@@ -102,16 +133,16 @@ namespace ClassLibrary
         {
             Card card;
             Column col;
-            _roundScore = 0;
+            RoundScore = 0;
             for (int i = 0; i < 4; i++)
             {
-                col = _board.GetColumns()[i];
+                col = Board.GetColumns()[i];
                 for (int j = 0; j < 3; j++)
                 {
                     card = col.GetCards()[j];
                     if (card.IsFlipped() && col.GetValued())
                     {
-                        _roundScore += card.Number;
+                        RoundScore += card.Number;
                     }
                 }
             }
@@ -119,8 +150,8 @@ namespace ClassLibrary
 
         public void CountGameScore()
         {
-            _gameScore += _roundScore;
-            if (_gameScore < 0) _gameScore = 0;
+            GameScore += RoundScore;
+            if (GameScore < 0) GameScore = 0;
         }
 
         public int FlipTwoCard()
@@ -136,10 +167,10 @@ namespace ClassLibrary
                 y2 = rnd.Next(0, 2);
                 x2 = rnd.Next(0, 3);
             }
-            _board.GetColumns()[x1].GetCards()[y1].FlipCard();
-            _board.GetColumns()[x2].GetCards()[y2].FlipCard();
-            res += _board.GetColumns()[x1].GetCards()[y1].Number;
-            res += _board.GetColumns()[x2].GetCards()[y2].Number;
+            Board.GetColumns()[x1].GetCards()[y1].FlipCard();
+            Board.GetColumns()[x2].GetCards()[y2].FlipCard();
+            res += Board.GetColumns()[x1].GetCards()[y1].Number;
+            res += Board.GetColumns()[x2].GetCards()[y2].Number;
             return res;
         }
     }

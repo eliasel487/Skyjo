@@ -14,7 +14,7 @@ namespace TestClass
             Card c = new Card(3);
 
             //act
-            int res = c.GetNumber();
+            int res = c.Number;
             bool flip = c.IsFlipped();
 
             //assert
@@ -30,9 +30,9 @@ namespace TestClass
             Card c2 = new Card(-5);
 
             //act
-            int res1 = c1.GetNumber();
+            int res1 = c1.Number;
             bool flip1 = c1.IsFlipped();
-            int res2 = c2.GetNumber();
+            int res2 = c2.Number;
             bool flip2 = c2.IsFlipped();
 
             //assert
