@@ -74,7 +74,7 @@ deploy-my-pod:
   variables:
       CONTAINER_NAME: Skyjo
       CONTAINER_IMAGE_PATH: codefirst.iut.uca.fr/iut_inf63/depotsetudiantsr2.02-03_2025-26/equipe_bert_rabany_tardy_el-mkademi:main
-      NAMESPACE_NAME: iut-inf63-depotsetudiantsr2-02-03-2025-26-equipe-bert-rabany-tardy-el-mkademi
+      NAMESPACE_NAME: marabany
       NAMESPACE_TOKEN: $NAMESPACE_TOKEN
   needs:
     - push-doxygen-documentation
