@@ -104,7 +104,7 @@ namespace TestClass
         }
 
         [Fact]
-        public void Game_Deck
+        public void Game_Deck()
         {
             //arrange
             Game game = new Game();
