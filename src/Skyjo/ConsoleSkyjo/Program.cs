@@ -11,6 +11,10 @@ Game game1 = new();
 string xmlFile = Path.Combine("XML", "PersistanceGame.xml");
 var serializer = new DataContractSerializer(typeof(Game));
 
+
+/**
+    * @brief Création d'un ou plusieurs joueurs avec saisie de nom
+*/
 int CreerJoueur()
 {
     string nbJoueurStr;
@@ -42,6 +46,10 @@ int CreerJoueur()
     return nbJoueur;
 }
 
+/**
+    * @brief Création d'une ou plusieures IA
+    * @param nbJoueur le nombre de joueurs réels jouant dans cette partie
+*/
 void CreerIA(int nbJoueur)
 {
     if (nbJoueur != 4)
@@ -91,6 +99,10 @@ void CreerIA(int nbJoueur)
     }
 }
 
+
+/**
+    * @brief Démarrage d'une partie déjà existante ou création d'une nouvelle partie
+*/
 void jouerPartie()
 {
     string choose;
@@ -122,7 +134,10 @@ void jouerPartie()
 
 jouerPartie();
 
-void PlayGame() // fait joueur une game
+/**
+    * @brief Fais jouer une partie de Skyjo
+*/
+void PlayGame() 
 {
     bool GameOver = game1.GameOver;
     List<int> pts = [];
@@ -183,6 +198,11 @@ void PlayGame() // fait joueur une game
     Console.WriteLine("Le vainqueur est donc " + game1.Players[idWinner].Name);
 }
 
+
+/**
+    * @brief Fais jouer une manche de Skyjo (1 tour équivaut à l'ensemble des joueurs ayant joué)
+    * @param idPremier identifiant (modélisé par un nombre) du joueur qui commence la manche
+*/
 void JouerUneManche(int idPremier)
 {
     int cpt = idPremier, temp;
@@ -266,7 +286,11 @@ void JouerUneManche(int idPremier)
     Console.Read();
 }
 
-void PlayPlayer(Player p) // fait jouer le tour du joueur
+/**
+    * @brief Donne les possibilités de jeu au joueur qui doit jouer son tour
+    * @param p Le joueur qui doit jouer son tour
+*/
+void PlayPlayer(Player p)
 {
     string choose;
     int chooseInt, x, y;
@@ -391,6 +415,11 @@ void PlayPlayer(Player p) // fait jouer le tour du joueur
     p.ActionCard(game1.Deck, c, chooseInt, x, y);
 }
 
+/**
+    * @brief Création d'un ou plusieurs joueurs avec saisie de nom
+    * @param p Une liste de joueurs à qui on va afficher leur plateau (cartes disposées de manières ordonnées)
+    * @param ia Une liste d'IA auxquelles on va afficher leur plateau
+*/
 void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de chaque joueur
 {
     int j, k;
@@ -453,6 +482,10 @@ void AfficherLesPlateaux(List<Player> p, List<IA> ia) // affiche le plateau de c
 
 // Persistance
 
+
+/**
+    * @brief Sauvegarde d'une partie dans un ficher .xml
+*/
 void save()
 {
     XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
@@ -465,6 +498,9 @@ void save()
     }
 }
 
+/**
+    * @brief Chargement d'une partie enregistrée dans un ficher .xml
+*/
 void load()
 {
     Game? p2;
