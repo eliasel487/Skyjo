@@ -72,7 +72,7 @@ deploy-my-pod:
   extends: .deploy-image
   stage: 🚀deploy
   variables:
-      CONTAINER_NAME: Skyjo
+      CONTAINER_NAME: skyjo
       CONTAINER_IMAGE_PATH: codefirst.iut.uca.fr/iut_inf63/depotsetudiantsr2.02-03_2025-26/equipe_bert_rabany_tardy_el-mkademi:main
       NAMESPACE_NAME: marabany
       NAMESPACE_TOKEN: $NAMESPACE_TOKEN
