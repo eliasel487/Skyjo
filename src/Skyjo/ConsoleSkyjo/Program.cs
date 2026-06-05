@@ -2,6 +2,7 @@ using ClassLibrary;
 using System.Net.Mail;
 using System.Numerics;
 using System.Runtime.Serialization;
+using System.Security.AccessControl;
 using System.Xml;
 
 Game game1 = new();
@@ -92,16 +93,31 @@ void CreerIA(int nbJoueur)
 
 void jouerPartie()
 {
-    if(xmlFile != null && File.Exists(xmlFile))
+    string choose;
+
+    Console.WriteLine("Voulez vous lancer une partie normale (1) ou une partie déja faite (2) ?");
+    choose = Console.ReadLine();
+
+    if (choose != "2")
     {
-        load();
+        if (xmlFile != null && File.Exists(xmlFile))
+        {
+            Console.WriteLine("Il existe une sauvegarde, voulez vous la lancer ?");
+            choose = Console.ReadLine();
+            if (choose == "yes" || choose == "y" || choose == "oui" || choose == "o" || choose == "Yes" || choose == "Y" || choose == "Oui" || choose == "O")
+                load();
+            else
+            {
+                int nbJoueur = CreerJoueur();
+                CreerIA(nbJoueur);
+            }
+        }
+        else
+        {
+        }
+        PlayGame();
     }
-    else 
-    {
-        int nbJoueur = CreerJoueur();
-        CreerIA(nbJoueur);
-    }
-    PlayGame();
+    else { Stub.Stub stub = new(); }
 }
 
 jouerPartie();

@@ -79,7 +79,6 @@ namespace ClassLibrary
             if (_board.GetColumns()[y].GetValued())
             {
                 c.FlipCard();
-                _board.ReplaceCard(deck, y, x, c);
                 if (choose == 0)
                 {
                     _board.ReplaceCard(deck, y, x, c);
