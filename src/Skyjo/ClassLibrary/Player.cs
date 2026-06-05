@@ -97,6 +97,10 @@ namespace ClassLibrary
             return Board.IsAllReturned();
         }
 
+        /**
+         * @brief Déclaration de la méthode Play qui permet de jouer un tour en tant que joueur
+         * @param d Le deck qui fournit les cartes
+         */
         public void Play(Deck d) //fonction utiliser pour les vues, elle sera peut être inutile
         {
             int choosePick = 0, chooseCard = 0, x = 0, y = 0;
@@ -105,6 +109,14 @@ namespace ClassLibrary
             ActionCard(d, c, chooseCard, x, y);
         }
 
+        /**
+         * @brief Déclaration de la méthode ActionCard qui êrmet d'interagir avec une carte de son plateau
+         * @param deck Le deck qui permet de déffausser la carte
+         * @param c La carte qu'on va utiliser pour en remplacer une autre sur le plateau
+         * @param choose Le choix de remplacer un carte (0) ou de retourner une carte (1)
+         * @param x La coordonnée x de la carte sur le plateau avec laquelle on veut interagir
+         * @param y La coordonnée y de la carte sur le plateau avec laquelle on veut interagir
+         */
         public void ActionCard(Deck deck, Card c, int choose, int x, int y) // par rapport à ce que le joueur a choisi la carte sera soit placer soit on retourne une carte sur la plateau
         {
             if (Board.GetColumns()[y].GetValued())
@@ -121,6 +133,9 @@ namespace ClassLibrary
             }
         }
 
+        /**
+         * @brief Déclaration de la Méthode RemoveColiumn qui permet d'enlever les colonnes qui sont enlevable
+         */
         public void RemoveColumn()
         {
             for (int i = 0; i < 4; i++)
@@ -129,6 +144,9 @@ namespace ClassLibrary
             }
         }
 
+        /**
+         * @brief Déclaration de la méthode CountGameScore qui permet de mettre à jour le score total
+         */
         public void CountRoundScore()
         {
             Card card;
@@ -148,12 +166,19 @@ namespace ClassLibrary
             }
         }
 
+        /**
+         * @brief Déclaration de la méthode CountRoundScore qui permet de mettre à jour le score de la manche
+         */
         public void CountGameScore()
         {
             GameScore += RoundScore;
             if (GameScore < 0) GameScore = 0;
         }
 
+        /**
+         * @brief Déclaration de FlipToCard qui permet de retourner deux cartes aléatoire sur le plateau pour le début de partie
+         * @return res La somme de ces deux carets pour pouvoir détérminer le premier joueur
+         */
         public int FlipTwoCard()
         {
             Random rnd = new Random();
