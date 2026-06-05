@@ -60,21 +60,26 @@ namespace ClassLibrary
         {
             c.FlipCard();
             bool place = false;
-            int x = 0, y = 0;
-            while (place == false && y < 4) // cette boucle vas parcourir tout le tableau pour voir si il peut poser une carte dont le nombre est inférieur à celle retourner sur le plateau
-                                    // sinon il la pose en 0 0, car il faut bien qu'il fasse quelque chose à un moment
+            List<Column> columns = Board.GetColumns();
+
+            for (int y = 0; y < columns.Count && !place; y++)
             {
-                List<Column> columns = Board.GetColumns();
                 List<Card> cards = columns[y].GetCards();
-                if (cards[x].IsFlipped() && cards[x].Number < c.Number)
+
+                for (int x = 0; x < cards.Count; x++)
                 {
-                    Board.ReplaceCard(deck, y, x, c);
-                    place = true;
+                    if (cards[x].IsFlipped() && cards[x].Number > c.Number)
+                    {
+                        Board.ReplaceCard(deck, y, x, c);
+                        place = true;
+                        break;
+                    }
                 }
-                x++;
-                if (x >= 3) { y++; x = 0; }
             }
-            if (!place) Board.ReplaceCard(deck, 0, 0, c);
+            if (!place) 
+            {
+                Board.ReplaceCard(deck, 0, 0, c);
+            }
         }
     }
 }
