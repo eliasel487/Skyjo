@@ -28,16 +28,31 @@ namespace TestClass
         [Fact]
         public void Player_newBoard()
         {
-            //arrange 
+            // arrange 
             Deck deck = new Deck();
             Player p = new Player("Jean", deck, 0, 0);
-            Card before = p.Board.GetColumns()[0].GetCards()[0];
 
-            //act
+            Assert.NotNull(p.Board);
+            var columnsBefore = p.Board.GetColumns();
+            Assert.NotEmpty(columnsBefore);
+            
+            var cardsBefore = columnsBefore[0].GetCards();
+            Assert.NotEmpty(cardsBefore);
+
+            Card before = cardsBefore[0];
+
+            // act
             p.NewBoard(deck);
-            Card after = p.Board.GetColumns()[0].GetCards()[0];
 
-            //assert
+            var columnsAfter = p.Board.GetColumns();
+            Assert.NotEmpty(columnsAfter);
+            
+            var cardsAfter = columnsAfter[0].GetCards();
+            Assert.NotEmpty(cardsAfter);
+
+            Card after = cardsAfter[0];
+
+            // assert
             Assert.NotEqual(before, after);
         }
 
